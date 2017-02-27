@@ -13,7 +13,7 @@ import javax.validation.constraints.Digits;
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 public class Restaurant extends NamedEntity{
 
-    @Column(name = "votes", columnDefinition = "int default 100")
+    @Column(name = "votes", columnDefinition = "int default 10")
     @Digits(fraction = 0, integer = 5)
     private int votes;
 
