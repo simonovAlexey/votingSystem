@@ -5,7 +5,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
 import java.util.Date;
 import java.util.EnumSet;
 import java.util.Set;
@@ -46,26 +45,28 @@ public class User extends NamedEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @Column(name = "voted", columnDefinition = "boolean default false")
-    @Digits(fraction = 0, integer = 4)
-    private boolean voted = false;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "voted_id", nullable = false)
+    private Restaurant votedRestaurant;
+
+    @Column(name = "voted_date", columnDefinition = "timestamp default null")
+    private Date votedDate;
 
     public User() {
     }
 
     public User(User u) {
-        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isVoted(), u.isEnabled(), u.getRoles());
+        this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
     }
 
     public User(Integer id, String name, String email, String password, Role role, Role... roles) {
-        this(id, name, email, password, false, true, EnumSet.of(role, roles));
+        this(id, name, email, password, true, EnumSet.of(role, roles));
     }
 
-    public User(Integer id, String name, String email, String password, boolean voted, boolean enabled, Set<Role> roles) {
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
         super(id, name);
         this.email = email;
         this.password = password;
-        this.voted = voted;
         this.enabled = enabled;
         this.roles = roles;
     }
@@ -94,13 +95,6 @@ public class User extends NamedEntity {
         this.enabled = enabled;
     }
 
-    public boolean isVoted() {
-        return voted;
-    }
-
-    public void setVoted(boolean voted) {
-        this.voted = voted;
-    }
 
     public boolean isEnabled() {
         return enabled;
@@ -114,15 +108,4 @@ public class User extends NamedEntity {
         return password;
     }
 
-    @Override
-    public String toString() {
-        return "User (" +
-                "id=" + id +
-                ", email=" + email +
-                ", name=" + name +
-                ", enabled=" + enabled +
-                ", roles=" + roles +
-                ", voted=" + voted +
-                ')';
-    }
 }

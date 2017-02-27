@@ -22,7 +22,8 @@ CREATE TABLE users
   registered TIMESTAMP DEFAULT now(),
   enabled    BOOLEAN   DEFAULT TRUE,
   voted_id   INTEGER NOT NULL,
-  voted_date TIMESTAMP DEFAULT NULL
+  voted_date TIMESTAMP DEFAULT NULL,
+  FOREIGN KEY ( voted_id ) REFERENCES restaurant (id)
 );
 CREATE UNIQUE INDEX users_unique_email_idx
   ON users (email);
