@@ -1,9 +1,9 @@
 package by.simonow.VotingSystem.repository;
 
+import by.simonow.VotingSystem.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
-import ru.javawebinar.topjava.model.User;
 
 import java.util.List;
 
@@ -44,8 +44,4 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
         return crudRepository.findAll(SORT_NAME_EMAIL);
     }
 
-    @Override
-    public User getWithMeals(int id) {
-        return crudRepository.getWithMeals(id);
-    }
 }
