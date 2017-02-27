@@ -1,6 +1,6 @@
-package repository;
+package by.simonow.VotingSystem.repository;
 
-import model.Meal;
+import by.simonow.VotingSystem.model.Meal;
 
 import java.util.Collection;
 

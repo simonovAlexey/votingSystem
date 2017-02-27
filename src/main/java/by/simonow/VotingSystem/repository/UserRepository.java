@@ -1,7 +1,7 @@
-package repository;
+package by.simonow.VotingSystem.repository;
 
 
-import model.User;
+import by.simonow.VotingSystem.model.User;
 
 import java.util.List;
 

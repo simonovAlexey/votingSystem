@@ -1,4 +1,4 @@
-package model;
+package by.simonow.VotingSystem.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

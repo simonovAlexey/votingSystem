@@ -1,4 +1,4 @@
-package model;
+package by.simonow.VotingSystem.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -12,7 +12,7 @@ import javax.validation.constraints.Digits;
 @NamedQueries({
        /* @NamedQuery(name = Meal.M_DELETE, query = "DELETE FROM Meal m WHERE m.id=:id AND m.user.id=:userId"),
         @NamedQuery(name = Meal.M_GET, query = "SELECT m FROM Meal m WHERE m.id=:id AND m.user.id=:userId"),
-        @NamedQuery(name = Meal.M_ALL_BETWEEN, query = "SELECT m FROM Meal m WHERE m.user.id=?1 and m.dateTime BETWEEN ?2 AND ?3 ORDER BY m.dateTime DESC "),
+        @NamedQuery(name = Meal.M_GET_MENU, query = "SELECT m FROM Meal m WHERE m.user.id=?1 and m.dateTime BETWEEN ?2 AND ?3 ORDER BY m.dateTime DESC "),
         @NamedQuery(name = Meal.M_ALL, query = "SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC"),*/
 })
 @Entity
@@ -20,7 +20,7 @@ import javax.validation.constraints.Digits;
 public class Meal extends BaseEntity {
 
     public static final String M_DELETE = "Meal.delete";
-    public static final String M_ALL_BETWEEN = "Meal.getMenu";
+    public static final String M_GET_MENU = "Meal.getMenu";
     public static final String M_GET = "Meal.get";
     public static final String M_ALL = "Meal.getAll";
 

@@ -1,4 +1,4 @@
-package model;
+package by.simonow.VotingSystem.model;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -95,6 +95,21 @@ public class User extends NamedEntity {
         this.enabled = enabled;
     }
 
+    public Restaurant getVotedRestaurant() {
+        return votedRestaurant;
+    }
+
+    public void setVotedRestaurant(Restaurant votedRestaurant) {
+        this.votedRestaurant = votedRestaurant;
+    }
+
+    public Date getVotedDate() {
+        return votedDate;
+    }
+
+    public void setVotedDate(Date votedDate) {
+        this.votedDate = votedDate;
+    }
 
     public boolean isEnabled() {
         return enabled;

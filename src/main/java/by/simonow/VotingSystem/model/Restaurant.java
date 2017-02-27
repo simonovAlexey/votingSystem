@@ -1,10 +1,8 @@
-package model;
+package by.simonow.VotingSystem.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import java.util.List;
 
 /**
  * Created by Алексей on 08.01.2017.
@@ -13,9 +11,14 @@ import javax.validation.constraints.Digits;
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 public class Restaurant extends NamedEntity{
 
-    @Column(name = "votes", columnDefinition = "int default 10")
+    @Column(name = "votes", columnDefinition = "int default 0")
     @Digits(fraction = 0, integer = 5)
     private int votes;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OrderBy("description DESC")
+//    @JsonIgnore
+    protected List<Meal> meals;
 
     public Restaurant() {
     }
