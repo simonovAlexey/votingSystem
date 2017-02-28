@@ -2,7 +2,6 @@ package by.simonow.VotingSystem.repository;
 
 import by.simonow.VotingSystem.model.User;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +15,7 @@ import java.util.List;
  * 02.10.2016
  */
 @Transactional(readOnly = true)
-public interface CrudUserRepository extends JpaRepository<User, Integer> {
+public interface ProxyUserRepository extends JpaRepository<User, Integer> {
     @Transactional
     @Modifying
     @Query("DELETE FROM User u WHERE u.id=:id")
@@ -34,8 +33,4 @@ public interface CrudUserRepository extends JpaRepository<User, Integer> {
 
     User getByEmail(String email);
 
-    //    @Query("SELECT u FROM User u LEFT JOIN FETCH u.meals WHERE u.id = ?1")
-    @EntityGraph(value = User.GRAPH_WITH_MEALS)
-    @Query("SELECT u FROM User u WHERE u.id=?1")
-    User getWithMeals(int id);
 }

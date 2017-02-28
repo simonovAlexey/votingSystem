@@ -9,7 +9,10 @@ import java.util.List;
  */
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
+@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
 public class Restaurant extends NamedEntity{
+
+    public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
 
     @Column(name = "votes", columnDefinition = "int default 0")
     @Digits(fraction = 0, integer = 5)
