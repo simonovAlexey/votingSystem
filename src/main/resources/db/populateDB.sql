@@ -1,24 +1,32 @@
 DELETE FROM user_roles;
 DELETE FROM meals;
 DELETE FROM users;
+DELETE FROM restaurant;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
-INSERT INTO users (name, email, password)
-VALUES ('User', 'user@yandex.ru', 'password');
+INSERT INTO users (name, email, password, registered, voted_id, voted_date)
+VALUES ('User', 'user@yandex.ru', 'password', '2017-01-10 12:00:00', 100002, '2017-01-30 10:00:00');
 
-INSERT INTO users (name, email, password)
-VALUES ('Admin', 'admin@gmail.com', 'admin');
+INSERT INTO users (name, email, password, registered, voted_id, voted_date)
+VALUES ('Admin', 'admin@gmail.com', 'admin', '2017-01-09 12:00:00', 100004, '2017-01-20 11:00:00');
 
 INSERT INTO user_roles (role, user_id) VALUES
   ('ROLE_USER', 100000),
   ('ROLE_ADMIN', 100001);
 
-INSERT INTO meals (date_time, description, calories, user_id) VALUES
-  ('2015-05-30 10:00:00', 'Завтрак', 500, 100000),
-  ('2015-05-30 13:00:00', 'Обед', 1000, 100000),
-  ('2015-05-30 20:00:00', 'Ужин', 500, 100000),
-  ('2015-05-31 10:00:00', 'Завтрак', 500, 100000),
-  ('2015-05-31 13:00:00', 'Обед', 1000, 100000),
-  ('2015-05-31 20:00:00', 'Ужин', 510, 100000),
-  ('2015-06-01 14:00:00', 'Админ ланч', 510, 100001),
-  ('2015-06-01 21:00:00', 'Админ ужин', 1500, 100001);
+INSERT INTO restaurant (name, votes) VALUES
+  ('Р1 Mak', 2),
+  ('Р2 Плакучая ива', 12),
+  ('Р3 Бистро', 7);
+
+INSERT INTO meals (description, price, restaurant_id, in_menu) VALUES
+  ('Р1 Завтрак в меню', 200, 100002, TRUE),
+  ('Р1 Обед не в меню', 1050, 100002, FALSE),
+  ('Р1 Ужин в меню', 945, 100002, TRUE),
+  ('Р2 Завтрак в меню', 200, 100003, TRUE),
+  ('Р2 Обед в меню', 250, 100003, TRUE),
+  ('Р2 Ужин не в меню', 250, 100003, FALSE),
+  ('Р3 Завтрак-б в меню', 90, 100004, TRUE),
+  ('Р3 Обед-б в меню', 90, 100004, TRUE),
+  ('Р3 Ужин-б не в меню', 90, 100004, FALSE);
+

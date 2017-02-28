@@ -21,7 +21,7 @@ CREATE TABLE users
   password   VARCHAR(255) NOT NULL,
   registered TIMESTAMP DEFAULT now(),
   enabled    BOOLEAN   DEFAULT TRUE,
-  voted_id   INTEGER NOT NULL,
+  voted_id   INTEGER      NOT NULL,
   voted_date TIMESTAMP DEFAULT NULL,
   FOREIGN KEY ( voted_id ) REFERENCES restaurant (id)
 );
