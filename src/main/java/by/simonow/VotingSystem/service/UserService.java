@@ -4,9 +4,7 @@ package by.simonow.VotingSystem.service;
 import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
-import org.springframework.data.domain.Page;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 
@@ -24,7 +22,7 @@ public interface UserService {
 
     List<User> getAll();
 
-    Page<User> getAllByPage(Pageable pageable);
+//    Page<User> getAllByPage(Pageable pageable);
 
     void update(User user);
 

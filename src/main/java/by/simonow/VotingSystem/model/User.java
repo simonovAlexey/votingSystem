@@ -3,11 +3,10 @@ package by.simonow.VotingSystem.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.EnumSet;
-import java.util.Set;
+import java.util.*;
 
 
 @NamedQueries({
@@ -113,6 +112,10 @@ public class User extends NamedEntity {
 
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
     }
 
     public Set<Role> getRoles() {

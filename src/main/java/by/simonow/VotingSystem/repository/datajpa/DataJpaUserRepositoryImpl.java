@@ -1,12 +1,11 @@
-package by.simonow.VotingSystem.repository;
+package by.simonow.VotingSystem.repository.datajpa;
 
 import by.simonow.VotingSystem.model.User;
+import by.simonow.VotingSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 /**
@@ -18,37 +17,41 @@ import java.util.List;
 public class DataJpaUserRepositoryImpl implements UserRepository {
     private static final Sort SORT_NAME_EMAIL = new Sort("name", "email");
 
+    private final CrudUserRepository crudRepository;
+
     @Autowired
-    private ProxyUserRepository proxyUserRepository;
+    public DataJpaUserRepositoryImpl(CrudUserRepository crudRepository) {
+        this.crudRepository = crudRepository;
+    }
 
     @Override
     public User save(User user) {
-        return proxyUserRepository.save(user);
+        return crudRepository.save(user);
     }
 
     @Override
     public boolean delete(int id) {
-        return proxyUserRepository.delete(id) != 0;
+        return crudRepository.delete(id) != 0;
     }
 
     @Override
     public User get(int id) {
-        return proxyUserRepository.findOne(id);
+        return crudRepository.findOne(id);
     }
 
     @Override
     public User getByEmail(String email) {
-        return proxyUserRepository.getByEmail(email);
+        return crudRepository.getByEmail(email);
     }
 
     @Override
     public List<User> getAll() {
-        return proxyUserRepository.findAll(SORT_NAME_EMAIL);
+        return crudRepository.findAll(SORT_NAME_EMAIL);
     }
 
-    @Override
+    /*@Override
     public Page<User> findAllByPage(Pageable pageable) {
-        return proxyUserRepository.findAll(pageable);
-    }
+        return crudRepository.findAll(pageable);
+    }*/
 
 }

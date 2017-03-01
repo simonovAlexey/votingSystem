@@ -8,12 +8,10 @@ import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFound;
@@ -22,8 +20,12 @@ import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private final UserRepository repository;
+
     @Autowired
-    private UserRepository repository;
+    public UserServiceImpl(UserRepository repository) {
+        this.repository = repository;
+    }
 
     @CacheEvict(value = "users", allEntries = true)
     @Override
@@ -55,11 +57,11 @@ public class UserServiceImpl implements UserService {
         return repository.getAll();
     }
 
-    @Cacheable("users")
+    /*@Cacheable("users")
     @Override
     public Page<User> getAllByPage(Pageable pageable){
         return repository.findAllByPage(pageable);
-    }
+    }*/
 
     @CacheEvict(value = "users", allEntries = true)
     @Override
