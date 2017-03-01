@@ -12,10 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.awt.print.Pageable;
 import java.util.List;
 
-/**
- * gkislin
- * 02.10.2016
- */
+
 @Transactional(readOnly = true)
 public interface ProxyUserRepository extends JpaRepository<User, Integer> {
     @Transactional
