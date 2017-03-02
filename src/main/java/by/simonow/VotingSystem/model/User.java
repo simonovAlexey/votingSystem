@@ -1,14 +1,18 @@
 package by.simonow.VotingSystem.model;
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import java.util.*;
 
-
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @NamedQueries({
         /*@NamedQuery(name = User.DELETE, query = "DELETE FROM User u WHERE u.id=:id"),
         @NamedQuery(name = User.BY_EMAIL, query = "SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.email=?1"),
@@ -24,28 +28,34 @@ public class User extends NamedEntity {
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
-    @NotEmpty
+    @NotBlank
+    @SafeHtml
     private String email;
 
     @Column(name = "password", nullable = false)
-    @NotEmpty
+    @NotBlank
     @Length(min = 5)
+//    @JsonView(View.REST.class)
+    @SafeHtml
     private String password;
 
-    @Column(name = "enabled", nullable = false)
+    @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
     private boolean enabled = true;
 
     @Column(name = "registered", columnDefinition = "timestamp default now()")
     private Date registered = new Date();
 
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role")
     @ElementCollection(fetch = FetchType.EAGER)
+//    @Fetch(FetchMode.SUBSELECT)
+    @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "voted_id", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "voted_id")
     private Restaurant votedRestaurant;
 
     @Column(name = "voted_date", columnDefinition = "timestamp default null")
@@ -63,11 +73,17 @@ public class User extends NamedEntity {
     }
 
     public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
+        this(id,name,email,password,true,roles,null,null);
+    }
+
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles, Restaurant votedRestaurant, Date votedDate) {
         super(id, name);
         this.email = email;
         this.password = password;
         this.enabled = enabled;
         this.roles = roles;
+        this.votedRestaurant = votedRestaurant;
+        this.votedDate = votedDate;
     }
 
     public String getEmail() {

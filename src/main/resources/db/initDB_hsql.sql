@@ -2,9 +2,9 @@ DROP TABLE user_roles
 IF EXISTS;
 DROP TABLE meals
 IF EXISTS;
-DROP TABLE restaurant
-IF EXISTS;
 DROP TABLE users
+IF EXISTS;
+DROP TABLE restaurant
 IF EXISTS;
 DROP SEQUENCE global_seq
 IF EXISTS;
@@ -30,7 +30,7 @@ CREATE TABLE users
   password   VARCHAR(255) NOT NULL,
   registered TIMESTAMP DEFAULT now(),
   enabled    BOOLEAN   DEFAULT TRUE,
-  voted_id   INTEGER      NOT NULL,
+  voted_id   INTEGER,
   voted_date TIMESTAMP DEFAULT NULL,
   FOREIGN KEY ( voted_id ) REFERENCES restaurant (id)
 );
