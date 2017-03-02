@@ -10,10 +10,6 @@ import java.util.Objects;
 
 import static by.simonow.VotingSystem.model.BaseEntity.START_SEQ;
 
-/**
- * GKislin
- * 24.09.2015.
- */
 public class UserTestData {
     private static final Logger LOG = LoggerFactory.getLogger(UserTestData.class);
 

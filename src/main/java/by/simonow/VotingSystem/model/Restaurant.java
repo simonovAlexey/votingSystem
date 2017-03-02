@@ -1,7 +1,8 @@
 package by.simonow.VotingSystem.model;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public class Restaurant extends NamedEntity{
     public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
 
     @Column(name = "votes", columnDefinition = "int default 0")
-    @Digits(fraction = 0, integer = 5)
+    @Range(min = 0)
     private int votes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)

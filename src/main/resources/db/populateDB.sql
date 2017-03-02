@@ -22,7 +22,7 @@ INSERT INTO user_roles (role, user_id) VALUES
 
 
 
-INSERT INTO meals (description, price, restaurant_id, in_menu) VALUES
+INSERT INTO meals (description, price, restaurant_id, inmenu) VALUES
   ('Р1 Завтрак в меню', 200, 100000, TRUE),
   ('Р1 Обед не в меню', 1050, 100000, FALSE),
   ('Р1 Ужин в меню', 945, 100000, TRUE),

@@ -52,9 +52,9 @@ CREATE TABLE meals
   description   VARCHAR(255) NOT NULL,
   price         INT          NOT NULL,
   restaurant_id INTEGER      NOT NULL,
-  in_menu       BOOLEAN DEFAULT FALSE,
+  inmenu       BOOLEAN DEFAULT FALSE,
   FOREIGN KEY ( restaurant_id ) REFERENCES restaurant (id)
     ON DELETE CASCADE
 );
 CREATE INDEX meals_in_menu_idx
-  ON meals (in_menu, restaurant_id);
+  ON meals (inmenu, restaurant_id);

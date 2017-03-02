@@ -2,6 +2,8 @@ package by.simonow.VotingSystem.repository;
 
 
 import by.simonow.VotingSystem.model.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -20,5 +22,5 @@ public interface UserRepository {
 
     List<User> getAll();
 
-//    Page<User> findAllByPage(Pageable pageable);
+    Page<User> findAllByPage(Pageable pageable);
 }

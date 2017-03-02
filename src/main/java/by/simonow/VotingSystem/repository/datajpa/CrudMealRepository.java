@@ -1,6 +1,7 @@
 package by.simonow.VotingSystem.repository.datajpa;
 
-import by.simonow.VotingSystem.model.User;
+
+import by.simonow.VotingSystem.model.Meal;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -12,27 +13,23 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
-@Transactional(readOnly = true)
-public interface CrudUserRepository extends JpaRepository<User, Integer> {
+public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Transactional
     @Modifying
 //    @Query(name = User.DELETE)
-    @Query("DELETE FROM User u WHERE u.id=:id")
+    @Query("DELETE FROM Meal u WHERE u.id=:id")
     int delete(@Param("id") int id);
 
     @Override
     @Transactional
-    User save(User user);
+    Meal save(Meal meal);
 
     @Override
-    User findOne(Integer id);
+    Meal findOne(Integer id);
+
+    List<Meal> getByInmenu(Sort sort);
 
     @Override
-    List<User> findAll(Sort sort);
-
-    Page<User> findAll(Pageable pageable);
-
-    User getByEmail(String email);
+    Page<Meal> findAll(Pageable pageable);
 
 }

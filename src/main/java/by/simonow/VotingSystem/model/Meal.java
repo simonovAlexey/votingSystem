@@ -1,9 +1,13 @@
 package by.simonow.VotingSystem.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 
 /**
  * GKislin
@@ -24,18 +28,22 @@ public class Meal extends BaseEntity {
     public static final String M_GET = "Meal.get";
     public static final String M_ALL = "Meal.getAll";
 
-    @Column(name = "in_menu", columnDefinition = "boolean default false")
+    @Column(name = "inmenu", columnDefinition = "boolean default false")
     private boolean isInMenu;
 
-    @NotEmpty
     @Column(name = "description", nullable = false)
+    @NotBlank
+    @SafeHtml
     private String description;
 
-    @Column(name = "price", columnDefinition = "int default 100")
-    @Digits(fraction = 0, integer = 5)
+    @Column(name = "price", nullable = false)
+    @Range(min = 100)
+    @NotNull
     private int price;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "restaurant_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;
 
     public Meal() {
