@@ -1,0 +1,35 @@
+package by.simonow.VotingSystem.repository.datajpa;
+
+
+import by.simonow.VotingSystem.model.Restaurant;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Integer> {
+    @Transactional
+    @Modifying
+//    @Query(name = User.DELETE)
+    @Query("DELETE FROM Restaurant u WHERE u.id=:id")
+    int delete(@Param("id") int id);
+
+    @Override
+    @Transactional
+    Restaurant save(Restaurant meal);
+
+    @Override
+    Restaurant findOne(Integer id);
+
+    List<Restaurant> getAll(Sort sort);
+
+    @EntityGraph(value = Restaurant.GRAPH_WITH_MEALS)
+    @Query("SELECT r FROM Restaurant r WHERE r.id=?1")
+    Restaurant getWithMeals(int id);
+
+}
