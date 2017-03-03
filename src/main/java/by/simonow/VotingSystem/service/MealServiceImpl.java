@@ -30,12 +30,12 @@ public class MealServiceImpl implements MealService {
         checkNotFoundWithId(repository.delete(id, restaurantId), id);
     }
 
-    @Cacheable("meals")
     @Override
     public Collection<Meal> getAll(int restaurantId) {
         return repository.getAll(restaurantId);
     }
 
+    @Cacheable("meals")
     @Override
     public Collection<Meal> getMenu(int restaurantId) {
         //TODO getMenu

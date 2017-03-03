@@ -11,11 +11,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional(readOnly = true)
 public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Integer> {
+
     @Transactional
     @Modifying
-//    @Query(name = User.DELETE)
     @Query("DELETE FROM Restaurant u WHERE u.id=:id")
     int delete(@Param("id") int id);
 

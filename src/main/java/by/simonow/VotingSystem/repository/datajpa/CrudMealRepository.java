@@ -4,7 +4,6 @@ package by.simonow.VotingSystem.repository.datajpa;
 import by.simonow.VotingSystem.model.Meal;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,11 +11,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+@Transactional(readOnly = true)
 public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
+
     @Transactional
     @Modifying
-//    @Query(name = User.DELETE)
     @Query("DELETE FROM Meal u WHERE u.id=:id")
     int delete(@Param("id") int id);
 
@@ -27,7 +26,11 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Override
     Meal findOne(Integer id);
 
-    List<Meal> getByInmenu(Sort sort);
+    @Query("SELECT m FROM Meal m WHERE m.restaurant.id=:restId and m.inMenu ORDER BY m.description")
+    List<Meal> getMenu(@Param("restId") int restId);
+
+    @Query("SELECT m FROM Meal m WHERE m.restaurant.id=:restId ORDER BY m.inMenu")
+    List<Meal> getAll(@Param("restId") int restId);
 
     @Override
     Page<Meal> findAll(Pageable pageable);
