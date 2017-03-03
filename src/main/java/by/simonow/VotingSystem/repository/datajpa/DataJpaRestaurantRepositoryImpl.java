@@ -5,9 +5,11 @@ import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
+@Repository
 public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository{
     private static final Sort SORT_VOTES = new Sort("votes");
 

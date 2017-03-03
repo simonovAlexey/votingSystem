@@ -20,7 +20,7 @@ public class Restaurant extends NamedEntity{
     private int votes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OrderBy("description DESC")
+    @OrderBy("inMenu DESC")
 //    @JsonIgnore
     protected List<Meal> meals;
 

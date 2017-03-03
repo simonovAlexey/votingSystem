@@ -29,7 +29,7 @@ public class Meal extends BaseEntity {
     public static final String M_ALL = "Meal.getAll";
 
     @Column(name = "inmenu", columnDefinition = "boolean default false")
-    private boolean isInMenu;
+    private boolean inMenu;
 
     @Column(name = "description", nullable = false)
     @NotBlank
@@ -49,23 +49,23 @@ public class Meal extends BaseEntity {
     public Meal() {
     }
 
-    public Meal(boolean isInMenu, String description, int price) {
-        this(null, isInMenu, description, price);
+    public Meal(boolean inMenu, String description, int price) {
+        this(null, inMenu, description, price);
     }
 
-    public Meal(Integer id, boolean isInMenu, String description, int price) {
+    public Meal(Integer id, boolean inMenu, String description, int price) {
         super(id);
-        this.isInMenu = isInMenu;
+        this.inMenu = inMenu;
         this.description = description;
         this.price = price;
     }
 
     public boolean isInMenu() {
-        return isInMenu;
+        return inMenu;
     }
 
     public void setInMenu(boolean inMenu) {
-        isInMenu = inMenu;
+        this.inMenu = inMenu;
     }
 
     public String getDescription() {
@@ -96,7 +96,7 @@ public class Meal extends BaseEntity {
     public String toString() {
         return "Meal{" +
                 "id=" + id +
-                ", isInMenu=" + isInMenu +
+                ", inMenu=" + inMenu +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", restaurant=" + restaurant +

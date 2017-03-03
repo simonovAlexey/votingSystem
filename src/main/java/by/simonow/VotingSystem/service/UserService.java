@@ -31,4 +31,7 @@ public interface UserService {
     void evictCache();
 
     void enable(int id, boolean enable);
+
+    void vote(int userId,int restaurantId);
+
 }

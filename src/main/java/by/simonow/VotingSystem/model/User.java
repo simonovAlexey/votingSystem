@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -59,7 +60,7 @@ public class User extends NamedEntity {
     private Restaurant votedRestaurant;
 
     @Column(name = "voted_date", columnDefinition = "timestamp default null")
-    private Date votedDate;
+    private LocalDateTime votedDate;
 
     public User() {
     }
@@ -76,7 +77,7 @@ public class User extends NamedEntity {
         this(id,name,email,password,true,roles,null,null);
     }
 
-    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles, Restaurant votedRestaurant, Date votedDate) {
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles, Restaurant votedRestaurant, LocalDateTime votedDate) {
         super(id, name);
         this.email = email;
         this.password = password;
@@ -118,11 +119,11 @@ public class User extends NamedEntity {
         this.votedRestaurant = votedRestaurant;
     }
 
-    public Date getVotedDate() {
+    public LocalDateTime getVotedDate() {
         return votedDate;
     }
 
-    public void setVotedDate(Date votedDate) {
+    public void setVotedDate(LocalDateTime votedDate) {
         this.votedDate = votedDate;
     }
 

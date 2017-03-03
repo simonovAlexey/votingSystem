@@ -19,8 +19,6 @@ CREATE TABLE restaurant
   name  VARCHAR(255) NOT NULL,
   votes INT          NOT NULL
 );
-CREATE UNIQUE INDEX restaurant_unique_name_idx
-  ON restaurant (name);
 
 CREATE TABLE users
 (
