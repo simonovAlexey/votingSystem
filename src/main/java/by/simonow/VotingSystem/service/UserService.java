@@ -28,8 +28,6 @@ public interface UserService {
 
     void update(User user);
 
-    void evictCache();
-
     void enable(int id, boolean enable);
 
     void vote(int userId,int restaurantId);

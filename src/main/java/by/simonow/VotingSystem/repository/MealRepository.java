@@ -20,4 +20,8 @@ public interface MealRepository {
     Collection<Meal> getAll(int restaurantId);
 
     Collection<Meal> getInmenu(int restaurantId);
+
+    default Meal getWithRestaurant(int id, int userId) {
+        throw new UnsupportedOperationException();
+    }
 }

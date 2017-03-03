@@ -82,13 +82,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(UserUtil.updateFromTo(user, userTo));
     }
 
-
-    @CacheEvict(value = "users", allEntries = true)
-    @Override
-    public void evictCache() {
-        //TODO move cache to meal
-    }
-
     @CacheEvict(value = "users", allEntries = true)
     @Override
     @Transactional

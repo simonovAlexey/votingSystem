@@ -32,4 +32,7 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Override
     Page<Meal> findAll(Pageable pageable);
 
+    @Query("SELECT m FROM Meal m JOIN FETCH m.restaurant WHERE m.id = ?1 and m.restaurant.id = ?2")
+    Meal getWithRestaurant(int id, int userId);
+
 }

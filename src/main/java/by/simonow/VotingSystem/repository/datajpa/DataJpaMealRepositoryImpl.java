@@ -13,9 +13,9 @@ public class DataJpaMealRepositoryImpl implements MealRepository {
     @Autowired
     private CrudMealRepository crudMealRepository;
 
-
     @Override
     public Meal save(Meal meal, int restaurantId) {
+        //TODO meal repo
         return null;
     }
 
@@ -37,5 +37,10 @@ public class DataJpaMealRepositoryImpl implements MealRepository {
     @Override
     public Collection<Meal> getInmenu(int restaurantId) {
         return null;
+    }
+
+    @Override
+    public Meal getWithRestaurant(int id, int userId) {
+        return crudMealRepository.getWithRestaurant(id, userId);
     }
 }

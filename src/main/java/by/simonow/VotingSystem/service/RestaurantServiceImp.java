@@ -1,7 +1,7 @@
 package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.model.Restaurant;
-import by.simonow.VotingSystem.repository.datajpa.DataJpaRestaurantRepositoryImpl;
+import by.simonow.VotingSystem.repository.RestaurantRepository;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 public class RestaurantServiceImp implements RestaurantService {
 
     @Autowired
-    private DataJpaRestaurantRepositoryImpl repository;
+    private RestaurantRepository repository;
 
     @Override
     public Restaurant save(Restaurant restaurant) {
