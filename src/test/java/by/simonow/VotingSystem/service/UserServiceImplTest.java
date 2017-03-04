@@ -28,7 +28,7 @@ public class UserServiceImplTest extends AbstractServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        service.evictCache();
+//        service.evictCache();
         jpaUtil.clear2ndLevelHibernateCache();
     }
 
@@ -82,7 +82,7 @@ public class UserServiceImplTest extends AbstractServiceTest {
 
     @Test
     public void getAllByPage() throws Exception {
-        //TODO
+        //TODO test
     }
 
     @Test

@@ -33,7 +33,7 @@ public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository{
 
     @Override
     public Collection<Restaurant> getAll() {
-        return crudRepository.getAll(SORT_VOTES);
+        return crudRepository.findAll(SORT_VOTES);
     }
 
     @Override

@@ -26,7 +26,7 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
     @Override
     Restaurant findOne(Integer id);
 
-    List<Restaurant> getAll(Sort sort);
+    List<Restaurant> findAll(Sort sort);
 
     @EntityGraph(value = Restaurant.GRAPH_WITH_MEALS)
     @Query("SELECT r FROM Restaurant r WHERE r.id=?1")

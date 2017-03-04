@@ -38,8 +38,7 @@ public class MealServiceImpl implements MealService {
     @Cacheable("meals")
     @Override
     public Collection<Meal> getMenu(int restaurantId) {
-        //TODO getMenu
-        return null;
+        return repository.getMenu(restaurantId);
     }
 
     @CacheEvict(value = "meals", allEntries = true)
