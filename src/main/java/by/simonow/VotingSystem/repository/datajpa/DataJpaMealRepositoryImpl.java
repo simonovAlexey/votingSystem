@@ -4,8 +4,9 @@ import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class DataJpaMealRepositoryImpl implements MealRepository {
@@ -13,30 +14,38 @@ public class DataJpaMealRepositoryImpl implements MealRepository {
     @Autowired
     private CrudMealRepository crudMealRepository;
 
+    @Autowired
+    private CrudRestaurantRepository crudRestaurantRepository;
+
     @Override
+    @Transactional
     public Meal save(Meal meal, int restaurantId) {
-        //TODO meal repo
-        return null;
+        if (!meal.isNew() && get(meal.getId(), restaurantId) == null) {
+            return null;
+        }
+        meal.setRestaurant(crudRestaurantRepository.getOne(restaurantId));
+        return crudMealRepository.save(meal);
     }
 
     @Override
     public boolean delete(int id, int restaurantId) {
-        return false;
+        return crudMealRepository.delete(id, restaurantId) != 0;
     }
 
     @Override
     public Meal get(int id, int restaurantId) {
-        return null;
+        Meal meal = crudMealRepository.findOne(id);
+        return meal != null && meal.getRestaurant().getId() == restaurantId ? meal : null;
     }
 
     @Override
-    public Collection<Meal> getAll(int restaurantId) {
-        return null;
+    public List<Meal> getAll(int restaurantId) {
+        return crudMealRepository.getAll(restaurantId);
     }
 
     @Override
-    public Collection<Meal> getInmenu(int restaurantId) {
-        return null;
+    public List<Meal> getInmenu(int restaurantId) {
+        return crudMealRepository.getMenu(restaurantId);
     }
 
     @Override
