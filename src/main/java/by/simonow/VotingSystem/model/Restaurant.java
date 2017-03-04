@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 @NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
-public class Restaurant extends NamedEntity{
+public class Restaurant extends NamedEntity {
 
     public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
 
@@ -25,6 +25,16 @@ public class Restaurant extends NamedEntity{
     protected List<Meal> meals;
 
     public Restaurant() {
+    }
+
+    public Restaurant(int id, String name) {
+        super(id, name);
+    }
+
+    public Restaurant(Integer id, String name, int votes, List<Meal> meals) {
+        super(id, name);
+        this.votes = votes;
+        this.meals = meals;
     }
 
     public Restaurant(String name) {
