@@ -32,8 +32,8 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
     @Query("SELECT r FROM Restaurant r WHERE r.id=?1")
     Restaurant getWithMeals(int id);
 
-
-    @Query("SELECT r FROM Restaurant r  JOIN FETCH r.votes WHERE r.id=?1")
-    Restaurant getWithVotes(int id);
+//    @EntityGraph(value = Restaurant.GRAPH_WITH_VOTES)
+    @Query("SELECT distinct r FROM Restaurant r  JOIN FETCH r.votes")
+    List<Restaurant> getAllWithVotes();
 
 }

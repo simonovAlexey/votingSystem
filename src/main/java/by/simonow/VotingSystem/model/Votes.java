@@ -16,11 +16,11 @@ public class Votes extends BaseEntity{
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Restaurant restaurant;
 
-    // votes assign with restaurant, to make statistic of user votes assign with user
-/*    @ManyToOne(fetch = FetchType.LAZY)
+    // votes assign with restaurant, to make statistic of user votes assign with user ?
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;*/
+    private User user;
 
     @Column(name = "voted_date", columnDefinition = "timestamp default null")
     private LocalDateTime votedDate;

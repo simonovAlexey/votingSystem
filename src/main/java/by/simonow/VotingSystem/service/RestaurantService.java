@@ -6,6 +6,7 @@ import by.simonow.VotingSystem.to.RestaurantWithVotes;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface RestaurantService {
 
@@ -16,7 +17,7 @@ public interface RestaurantService {
     Restaurant get(int id) throws NotFoundException;
 
     Collection<Restaurant> getAll();
-    Collection<RestaurantWithVotes> getAllWithWotes();
+    List<RestaurantWithVotes> getAllWithWotes();
 
     void update(Restaurant restaurant);
 

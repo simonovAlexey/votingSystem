@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.Collection;
+import java.util.List;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
@@ -41,9 +42,8 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public Collection<RestaurantWithVotes> getAllWithWotes() {
-        //TODO
-        return null;
+    public List<RestaurantWithVotes> getAllWithWotes() {
+        return repository.getAllWithVotes();
     }
 
     @Override
