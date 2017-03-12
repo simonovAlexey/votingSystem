@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -27,10 +28,16 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
     @Override
     Votes findOne(Integer id);
 
+//    @Query("SELECT v FROM Votes v WHERE v.user.id=:userId ORDER BY v.votedDate desc ")
+    Votes getByUserAndVotedDate(int userId, LocalDateTime votedDate);
+
+
+    @Query("SELECT v FROM Votes v WHERE v.user.id=:userId ORDER BY v.votedDate desc ")
+    List<Votes> getAllByUser(@Param("userId") int userId);
+
+
+
     @Override
     List<Votes> findAll();
-
-    // TODO @Query("SELECT r FROM Restaurant r  JOIN FETCH r.votes WHERE r.id=?1")
-//    List<RestaurantWithVotes> getAllVotesByRestaurant(Integer restId);
 
 }
