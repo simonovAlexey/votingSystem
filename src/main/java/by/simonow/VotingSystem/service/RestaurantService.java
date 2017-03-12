@@ -18,7 +18,7 @@ public interface RestaurantService {
 
     Collection<Restaurant> getAll();
 
-    List<RestaurantWithVotes> getAllWithWotes();
+    List<RestaurantWithVotes> getAllWithVotes();
 
     void update(Restaurant restaurant);
 

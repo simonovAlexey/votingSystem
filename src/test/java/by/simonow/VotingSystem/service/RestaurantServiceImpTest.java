@@ -42,7 +42,7 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void getAllGetWithVotes() throws Exception {
-        List<RestaurantWithVotes> restaurantWithVotes = service.getAllWithWotes();
+        List<RestaurantWithVotes> restaurantWithVotes = service.getAllWithVotes();
         MATCHER_WITH_VOTES.assertCollectionEquals(restaurantWithVotes,RESTAURANT_WITH_VOTES);
     }
 

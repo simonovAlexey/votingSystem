@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
@@ -42,8 +43,10 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public List<RestaurantWithVotes> getAllWithWotes() {
-        return repository.getAllWithVotes();
+    public List<RestaurantWithVotes> getAllWithVotes() {
+        return repository.getAllWithVotes().stream().
+                map((s) -> new RestaurantWithVotes(s.getId(), s.getName(), s.getVotes().size())).
+                collect(Collectors.toList());
     }
 
     @Override
