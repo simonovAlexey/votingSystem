@@ -18,7 +18,6 @@ public interface RestaurantRepository {
     // null if meal do not belong to userId
     Restaurant get(int id);
 
-    // ORDERED description
     Collection<Restaurant> getAll();
 
     Restaurant getWithMeals(int id);

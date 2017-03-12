@@ -28,7 +28,7 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
     @Override
     Votes findOne(Integer id);
 
-//    @Query("SELECT v FROM Votes v WHERE v.user.id=:userId ORDER BY v.votedDate desc ")
+    //TODO Time may be different from case to case
     Votes getByUserAndVotedDate(int userId, LocalDateTime votedDate);
 
 

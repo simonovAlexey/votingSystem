@@ -7,9 +7,9 @@ import by.simonow.VotingSystem.to.RestaurantWithVotes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository {
@@ -45,10 +45,8 @@ public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository {
     @Override
     public List<RestaurantWithVotes> getAllWithVotes() {
         List<Restaurant> allWithVotesSet = crudRepository.getAllWithVotes();
-        List<RestaurantWithVotes> restaurantWithVotesList = new ArrayList<>();
-        for (Restaurant rest : allWithVotesSet) {
-            restaurantWithVotesList.add(new RestaurantWithVotes(rest.getId(), rest.getName(), rest.getVotes().size()));
-        }
-        return restaurantWithVotesList;
+        return allWithVotesSet.stream().
+                map((s) -> new RestaurantWithVotes(s.getId(), s.getName(), s.getVotes().size())).
+                collect(Collectors.toList());
     }
 }

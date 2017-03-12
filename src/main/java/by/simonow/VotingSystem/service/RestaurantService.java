@@ -17,6 +17,7 @@ public interface RestaurantService {
     Restaurant get(int id) throws NotFoundException;
 
     Collection<Restaurant> getAll();
+
     List<RestaurantWithVotes> getAllWithWotes();
 
     void update(Restaurant restaurant);
