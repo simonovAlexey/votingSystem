@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Transactional(readOnly = true)
 public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Integer> {
 
@@ -25,15 +26,14 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
     @Override
     Restaurant findOne(Integer id);
 
-    List<Restaurant> getAllwithVotesCount();
     List<Restaurant> findAll();
 
-    @EntityGraph(value = Restaurant.GRAPH_WITH_ALL)
+    @EntityGraph(value = Restaurant.GRAPH_WITH_MEALS)
     @Query("SELECT r FROM Restaurant r WHERE r.id=?1")
-    Restaurant getWithMealsAndWithVotes(int id);
+    Restaurant getWithMeals(int id);
 
 
-    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.meals WHERE r.id=?1")
+    @Query("SELECT r FROM Restaurant r  JOIN FETCH r.votes WHERE r.id=?1")
     Restaurant getWithVotes(int id);
 
 }

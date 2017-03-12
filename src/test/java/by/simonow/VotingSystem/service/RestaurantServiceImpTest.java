@@ -1,13 +1,9 @@
 package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.MealTestData;
-import by.simonow.VotingSystem.VotesTestData;
-import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 import static by.simonow.VotingSystem.RestaurantTestData.*;
 
@@ -36,13 +32,9 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void testGetWithMeals() throws Exception {
-        Restaurant restaurant = service.getWithVotes(RESTAURANT3_ID);
-        MATCHER.assertEquals(RESTAURANT3, restaurant);
-
-        int votesSize = restaurant.getVotes().size();
-        assert(VotesTestData.VOTES_R3.size()== votesSize);
-        List<Meal> meals = restaurant.getMeals();
-        MealTestData.MATCHER.assertCollectionEquals(MealTestData.MEALS_R2, meals);
+        Restaurant restaurant = service.getWithMeals(RESTAURANT1_ID);
+        MATCHER.assertEquals(RESTAURANT1, restaurant);
+        MealTestData.MATCHER.assertCollectionEquals(MealTestData.MEALS_R1, restaurant.getMeals());
     }
 
     @Test

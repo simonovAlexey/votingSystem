@@ -99,7 +99,6 @@ public class Meal extends BaseEntity {
                 ", inMenu=" + inMenu +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", restaurant=" + restaurant +
                 '}';
     }
 }

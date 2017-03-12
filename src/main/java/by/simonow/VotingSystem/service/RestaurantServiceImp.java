@@ -2,6 +2,7 @@ package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.repository.RestaurantRepository;
+import by.simonow.VotingSystem.to.RestaurantWithVotes;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,10 +40,11 @@ public class RestaurantServiceImp implements RestaurantService {
         return repository.getAll();
     }
 
-//    @Override
-//    public Page<Restaurant> getAllByPage(Pageable pageable) {
-//        return null;
-//    }
+    @Override
+    public Collection<RestaurantWithVotes> getAllWithWotes() {
+        //TODO
+        return null;
+    }
 
     @Override
     public void update(Restaurant restaurant) {
@@ -55,14 +57,5 @@ public class RestaurantServiceImp implements RestaurantService {
         return repository.getWithMeals(id);
     }
 
-    @Override
-    public Restaurant getWithVotes(int id) {
-        return repository.getWithVotes(id);
-    }
-
-    /*@Override
-    public void vote(int id) {
-
-    }*/
 
 }

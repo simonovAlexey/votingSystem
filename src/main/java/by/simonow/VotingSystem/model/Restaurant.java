@@ -9,17 +9,18 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
-@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_ALL, attributeNodes = {@NamedAttributeNode("meals"),@NamedAttributeNode(value = "votes")}),
-                    @NamedEntityGraph(name = Restaurant.GRAPH_WITH_VOTES, attributeNodes = {@NamedAttributeNode("votes")})})
-//@NamedEntityGraph(name = Restaurant.GRAPH_WITH_ALL, attributeNodes = {@NamedAttributeNode("meals"),@NamedAttributeNode("votes")})
+/*@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals"),@NamedAttributeNode(value = "votes")}),
+                    @NamedEntityGraph(name = Restaurant.GRAPH_WITH_VOTES, attributeNodes = {@NamedAttributeNode("votes")})
+                    })*/
+@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
 public class Restaurant extends NamedEntity {
 
-    public static final String GRAPH_WITH_ALL = "Restaurant.withAll";
-    public static final String GRAPH_WITH_VOTES = "Restaurant.withVotes";
+    public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
+//    public static final String GRAPH_WITH_VOTES = "Restaurant.withVotes";
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-//    @OrderBy("inMenu DESC")
+    @OrderBy("inMenu DESC")
 //    @JsonIgnore
     protected List<Meal> meals;
 

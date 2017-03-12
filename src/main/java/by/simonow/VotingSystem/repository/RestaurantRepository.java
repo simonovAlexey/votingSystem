@@ -20,6 +20,4 @@ public interface RestaurantRepository {
     Collection<Restaurant> getAll();
 
     Restaurant getWithMeals(int id);
-
-    Restaurant getWithVotes(int id);
 }
