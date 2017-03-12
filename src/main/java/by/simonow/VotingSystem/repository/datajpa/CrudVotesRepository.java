@@ -18,8 +18,8 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM User u WHERE u.id=:id")
-    int delete(@Param("id") int id);
+    @Query("DELETE FROM Votes v WHERE v.id=:id AND v.user.id=:userId")
+    int delete(@Param("id") int id, @Param("userId") int userId);
 
     @Override
     @Transactional
@@ -32,13 +32,9 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
     @Query("SELECT v from Votes v WHERE v.user.id=:userId AND v.votedDate BETWEEN :startDate AND :endDate")
     Votes getTodayVote(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate, @Param("userId") int userId);
 
-    //TODO Time may be different from case to case
-//    Votes getByUserAndVotedDate(int userId, LocalDateTime votedDate);
-
 
     @Query("SELECT v FROM Votes v WHERE v.user.id=:userId ORDER BY v.votedDate desc ")
     List<Votes> getAllByUser(@Param("userId") int userId);
-
 
 
     @Override
