@@ -10,7 +10,6 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -55,12 +54,7 @@ public class User extends NamedEntity {
     @BatchSize(size = 200)
     private Set<Role> roles;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "voted_id")
-    private Restaurant votedRestaurant;
 
-    @Column(name = "voted_date", columnDefinition = "timestamp default null")
-    private LocalDateTime votedDate;
 
     public User() {
     }
@@ -74,17 +68,11 @@ public class User extends NamedEntity {
     }
 
     public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
-        this(id,name,email,password,true,roles,null,null);
-    }
-
-    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles, Restaurant votedRestaurant, LocalDateTime votedDate) {
         super(id, name);
         this.email = email;
         this.password = password;
         this.enabled = enabled;
         this.roles = roles;
-        this.votedRestaurant = votedRestaurant;
-        this.votedDate = votedDate;
     }
 
     public String getEmail() {
@@ -109,22 +97,6 @@ public class User extends NamedEntity {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public Restaurant getVotedRestaurant() {
-        return votedRestaurant;
-    }
-
-    public void setVotedRestaurant(Restaurant votedRestaurant) {
-        this.votedRestaurant = votedRestaurant;
-    }
-
-    public LocalDateTime getVotedDate() {
-        return votedDate;
-    }
-
-    public void setVotedDate(LocalDateTime votedDate) {
-        this.votedDate = votedDate;
     }
 
     public boolean isEnabled() {

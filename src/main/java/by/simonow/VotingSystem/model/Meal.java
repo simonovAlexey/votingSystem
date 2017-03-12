@@ -26,7 +26,7 @@ public class Meal extends BaseEntity {
     public static final String M_DELETE = "Meal.delete";
     public static final String M_GET_MENU = "Meal.getMenu";
     public static final String M_GET = "Meal.get";
-    public static final String M_ALL = "Meal.getAllM";
+    public static final String M_ALL = "Meal.getAllMeals";
 
     @Column(name = "inmenu", columnDefinition = "boolean default false")
     private boolean inMenu;

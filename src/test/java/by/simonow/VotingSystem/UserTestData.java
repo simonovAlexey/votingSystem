@@ -3,15 +3,12 @@ package by.simonow.VotingSystem;
 import by.simonow.VotingSystem.matcher.ModelMatcher;
 import by.simonow.VotingSystem.model.Role;
 import by.simonow.VotingSystem.model.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
 import static by.simonow.VotingSystem.model.BaseEntity.START_SEQ;
 
 public class UserTestData {
-    private static final Logger LOG = LoggerFactory.getLogger(UserTestData.class);
 
     public static final int USER_ID = START_SEQ + 3;
     public static final int ADMIN_ID = START_SEQ + 4;

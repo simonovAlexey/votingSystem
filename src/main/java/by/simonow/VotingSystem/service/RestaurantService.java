@@ -18,8 +18,8 @@ public interface RestaurantService {
 
 //    Page<Restaurant> getAllByPage(Pageable pageable);
 
-    void update(Restaurant user);
+    void update(Restaurant restaurant);
 
-//    void vote(int id);
-
+    Restaurant getWithMeals(int id);
+    Restaurant getWithVotes(int id);
 }

@@ -2,7 +2,6 @@ package by.simonow.VotingSystem.repository.datajpa;
 
 
 import by.simonow.VotingSystem.model.Restaurant;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -26,10 +25,15 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
     @Override
     Restaurant findOne(Integer id);
 
-    List<Restaurant> findAll(Sort sort);
+    List<Restaurant> getAllwithVotesCount();
+    List<Restaurant> findAll();
 
-    @EntityGraph(value = Restaurant.GRAPH_WITH_MEALS)
+    @EntityGraph(value = Restaurant.GRAPH_WITH_ALL)
     @Query("SELECT r FROM Restaurant r WHERE r.id=?1")
-    Restaurant getWithMeals(int id);
+    Restaurant getWithMealsAndWithVotes(int id);
+
+
+    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.meals WHERE r.id=?1")
+    Restaurant getWithVotes(int id);
 
 }

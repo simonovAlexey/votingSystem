@@ -4,14 +4,12 @@ package by.simonow.VotingSystem.repository.datajpa;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 
 @Repository
 public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository{
-    private static final Sort SORT_VOTES = new Sort("votes");
 
     @Autowired
     private CrudRestaurantRepository crudRepository;
@@ -33,11 +31,16 @@ public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository{
 
     @Override
     public Collection<Restaurant> getAll() {
-        return crudRepository.findAll(SORT_VOTES);
+        return crudRepository.findAll();
     }
 
     @Override
     public Restaurant getWithMeals(int id) {
-        return crudRepository.getWithMeals(id);
+        return crudRepository.getWithMealsAndWithVotes(id);
+    }
+
+    @Override
+    public Restaurant getWithVotes(int id) {
+        return crudRepository.getWithVotes(id);
     }
 }

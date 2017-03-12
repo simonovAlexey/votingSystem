@@ -1,28 +1,31 @@
 package by.simonow.VotingSystem.model;
 
-import org.hibernate.validator.constraints.Range;
-
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Алексей on 08.01.2017.
  */
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
-@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
+@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_ALL, attributeNodes = {@NamedAttributeNode("meals"),@NamedAttributeNode(value = "votes")}),
+                    @NamedEntityGraph(name = Restaurant.GRAPH_WITH_VOTES, attributeNodes = {@NamedAttributeNode("votes")})})
+//@NamedEntityGraph(name = Restaurant.GRAPH_WITH_ALL, attributeNodes = {@NamedAttributeNode("meals"),@NamedAttributeNode("votes")})
 public class Restaurant extends NamedEntity {
 
-    public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
+    public static final String GRAPH_WITH_ALL = "Restaurant.withAll";
+    public static final String GRAPH_WITH_VOTES = "Restaurant.withVotes";
 
-    @Column(name = "votes", columnDefinition = "int default 0")
-    @Range(min = 0)
-    private int votes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @OrderBy("inMenu DESC")
+//    @OrderBy("inMenu DESC")
 //    @JsonIgnore
     protected List<Meal> meals;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
+//    @JsonIgnore
+    protected Set<Votes> votes;
 
     public Restaurant() {
     }
@@ -31,9 +34,8 @@ public class Restaurant extends NamedEntity {
         super(id, name);
     }
 
-    public Restaurant(Integer id, String name, int votes, List<Meal> meals) {
+    public Restaurant(Integer id, String name, List<Meal> meals) {
         super(id, name);
-        this.votes = votes;
         this.meals = meals;
     }
 
@@ -41,11 +43,19 @@ public class Restaurant extends NamedEntity {
         super(null, name);
     }
 
-    public int getVotes() {
+    public List<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(List<Meal> meals) {
+        this.meals = meals;
+    }
+
+    public Set<Votes> getVotes() {
         return votes;
     }
 
-    public void setVotes(int votes) {
+    public void setVotes(Set<Votes> votes) {
         this.votes = votes;
     }
 
@@ -54,7 +64,6 @@ public class Restaurant extends NamedEntity {
         return "Restaurant{" +
                 "id=" + id +
                 ", name=" + name +
-                ", votes=" + votes +
                 '}';
     }
 }

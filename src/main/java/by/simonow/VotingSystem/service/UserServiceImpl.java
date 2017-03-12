@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFound;
@@ -97,12 +96,13 @@ public class UserServiceImpl implements UserService {
     public void vote(int userId, int restaurantId) {
         User user = get(userId);
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.get(restaurantId), restaurantId);
-        user.setVotedRestaurant(restaurant);
+        //TODO user vote
+        /*user.setVotedRestaurant(restaurant);
         user.setVotedDate(LocalDateTime.now());
         restaurant.setVotes(restaurant.getVotes()+1);
 
         userRepository.save(user);
-        restaurantRepository.save(restaurant);
+        restaurantRepository.save(restaurant);*/
 
     }
 

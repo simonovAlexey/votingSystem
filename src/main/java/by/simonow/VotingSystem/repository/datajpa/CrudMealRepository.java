@@ -30,7 +30,7 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     List<Meal> getMenu(@Param("restId") int restId);
 
     @Query("SELECT m FROM Meal m WHERE m.restaurant.id=:restId ORDER BY m.inMenu")
-    List<Meal> getAllM(@Param("restId") int restId);
+    List<Meal> getAllMeals(@Param("restId") int restId);
 
     @Override
     Page<Meal> findAll(Pageable pageable);
