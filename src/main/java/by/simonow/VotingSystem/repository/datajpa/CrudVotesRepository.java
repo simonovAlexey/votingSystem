@@ -29,11 +29,11 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
     Votes findOne(Integer id);
 
     @SuppressWarnings("JpaQlInspection")
-    @Query("SELECT v from Votes v WHERE v.user.id=:userId AND v.dateTime BETWEEN :startDate AND :endDate")
+    @Query("SELECT v from Votes v WHERE v.user.id=:userId AND v.votedDate BETWEEN :startDate AND :endDate")
     Votes getTodayVote(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate, @Param("userId") int userId);
 
     //TODO Time may be different from case to case
-    Votes getByUserAndVotedDate(int userId, LocalDateTime votedDate);
+//    Votes getByUserAndVotedDate(int userId, LocalDateTime votedDate);
 
 
     @Query("SELECT v FROM Votes v WHERE v.user.id=:userId ORDER BY v.votedDate desc ")

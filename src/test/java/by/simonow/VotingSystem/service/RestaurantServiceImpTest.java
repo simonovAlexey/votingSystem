@@ -3,34 +3,54 @@ package by.simonow.VotingSystem.service;
 import by.simonow.VotingSystem.MealTestData;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.to.RestaurantWithVotes;
+import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import static by.simonow.VotingSystem.RestaurantTestData.*;
 
-/**
- * Created by Алексей on 04.03.2017.
- */
+
 public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Autowired
     private RestaurantService service;
 
     @Test
-    public void save() throws Exception {
+    public void testSave() throws Exception {
+        Restaurant newRest = getCreated();
+        Restaurant created = service.save(newRest);
+        newRest.setId(created.getId());
+        MATCHER.assertCollectionEquals(Arrays.asList(RESTAURANT1,RESTAURANT2,RESTAURANT3,newRest), service.getAll());
 
     }
 
     @Test
-    public void delete() throws Exception {
-
+    public void testDelete() throws Exception {
+        service.delete(RESTAURANT1_ID);
+        Collection<Restaurant> restaurants = service.getAll();
+        MATCHER.assertCollectionEquals(Arrays.asList(RESTAURANT2,RESTAURANT3), restaurants);
     }
 
     @Test
-    public void get() throws Exception {
+    public void testDeleteNotFound() throws Exception {
+        thrown.expect(NotFoundException.class);
+        service.delete(RESTAURANT1_ID+3);
+    }
 
+    @Test
+    public void testGet() throws Exception {
+        Restaurant actual = service.get(RESTAURANT1_ID);
+        MATCHER.assertEquals(RESTAURANT1, actual);
+    }
+
+    @Test
+    public void testGetNotFound() throws Exception {
+        thrown.expect(NotFoundException.class);
+        service.get(RESTAURANT1_ID+5);
     }
 
     @Test
@@ -41,14 +61,21 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
     }
 
     @Test
-    public void getAllGetWithVotes() throws Exception {
+    public void testGetAllGetWithVotes() throws Exception {
         List<RestaurantWithVotes> restaurantWithVotes = service.getAllWithVotes();
         MATCHER_WITH_VOTES.assertCollectionEquals(restaurantWithVotes,RESTAURANT_WITH_VOTES);
     }
 
     @Test
-    public void update() throws Exception {
+    public void testUpdate() throws Exception {
+        Restaurant updated = getUpdated();
+        service.update(updated);
+        MATCHER.assertEquals(updated, service.get(RESTAURANT1_ID));
+    }
 
+    @Test
+    public void testGetAll() throws Exception {
+        MATCHER.assertCollectionEquals(RESTAURANTS, service.getAll());
     }
 
 

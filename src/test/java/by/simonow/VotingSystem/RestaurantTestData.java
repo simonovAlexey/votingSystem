@@ -28,7 +28,7 @@ public class RestaurantTestData {
     public static final RestaurantWithVotes REST_WITH_VOTES2 = new RestaurantWithVotes(RESTAURANT1_ID+1, "Р2 Плакучая ива",  7);
     public static final RestaurantWithVotes REST_WITH_VOTES3 = new RestaurantWithVotes(RESTAURANT1_ID+2, "Р3 Бистро",  4);
 
-    public static final List<Restaurant> RESTAURANTS = Arrays.asList(RESTAURANT2, RESTAURANT3, RESTAURANT1);
+    public static final List<Restaurant> RESTAURANTS = Arrays.asList(RESTAURANT1, RESTAURANT2, RESTAURANT3);
     public static final List<RestaurantWithVotes> RESTAURANT_WITH_VOTES = Arrays.asList(REST_WITH_VOTES1,REST_WITH_VOTES2,REST_WITH_VOTES3);
 
     public static Restaurant getCreated() {
