@@ -78,6 +78,8 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
         MATCHER.assertCollectionEquals(RESTAURANTS, service.getAll());
     }
 
-
+    public void testValidation() throws Exception {
+    //TODO Restaurant validation test
+    }
 
 }

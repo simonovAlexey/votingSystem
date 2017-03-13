@@ -28,9 +28,10 @@ import static org.hamcrest.CoreMatchers.instanceOf;
         "classpath:spring/spring-db.xml"
 })
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles({"hsqldb","datajpa"})
+@ActiveProfiles({"hsqldb", "datajpa"})
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
 abstract public class AbstractServiceTest {
+
     private static final Logger LOG = LoggerFactory.getLogger(AbstractServiceTest.class);
 
     private static StringBuilder results = new StringBuilder();
@@ -61,7 +62,6 @@ abstract public class AbstractServiceTest {
                 "---------------------------------\n");
         results.setLength(0);
     }
-
 
 
     public static <T extends Throwable> void validateRootCause(Runnable runnable, Class<T> exceptionClass) {
