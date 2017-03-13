@@ -21,7 +21,7 @@ import java.util.List;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFound;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired

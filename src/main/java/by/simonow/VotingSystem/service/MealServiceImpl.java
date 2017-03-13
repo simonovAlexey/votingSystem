@@ -13,7 +13,7 @@ import java.util.Collection;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
-@Service
+@Service("mealService")
 public class MealServiceImpl implements MealService {
 
     @Autowired

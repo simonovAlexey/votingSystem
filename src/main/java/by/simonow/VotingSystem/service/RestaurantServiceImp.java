@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
 
-@Service
+@Service("restaurantService")
 public class RestaurantServiceImp implements RestaurantService {
 
     @Autowired

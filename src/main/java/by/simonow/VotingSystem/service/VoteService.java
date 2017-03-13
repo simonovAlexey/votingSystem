@@ -15,8 +15,6 @@ public interface VoteService {
 
     List<Votes> getAll(int userId);
 
-    List<Votes> getAllByUser(int userId);
-
     Votes update(Votes votes, int userId) throws NotFoundException;
 
     Votes save(Votes votes, int userId);
