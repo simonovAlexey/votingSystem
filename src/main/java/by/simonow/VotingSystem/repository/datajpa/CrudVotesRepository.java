@@ -10,9 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by Алексей on 12.03.2017.
- */
 
 public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
 
