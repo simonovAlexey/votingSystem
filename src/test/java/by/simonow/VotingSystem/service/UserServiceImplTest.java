@@ -2,10 +2,8 @@ package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.model.Role;
 import by.simonow.VotingSystem.model.User;
-import by.simonow.VotingSystem.util.JpaUtil;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -21,16 +19,6 @@ public class UserServiceImplTest extends AbstractServiceTest {
 
     @Autowired
     protected UserService service;
-
-   @SuppressWarnings("SpringJavaAutowiringInspection")
-    @Autowired
-    private JpaUtil jpaUtil;
-
-    @Before
-    public void setUp() throws Exception {
-//        service.evictCache();
-        jpaUtil.clear2ndLevelHibernateCache();
-    }
 
 
     @Test

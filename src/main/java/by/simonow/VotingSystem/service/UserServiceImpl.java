@@ -8,8 +8,6 @@ import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,14 +28,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    @CacheEvict(value = "users", allEntries = true)
     @Override
     public User save(User user) {
         Assert.notNull(user, "user must not be null");
         return userRepository.save(user);
     }
 
-    @CacheEvict(value = "users", allEntries = true)
     @Override
     public void delete(int id) {
         checkNotFoundWithId(userRepository.delete(id), id);
@@ -54,26 +50,22 @@ public class UserServiceImpl implements UserService {
         return checkNotFound(userRepository.getByEmail(email), "email=" + email);
     }
 
-    @Cacheable("users")
     @Override
     public List<User> getAll() {
         return userRepository.getAll();
     }
 
-    @Cacheable("users")
     @Override
     public Page<User> getAllByPage(Pageable pageable){
         return userRepository.findAllByPage(pageable);
     }
 
-    @CacheEvict(value = "users", allEntries = true)
     @Override
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
         userRepository.save(user);
     }
 
-    @CacheEvict(value = "users", allEntries = true)
     @Transactional
     @Override
     public void update(UserTo userTo) {
@@ -81,7 +73,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(UserUtil.updateFromTo(user, userTo));
     }
 
-    @CacheEvict(value = "users", allEntries = true)
     @Override
     @Transactional
     public void enable(int id, boolean enabled) {
@@ -90,7 +81,6 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    @CacheEvict(value = "users", allEntries = true)
     @Override
     @Transactional
     public void vote(int userId, int restaurantId) {

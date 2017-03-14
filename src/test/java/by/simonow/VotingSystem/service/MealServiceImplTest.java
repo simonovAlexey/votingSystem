@@ -3,6 +3,7 @@ package by.simonow.VotingSystem.service;
 import by.simonow.VotingSystem.RestaurantTestData;
 import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
+import by.simonow.VotingSystem.util.JpaUtil;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,9 +24,14 @@ public class MealServiceImplTest extends AbstractServiceTest {
     @Autowired
     private MealService service;
 
+    @SuppressWarnings("SpringJavaAutowiringInspection")
+    @Autowired
+    private JpaUtil jpaUtil;
+
     @Before
     public void setUp() throws Exception {
         service.evictCache();
+        jpaUtil.clear2ndLevelHibernateCache();
     }
 
     @Test
