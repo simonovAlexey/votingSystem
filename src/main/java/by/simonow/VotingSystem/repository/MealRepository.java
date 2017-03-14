@@ -21,7 +21,5 @@ public interface MealRepository {
 
     Collection<Meal> getMenu(int restaurantId);
 
-    default Meal getWithRestaurant(int id, int userId) {
-        throw new UnsupportedOperationException();
-    }
+    Meal getWithRestaurant(int id, int userId) ;
 }
