@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "votes")
-public class Votes extends BaseEntity{
+public class Votes extends BaseEntity {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -47,5 +47,13 @@ public class Votes extends BaseEntity{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Votes{" +
+                "id=" + getId() +
+                ", votedDate=" + votedDate +
+                '}';
     }
 }

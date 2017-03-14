@@ -35,7 +35,23 @@ public class VotesTestData {
 
     public static final List<Votes> VOTES_R1 = Arrays.asList(VOTE13,VOTE4);
     public static final List<Votes> VOTES_R2 = Arrays.asList(VOTE12,VOTE10,VOTE9,VOTE7,VOTE3,VOTE2,VOTE1);
+    public static final List<Votes> VOTES_USER = Arrays.asList(VOTE6,VOTE5,VOTE4,VOTE3,VOTE2,VOTE1);
     public static final List<Votes> VOTES_R3 = Arrays.asList(VOTE11,VOTE8,VOTE6,VOTE5);
+
+    public static Votes getCreated() {
+        Votes created = new Votes(null, of(2017, Month.JANUARY, 20, 9, 0));
+        created.setRestaurant(RestaurantTestData.RESTAURANT1);
+        created.setUser(UserTestData.USER);
+        return created;
+    }
+
+    public static Votes getUpdated() {
+        Votes updated = VOTE1;
+        updated.setId(100014);
+        updated.setRestaurant(RestaurantTestData.RESTAURANT1);
+        updated.setUser(UserTestData.USER);
+        return updated;
+    }
 
 
 }
