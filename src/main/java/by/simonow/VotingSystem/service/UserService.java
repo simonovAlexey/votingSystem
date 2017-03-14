@@ -29,7 +29,4 @@ public interface UserService {
     void update(User user);
 
     void enable(int id, boolean enable);
-
-    void vote(int userId,int restaurantId);
-
 }

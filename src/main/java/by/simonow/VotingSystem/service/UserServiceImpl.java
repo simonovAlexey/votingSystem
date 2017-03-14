@@ -1,6 +1,5 @@
 package by.simonow.VotingSystem.service;
 
-import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.repository.RestaurantRepository;
 import by.simonow.VotingSystem.repository.UserRepository;
@@ -79,21 +78,6 @@ public class UserServiceImpl implements UserService {
         User user = get(id);
         user.setEnabled(enabled);
         userRepository.save(user);
-    }
-
-    @Override
-    @Transactional
-    public void vote(int userId, int restaurantId) {
-        User user = get(userId);
-        Restaurant restaurant = checkNotFoundWithId(restaurantRepository.get(restaurantId), restaurantId);
-        //TODO user vote
-        /*user.setVotedRestaurant(restaurant);
-        user.setVotedDate(LocalDateTime.now());
-        restaurant.setVotes(restaurant.getVotes()+1);
-
-        userRepository.save(user);
-        restaurantRepository.save(restaurant);*/
-
     }
 
 }

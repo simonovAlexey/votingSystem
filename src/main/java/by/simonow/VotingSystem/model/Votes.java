@@ -29,7 +29,17 @@ public class Votes extends BaseEntity {
     }
 
     public Votes(Integer id, LocalDateTime votedDate) {
+        this(id, null, null, votedDate);
+    }
+
+    public Votes(LocalDateTime votedDate, Restaurant restaurant, User user) {
+        this(null, restaurant, user, votedDate);
+    }
+
+    public Votes(Integer id, Restaurant restaurant, User user, LocalDateTime votedDate) {
         super(id);
+        this.restaurant = restaurant;
+        this.user = user;
         this.votedDate = votedDate;
     }
 
