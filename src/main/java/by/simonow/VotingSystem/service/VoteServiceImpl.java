@@ -60,17 +60,18 @@ public class VoteServiceImpl implements VoteService {
         LocalDateTime startDate = of(dateTime.toLocalDate(), LocalTime.MIN);
         LocalDateTime endDate = of(dateTime.toLocalDate(), LocalTime.MAX);
         Votes voteOld = null;
+
         try {
             voteOld = getTodayVote(startDate, endDate, userId);
         } catch (NotFoundException e) {
             return repository.save(votes, userId);
         }
 
-        voteOld.setRestaurant(votes.getRestaurant());
-
-        if (dateTime.toLocalTime().isBefore(VoteTime.MAX_VOTE_TIME))
+        if (dateTime.toLocalTime().isBefore(VoteTime.MAX_VOTE_TIME)) {
+            voteOld.setRestaurant(votes.getRestaurant());
+            voteOld.setVotedDate(dateTime);
             return checkNotFoundWithId(repository.save(voteOld, userId), votes.getId());
-        else throw new DateTimeException(" It's too late, vote can be changed up to " + VoteTime.MAX_VOTE_TIME);
+        } else throw new DateTimeException(" It's too late, vote can be changed up to " + VoteTime.MAX_VOTE_TIME);
     }
 
     @Override
