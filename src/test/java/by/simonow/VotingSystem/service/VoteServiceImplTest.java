@@ -1,12 +1,17 @@
 package by.simonow.VotingSystem.service;
 
+import by.simonow.VotingSystem.RestaurantTestData;
+import by.simonow.VotingSystem.VoteTime;
 import by.simonow.VotingSystem.VotesTestData;
 import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -84,6 +89,25 @@ public class VoteServiceImplTest extends AbstractServiceTest {
         thrown.expect(NotFoundException.class);
         thrown.expectMessage("Not found entity with id=" + VOTE1_ID);
         service.update(VOTE1, ADMIN_ID);
+    }
+
+    @Test
+    public void testVote() throws Exception {
+        Votes updated = getCreated();
+        Votes vote = service.vote(updated, USER_ID);
+        List<Votes> list = new ArrayList<>(VOTES_USER);
+                list.add(0,vote);
+        MATCHER.assertCollectionEquals(list,service.getAll(USER_ID));
+
+        vote.setRestaurant(RestaurantTestData.RESTAURANT2);
+        LocalDateTime now = LocalDateTime.now();
+        vote.setVotedDate(now);
+
+        if (now.toLocalTime().isAfter(VoteTime.MAX_VOTE_TIME)){
+            thrown.expect(DateTimeException.class);
+        }
+        service.vote(vote, USER_ID);
+        MATCHER.assertCollectionEquals(list,service.getAll(USER_ID));
     }
 
 }

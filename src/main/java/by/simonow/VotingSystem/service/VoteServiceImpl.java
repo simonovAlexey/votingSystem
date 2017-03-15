@@ -1,17 +1,23 @@
 package by.simonow.VotingSystem.service;
 
 
+import by.simonow.VotingSystem.VoteTime;
 import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.repository.VoteRepository;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
+import static java.time.LocalDateTime.now;
+import static java.time.LocalDateTime.of;
 
 @Service("voteService")
 public class VoteServiceImpl implements VoteService {
@@ -44,6 +50,27 @@ public class VoteServiceImpl implements VoteService {
     public Votes save(Votes votes, int userId) {
         Assert.notNull(votes, "vote must not be null");
         return repository.save(votes, userId);
+    }
+
+    @Override
+    @Transactional
+    public Votes vote(Votes votes, int userId) throws DateTimeException, IllegalArgumentException, NotFoundException {
+        Assert.notNull(votes, "vote must not be null");
+        LocalDateTime dateTime = now();
+        LocalDateTime startDate = of(dateTime.toLocalDate(), LocalTime.MIN);
+        LocalDateTime endDate = of(dateTime.toLocalDate(), LocalTime.MAX);
+        Votes voteOld = null;
+        try {
+            voteOld = getTodayVote(startDate, endDate, userId);
+        } catch (NotFoundException e) {
+            return repository.save(votes, userId);
+        }
+
+        voteOld.setRestaurant(votes.getRestaurant());
+
+        if (dateTime.toLocalTime().isBefore(VoteTime.MAX_VOTE_TIME))
+            return checkNotFoundWithId(repository.save(voteOld, userId), votes.getId());
+        else throw new DateTimeException(" It's too late, vote can be changed up to " + VoteTime.MAX_VOTE_TIME);
     }
 
     @Override

@@ -59,11 +59,19 @@ public class Votes extends BaseEntity {
         this.user = user;
     }
 
+    public LocalDateTime getVotedDate() {
+        return votedDate;
+    }
+
+    public void setVotedDate(LocalDateTime votedDate) {
+        this.votedDate = votedDate;
+    }
+
     @Override
     public String toString() {
         return "Votes{" +
                 "id=" + getId() +
-                ", votedDate=" + votedDate +
+                ", votedDate=" + votedDate.toLocalDate() +
                 '}';
     }
 }

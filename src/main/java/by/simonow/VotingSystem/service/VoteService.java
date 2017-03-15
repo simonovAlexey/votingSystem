@@ -4,6 +4,7 @@ package by.simonow.VotingSystem.service;
 import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface VoteService {
     Votes save(Votes votes, int userId);
 
     Votes getTodayVote(LocalDateTime startDate, LocalDateTime endDate, int userId);
+
+    Votes vote(Votes votes, int userId) throws DateTimeException,IllegalArgumentException,NotFoundException;
 
 }

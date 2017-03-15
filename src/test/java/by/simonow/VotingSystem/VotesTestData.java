@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static by.simonow.VotingSystem.model.BaseEntity.START_SEQ;
+import static java.time.LocalDateTime.now;
 import static java.time.LocalDateTime.of;
 
 public class VotesTestData {
@@ -39,9 +40,9 @@ public class VotesTestData {
     public static final List<Votes> VOTES_R3 = Arrays.asList(VOTE11,VOTE8,VOTE6,VOTE5);
 
     public static Votes getCreated() {
-        Votes created = new Votes(null, of(2017, Month.JANUARY, 20, 9, 0));
+        Votes created = new Votes(null, now());
         created.setRestaurant(RestaurantTestData.RESTAURANT1);
-        created.setUser(UserTestData.USER);
+//        created.setUser(UserTestData.USER);
         return created;
     }
 

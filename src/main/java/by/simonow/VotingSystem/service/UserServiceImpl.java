@@ -19,7 +19,7 @@ import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFound;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService { //, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -79,5 +79,14 @@ public class UserServiceImpl implements UserService {
         user.setEnabled(enabled);
         userRepository.save(user);
     }
+
+   /* @Override
+    public AuthorizedUser loadUserByUsername(String email) throws UsernameNotFoundException {
+        User u = repository.getByEmail(email.toLowerCase());
+        if (u == null) {
+            throw new UsernameNotFoundException("User " + email + " is not found");
+        }
+        return new AuthorizedUser(u);
+    }*/
 
 }
