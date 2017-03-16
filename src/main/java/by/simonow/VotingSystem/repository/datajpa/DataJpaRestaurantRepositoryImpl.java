@@ -6,7 +6,6 @@ import by.simonow.VotingSystem.repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -31,7 +30,7 @@ public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @Override
-    public Collection<Restaurant> getAll() {
+    public List<Restaurant> getAll() {
         return crudRepository.findAll();
     }
 

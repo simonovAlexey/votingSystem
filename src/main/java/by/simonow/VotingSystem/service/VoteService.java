@@ -1,6 +1,8 @@
 package by.simonow.VotingSystem.service;
 
 
+import by.simonow.VotingSystem.model.Restaurant;
+import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 
@@ -22,6 +24,6 @@ public interface VoteService {
 
     Votes getTodayVote(LocalDateTime startDate, LocalDateTime endDate, int userId);
 
-    Votes vote(Votes votes, int userId) throws DateTimeException,IllegalArgumentException,NotFoundException;
+    Votes vote(Restaurant rest, User user) throws DateTimeException, IllegalArgumentException, NotFoundException;
 
 }

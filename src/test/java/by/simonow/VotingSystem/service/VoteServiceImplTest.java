@@ -1,6 +1,7 @@
 package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.RestaurantTestData;
+import by.simonow.VotingSystem.UserTestData;
 import by.simonow.VotingSystem.VoteTime;
 import by.simonow.VotingSystem.VotesTestData;
 import by.simonow.VotingSystem.model.Votes;
@@ -9,7 +10,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.DateTimeException;
-import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +18,7 @@ import java.util.List;
 import static by.simonow.VotingSystem.UserTestData.ADMIN_ID;
 import static by.simonow.VotingSystem.UserTestData.USER_ID;
 import static by.simonow.VotingSystem.VotesTestData.*;
+import static java.time.LocalDateTime.now;
 import static java.time.LocalDateTime.of;
 
 
@@ -94,19 +95,16 @@ public class VoteServiceImplTest extends AbstractServiceTest {
     @Test
     public void testVote() throws Exception {
         Votes updated = getCreated();
-        Votes vote = service.vote(updated, USER_ID);
+        Votes vote = service.vote(RestaurantTestData.RESTAURANT1, UserTestData.USER);
         List<Votes> list = new ArrayList<>(VOTES_USER);
                 list.add(0,vote);
         MATCHER.assertCollectionEquals(list,service.getAll(USER_ID));
 
-        vote.setRestaurant(RestaurantTestData.RESTAURANT2);
-        LocalDateTime now = LocalDateTime.now();
-        vote.setVotedDate(now);
 
-        if (now.toLocalTime().isAfter(VoteTime.MAX_VOTE_TIME)){
+        if (now().toLocalTime().isAfter(VoteTime.MAX_VOTE_TIME)){
             thrown.expect(DateTimeException.class);
         }
-        service.vote(vote, USER_ID);
+        service.vote(RestaurantTestData.RESTAURANT2, UserTestData.USER);
         MATCHER.assertCollectionEquals(list,service.getAll(USER_ID));
     }
 

@@ -2,6 +2,8 @@ package by.simonow.VotingSystem.service;
 
 
 import by.simonow.VotingSystem.VoteTime;
+import by.simonow.VotingSystem.model.Restaurant;
+import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.repository.VoteRepository;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
@@ -54,23 +56,24 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     @Transactional
-    public Votes vote(Votes votes, int userId) throws DateTimeException, IllegalArgumentException, NotFoundException {
-        Assert.notNull(votes, "vote must not be null");
+    public Votes vote(Restaurant rest, User user) throws DateTimeException, IllegalArgumentException, NotFoundException {
+        Assert.notNull(rest, "rest must not be null");
+        Assert.notNull(user, "user must not be null");
         LocalDateTime dateTime = now();
         LocalDateTime startDate = of(dateTime.toLocalDate(), LocalTime.MIN);
         LocalDateTime endDate = of(dateTime.toLocalDate(), LocalTime.MAX);
         Votes voteOld = null;
-
+        Integer userId = user.getId();
         try {
             voteOld = getTodayVote(startDate, endDate, userId);
         } catch (NotFoundException e) {
-            return repository.save(votes, userId);
+            return repository.save(new Votes(dateTime, rest, user), userId);
         }
 
         if (dateTime.toLocalTime().isBefore(VoteTime.MAX_VOTE_TIME)) {
-            voteOld.setRestaurant(votes.getRestaurant());
+            voteOld.setRestaurant(rest);
             voteOld.setVotedDate(dateTime);
-            return checkNotFoundWithId(repository.save(voteOld, userId), votes.getId());
+            return checkNotFoundWithId(repository.save(voteOld, userId), voteOld.getId());
         } else throw new DateTimeException(" It's too late, vote can be changed up to " + VoteTime.MAX_VOTE_TIME);
     }
 

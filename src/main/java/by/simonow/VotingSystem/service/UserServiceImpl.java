@@ -1,7 +1,6 @@
 package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.model.User;
-import by.simonow.VotingSystem.repository.RestaurantRepository;
 import by.simonow.VotingSystem.repository.UserRepository;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
@@ -23,9 +22,6 @@ public class UserServiceImpl implements UserService { //, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private RestaurantRepository restaurantRepository;
 
     @Override
     public User save(User user) {
