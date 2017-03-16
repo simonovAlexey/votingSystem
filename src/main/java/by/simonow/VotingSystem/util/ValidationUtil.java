@@ -1,6 +1,7 @@
 package by.simonow.VotingSystem.util;
 
 
+import by.simonow.VotingSystem.HasId;
 import by.simonow.VotingSystem.model.BaseEntity;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 
@@ -33,7 +34,7 @@ public class ValidationUtil {
         }
     }
 
-    public static void checkIdConsistent(BaseEntity entity, int id) {
+    public static void checkIdConsistent(HasId entity, int id) {
 //      http://stackoverflow.com/a/32728226/548473
         if (entity.isNew()) {
             entity.setId(id);

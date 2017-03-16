@@ -44,14 +44,14 @@ public class MealServiceImpl implements MealService {
     @CacheEvict(value = "meals", allEntries = true)
     @Override
     public Meal update(Meal meal, int restaurantId) throws NotFoundException {
-        Assert.notNull(meal, "meal must not be null");
+        Assert.notNull(meal, "restaurant must not be null");
         return checkNotFoundWithId(repository.save(meal, restaurantId), meal.getId());
     }
 
     @CacheEvict(value = "meals", allEntries = true)
     @Override
     public Meal save(Meal meal, int restaurantId) {
-        Assert.notNull(meal, "meal must not be null");
+        Assert.notNull(meal, "restaurant must not be null");
         return repository.save(meal, restaurantId);
     }
 
