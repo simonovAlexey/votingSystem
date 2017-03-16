@@ -1,8 +1,10 @@
 package by.simonow.VotingSystem.web.restaurant;
 
 import by.simonow.VotingSystem.AuthorizedUser;
+import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.model.User;
+import by.simonow.VotingSystem.service.MealService;
 import by.simonow.VotingSystem.service.RestaurantService;
 import by.simonow.VotingSystem.service.UserService;
 import by.simonow.VotingSystem.service.VoteService;
@@ -28,6 +30,9 @@ public abstract class AbstractRestaurantController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MealService mealService;
 
 
     public Restaurant get(int id) {
@@ -70,6 +75,12 @@ public abstract class AbstractRestaurantController {
         LOG.info("doVote {} from User {}", rest, user);
         voteService.vote(rest,user);
 
+    }
+
+    public List<Meal> getMenu(Restaurant rest, int id) {
+        checkIdConsistent(rest, id);
+        LOG.info("getMenu for Restaurant {}", rest);
+        return mealService.getMenu(rest.getId());
     }
 
 }

@@ -3,7 +3,7 @@ package by.simonow.VotingSystem.service;
 import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 
-import java.util.Collection;
+import java.util.List;
 
 
 public interface MealService {
@@ -12,9 +12,9 @@ public interface MealService {
 
     void delete(int id, int restaurantId) throws NotFoundException;
 
-    Collection<Meal> getAll(int restaurantId);
+    List<Meal> getAll(int restaurantId);
 
-    Collection<Meal> getMenu(int restaurantId);
+    List<Meal> getMenu(int restaurantId);
 
     Meal update(Meal meal, int restaurantId) throws NotFoundException;
 

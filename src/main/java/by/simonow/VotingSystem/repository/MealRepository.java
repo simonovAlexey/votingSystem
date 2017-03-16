@@ -2,11 +2,9 @@ package by.simonow.VotingSystem.repository;
 
 import by.simonow.VotingSystem.model.Meal;
 
-import java.util.Collection;
+import java.util.List;
 
-/**
- * Created by Алексей on 09.01.2017.
- */
+
 public interface MealRepository {
      // null if updated restaurant do not belong to restaurantId
     Meal save(Meal meal, int restaurantId);
@@ -17,9 +15,9 @@ public interface MealRepository {
     // null if restaurant do not belong to restaurantId
     Meal get(int id, int restaurantId);
 
-    Collection<Meal> getAll(int restaurantId);
+    List<Meal> getAll(int restaurantId);
 
-    Collection<Meal> getMenu(int restaurantId);
+    List<Meal> getMenu(int restaurantId);
 
     Meal getWithRestaurant(int id, int userId) ;
 }

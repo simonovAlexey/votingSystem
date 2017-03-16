@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.util.Collection;
+import java.util.List;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
@@ -31,13 +31,13 @@ public class MealServiceImpl implements MealService {
     }
 
     @Override
-    public Collection<Meal> getAll(int restaurantId) {
+    public List<Meal> getAll(int restaurantId) {
         return repository.getAll(restaurantId);
     }
 
     @Cacheable("meals")
     @Override
-    public Collection<Meal> getMenu(int restaurantId) {
+    public List<Meal> getMenu(int restaurantId) {
         return repository.getMenu(restaurantId);
     }
 

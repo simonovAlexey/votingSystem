@@ -50,4 +50,6 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
+
+    //todo getMenu, doVote
 }
