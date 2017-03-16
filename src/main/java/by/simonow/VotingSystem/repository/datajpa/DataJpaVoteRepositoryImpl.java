@@ -14,7 +14,7 @@ import java.util.List;
 public class DataJpaVoteRepositoryImpl implements VoteRepository {
 
     @Autowired
-    private CrudVoteRepository crudRepository;
+    private CrudVotesRepository crudRepository;
 
     @Autowired
     private CrudUserRepository crudUserRepository;
