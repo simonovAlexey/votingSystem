@@ -21,7 +21,6 @@ public class Restaurant extends NamedEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @OrderBy("inMenu DESC")
 //    @JsonIgnore
-//    @JsonBackReference
     @JsonManagedReference
     protected List<Meal> meals;
 

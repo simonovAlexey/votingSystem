@@ -35,7 +35,7 @@ public abstract class AbstractRestaurantController {
     private MealService mealService;
 
 
-    public Restaurant get(int id) {
+    public RestaurantWithVotes get(int id) {
         LOG.info("get restaurant id=", id);
         return service.get(id);
     }
@@ -51,7 +51,6 @@ public abstract class AbstractRestaurantController {
     }
 
     public List<Restaurant> getAll() {
-        int userId = AuthorizedUser.id();
         LOG.info("getAll ");
         return service.getAll();
     }
@@ -64,8 +63,7 @@ public abstract class AbstractRestaurantController {
 
     public Restaurant create(Restaurant rest) {
         checkNew(rest);
-        int userId = AuthorizedUser.id();
-        LOG.info("create {} for User {}", rest, userId);
+        LOG.info("create {}", rest);
         return service.save(rest);
     }
 

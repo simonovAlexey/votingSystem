@@ -18,8 +18,8 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
     @Override
     @GetMapping(value = "/{id}")
-    public Restaurant getWithMeals(@PathVariable("id") int id) {
-        return super.getWithMeals(id);
+    public RestaurantWithVotes get(@PathVariable("id") int id) {
+        return super.get(id);
     }
 
     @Override

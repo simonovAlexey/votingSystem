@@ -43,8 +43,8 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void testGet() throws Exception {
-        Restaurant actual = service.get(RESTAURANT1_ID);
-        MATCHER.assertEquals(RESTAURANT1, actual);
+        RestaurantWithVotes actual = service.get(RESTAURANT1_ID);
+        MATCHER_WITH_VOTES.assertEquals(REST_WITH_VOTES1, actual);
     }
 
     @Test
@@ -68,9 +68,9 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void testUpdate() throws Exception {
-        Restaurant updated = getUpdated();
-        service.update(updated);
-        MATCHER.assertEquals(updated, service.get(RESTAURANT1_ID));
+        Restaurant upd = getUpdated();
+        service.update(upd);
+        MATCHER_WITH_VOTES.assertEquals(new RestaurantWithVotes(upd.getId(),upd.getName(),upd.getVotes().size()), service.get(RESTAURANT1_ID));
     }
 
     @Test

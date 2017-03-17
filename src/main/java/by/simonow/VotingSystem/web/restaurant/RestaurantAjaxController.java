@@ -21,7 +21,7 @@ public class RestaurantAjaxController extends AbstractRestaurantController {
 
     @Override
     @GetMapping(value = "/{id}")
-    public Restaurant get(@PathVariable("id") int id) {
+    public RestaurantWithVotes get(@PathVariable("id") int id) {
         return super.get(id);
     }
 
