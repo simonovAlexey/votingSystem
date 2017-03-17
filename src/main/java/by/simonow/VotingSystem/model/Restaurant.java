@@ -1,5 +1,7 @@
 package by.simonow.VotingSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -9,9 +11,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
-/*@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")}),
-                    @NamedEntityGraph(name = Restaurant.GRAPH_WITH_VOTES, attributeNodes = {@NamedAttributeNode("votes")})
-                    })*/
 @NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
 public class Restaurant extends NamedEntity {
 
@@ -22,6 +21,8 @@ public class Restaurant extends NamedEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @OrderBy("inMenu DESC")
 //    @JsonIgnore
+//    @JsonBackReference
+    @JsonManagedReference
     protected List<Meal> meals;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)

@@ -40,6 +40,11 @@ public abstract class AbstractRestaurantController {
         return service.get(id);
     }
 
+    public Restaurant getWithMeals(int id) {
+        LOG.info("getWithMeals restaurant id=", id);
+        return service.getWithMeals(id);
+    }
+
     public void delete(int id) {
         LOG.info("delete restaurant id=", id);
         service.delete(id);
