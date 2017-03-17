@@ -1,6 +1,5 @@
 package by.simonow.VotingSystem.web.meal;
 
-import by.simonow.VotingSystem.AuthorizedUser;
 import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.service.MealService;
 import org.slf4j.Logger;
@@ -19,16 +18,14 @@ public abstract class AbstractMealController {
     @Autowired
     private MealService service;
 
-    public Meal get(int id) {
-        int userId = AuthorizedUser.id();
-        LOG.info("get meal {} for User {}", id, userId);
-        return service.get(id, userId);
+    public Meal get(int id, int restId) {
+        LOG.info("get meal {} for Restaurant {}", id, restId);
+        return service.get(id, restId);
     }
 
-    public void delete(int id) {
-        int userId = AuthorizedUser.id();
-        LOG.info("delete meal {} for User {}", id, userId);
-        service.delete(id, userId);
+    public void delete(int id, int restId) {
+        LOG.info("delete meal {} for Restaurant {}", id, restId);
+        service.delete(id, restId);
     }
 
     public List<Meal> getAll(int restId) {

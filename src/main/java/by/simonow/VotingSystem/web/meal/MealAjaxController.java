@@ -13,25 +13,25 @@ import java.util.List;
 public class MealAjaxController extends AbstractMealController {
 
     @Override
-    @GetMapping(value = "/rest/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/r/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Meal> getAll(@PathVariable("id") int restId) {
         return super.getAll(restId);
     }
 
     @Override
-    @GetMapping(value = "/{id}")
-    public Meal get(@PathVariable("id") int id) {
-        return super.get(id);
+    @GetMapping(value = "/r/{restId}/{id}")
+    public Meal get(@PathVariable("id") int id, @PathVariable("restId") int restId) {
+        return super.get(id,restId);
     }
 
     @Override
-    @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable("id") int id) {
-        super.delete(id);
+    @DeleteMapping(value = "/r/{restId}/{id}")
+    public void delete(@PathVariable("id") int id, @PathVariable("restId") int restId) {
+        super.delete(id,restId);
     }
 
     @PostMapping
-    public void updateOrCreate(@Valid Meal meal,@RequestParam("rest") int restId) {
+    public void updateOrCreate(@Valid Meal meal,@RequestParam("restId") int restId) {
         if (meal.isNew()) {
             super.create(meal,restId);
         } else {
