@@ -19,7 +19,7 @@ public abstract class AbstractMealController {
     private MealService service;
 
     public Meal get(int id, int restId) {
-        LOG.info("get meal {} for Restaurant {}", id, restId);
+        LOG.info("getWithVotes meal {} for Restaurant {}", id, restId);
         return service.get(id, restId);
     }
 

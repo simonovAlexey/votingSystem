@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/ajax/profile/restaurants")
+@RequestMapping(value = "/ajax/restaurants")
 public class RestaurantAjaxController extends AbstractRestaurantController {
 
     @Override

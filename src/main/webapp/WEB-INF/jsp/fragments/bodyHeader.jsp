@@ -6,15 +6,14 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><spring:message code="app.title"/></a>
+            <p class="navbar-brand"><spring:message code="app.title"/></p>
         </div>
-
-        <div id="navbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="users"><spring:message code="users.title"/></a></li>
-                <li><a href="restaurants"><spring:message code="restaurants.title"/></a></li>
-                <%--<li>
+        <ul class="nav navbar-nav">
+            <li><a href="restaurants"><spring:message code="rest.title"/></a></li>
+            <li><a href="users"><spring:message code="users.title"/></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <%--<li>
                     <form:form class="navbar-form" action="logout" method="post">
                         <sec:authorize access="isAuthenticated()">
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -27,8 +26,8 @@
                         </sec:authorize>
                     </form:form>
                 </li>--%>
-                <jsp:include page="lang.jsp"/>
-            </ul>
-        </div>
+            <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>  глификон с текстом--%>
+            <jsp:include page="lang.jsp"/>
+        </ul>
     </div>
 </div>

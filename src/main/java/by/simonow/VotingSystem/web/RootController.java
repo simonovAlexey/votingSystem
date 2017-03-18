@@ -50,7 +50,7 @@ public class RootController extends AbstractUserController {
         if (!result.hasErrors()) {
             try {
                 super.update(userTo, AuthorizedUser.id());
-//                AuthorizedUser.get().update(userTo);  //TODO включить with security
+//                AuthorizedUser.getWithVotes().update(userTo);  //TODO включить with security
                 status.setComplete();
                 return "redirect:meals";
             } catch (DataIntegrityViolationException ex) {

@@ -43,14 +43,14 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void testGet() throws Exception {
-        RestaurantWithVotes actual = service.get(RESTAURANT1_ID);
+        RestaurantWithVotes actual = service.getWithVotes(RESTAURANT1_ID);
         MATCHER_WITH_VOTES.assertEquals(REST_WITH_VOTES1, actual);
     }
 
     @Test
     public void testGetNotFound() throws Exception {
         thrown.expect(NotFoundException.class);
-        service.get(RESTAURANT1_ID+5);
+        service.getWithVotes(RESTAURANT1_ID+5);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
     public void testUpdate() throws Exception {
         Restaurant upd = getUpdated();
         service.update(upd);
-        MATCHER_WITH_VOTES.assertEquals(new RestaurantWithVotes(upd.getId(),upd.getName(),upd.getVotes().size()), service.get(RESTAURANT1_ID));
+        MATCHER_WITH_VOTES.assertEquals(new RestaurantWithVotes(upd.getId(),upd.getName(),upd.getVotes().size()), service.getWithVotes(RESTAURANT1_ID));
     }
 
     @Test

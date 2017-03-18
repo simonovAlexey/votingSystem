@@ -3,8 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="footer">
+    <br>
     <div class="container">
-        <spring:message code="app.footer"/>
+        <div class="page-information">
+            <p> </p>
+        </div>
+        <p class="text-muted"><spring:message code="app.footer"/></p>
     </div>
 </div>
 

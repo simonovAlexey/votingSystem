@@ -36,8 +36,8 @@ public abstract class AbstractRestaurantController {
 
 
     public RestaurantWithVotes get(int id) {
-        LOG.info("get restaurant id=", id);
-        return service.get(id);
+        LOG.info("getWithVotes restaurant id=", id);
+        return service.getWithVotes(id);
     }
 
     public Restaurant getWithMeals(int id) {
@@ -72,18 +72,17 @@ public abstract class AbstractRestaurantController {
         return service.getAllWithVotes();
     }
 
-    public void doVote(Restaurant rest, int id){
-        checkIdConsistent(rest, id);
+    public void doVote(int id){
         User user = userService.get(AuthorizedUser.id());
-        LOG.info("doVote {} from User {}", rest, user);
+        Restaurant rest = service.get(id);
+        LOG.info("doVote {} from User {}", id, user);
         voteService.vote(rest,user);
 
     }
 
-    public List<Meal> getMenu(Restaurant rest, int id) {
-        checkIdConsistent(rest, id);
-        LOG.info("getMenu for Restaurant {}", rest);
-        return mealService.getMenu(rest.getId());
+    public List<Meal> getMenu(int id) {
+        LOG.info("getMenu for Restaurant {}", id);
+        return mealService.getMenu(id);
     }
 
 }
