@@ -68,8 +68,8 @@ public abstract class AbstractRestaurantController {
     }
 
     public List<RestaurantTo> getAllWithVotes(){
-        LOG.info("getAllWithVotesMeals() ");
-        return service.getAllWithVotesMeals();
+        LOG.info("getAllWithVotes() ");
+        return service.getAllWithVotes();
     }
 
     public void doVote(int id){

@@ -19,7 +19,7 @@ public interface RestaurantService {
 
     List<Restaurant> getAll();
 
-    List<RestaurantTo> getAllWithVotesMeals();
+    List<RestaurantTo> getAllWithVotes();
 
     void update(Restaurant restaurant);
 
