@@ -8,7 +8,7 @@ import by.simonow.VotingSystem.service.MealService;
 import by.simonow.VotingSystem.service.RestaurantService;
 import by.simonow.VotingSystem.service.UserService;
 import by.simonow.VotingSystem.service.VoteService;
-import by.simonow.VotingSystem.to.RestaurantWithVotes;
+import by.simonow.VotingSystem.to.RestaurantTo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public abstract class AbstractRestaurantController {
     private MealService mealService;
 
 
-    public RestaurantWithVotes get(int id) {
+    public RestaurantTo get(int id) {
         LOG.info("getWithVotes restaurant id=", id);
         return service.getWithVotes(id);
     }
@@ -67,9 +67,9 @@ public abstract class AbstractRestaurantController {
         return service.save(rest);
     }
 
-    public List<RestaurantWithVotes> getAllWithVotes(){
-        LOG.info("getAllWithVotes() ");
-        return service.getAllWithVotes();
+    public List<RestaurantTo> getAllWithVotes(){
+        LOG.info("getAllWithVotesMeals() ");
+        return service.getAllWithVotesMeals();
     }
 
     public void doVote(int id){
@@ -81,7 +81,7 @@ public abstract class AbstractRestaurantController {
     }
 
     public List<Meal> getMenu(int id) {
-        LOG.info("getMenu for Restaurant {}", id);
+        LOG.info("getMenuList for Restaurant {}", id);
         return mealService.getMenu(id);
     }
 

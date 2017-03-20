@@ -3,15 +3,16 @@ package by.simonow.VotingSystem.to;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class RestaurantWithVotes extends BaseTo {
+public class RestaurantTo extends BaseTo {
 
     private final String name;
 
     private final int votes;
 
-    public RestaurantWithVotes(@JsonProperty("id") Integer id,
-                               @JsonProperty("name") String name,
-                               @JsonProperty("votes") int votes) {
+
+    public RestaurantTo(@JsonProperty("id") Integer id,
+                        @JsonProperty("name") String name,
+                        @JsonProperty("votes") int votes) {
         super(id);
         this.name = name;
         this.votes = votes;
@@ -27,7 +28,7 @@ public class RestaurantWithVotes extends BaseTo {
 
     @Override
     public String toString() {
-        return "RestaurantWithVotes{" +
+        return "RestaurantTo{" +
                 "name='" + name + '\'' +
                 ", votes=" + votes +
                 '}';

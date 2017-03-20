@@ -2,7 +2,7 @@ package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.MealTestData;
 import by.simonow.VotingSystem.model.Restaurant;
-import by.simonow.VotingSystem.to.RestaurantWithVotes;
+import by.simonow.VotingSystem.to.RestaurantTo;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void testGet() throws Exception {
-        RestaurantWithVotes actual = service.getWithVotes(RESTAURANT1_ID);
+        RestaurantTo actual = service.getWithVotes(RESTAURANT1_ID);
         MATCHER_WITH_VOTES.assertEquals(REST_WITH_VOTES1, actual);
     }
 
@@ -62,7 +62,7 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
 
     @Test
     public void testGetWithVotes() throws Exception {
-        List<RestaurantWithVotes> restaurantWithVotes = service.getAllWithVotes();
+        List<RestaurantTo> restaurantWithVotes = service.getAllWithVotesMeals();
         MATCHER_WITH_VOTES.assertCollectionEquals(restaurantWithVotes,RESTAURANT_WITH_VOTES);
     }
 
@@ -70,7 +70,7 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
     public void testUpdate() throws Exception {
         Restaurant upd = getUpdated();
         service.update(upd);
-        MATCHER_WITH_VOTES.assertEquals(new RestaurantWithVotes(upd.getId(),upd.getName(),upd.getVotes().size()), service.getWithVotes(RESTAURANT1_ID));
+        MATCHER_WITH_VOTES.assertEquals(new RestaurantTo(upd.getId(),upd.getName(),2), service.getWithVotes(RESTAURANT1_ID));
     }
 
     @Test

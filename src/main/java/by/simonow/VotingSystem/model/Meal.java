@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
 public class Meal extends BaseEntity {
 
     public static final String M_DELETE = "Meal.delete";
-    public static final String M_GET_MENU = "Meal.getMenu";
+    public static final String M_GET_MENU = "Meal.getMenuList";
     public static final String M_GET = "Meal.getWithVotes";
     public static final String M_ALL = "Meal.getAllMeals";
 

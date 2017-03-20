@@ -1,7 +1,8 @@
 package by.simonow.VotingSystem.web.restaurant;
 
+import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
-import by.simonow.VotingSystem.to.RestaurantWithVotes;
+import by.simonow.VotingSystem.to.RestaurantTo;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,14 +16,20 @@ public class RestaurantAjaxController extends AbstractRestaurantController {
 
     @Override
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<RestaurantWithVotes> getAllWithVotes() {
+    public List<RestaurantTo> getAllWithVotes() {
         return super.getAllWithVotes();
     }
 
     @Override
     @GetMapping(value = "/{id}")
-    public RestaurantWithVotes get(@PathVariable("id") int id) {
+    public RestaurantTo get(@PathVariable("id") int id) {
         return super.get(id);
+    }
+
+    @Override
+    @GetMapping(value = "/menu={id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Meal> getMenu(@PathVariable("id") int id) {
+        return super.getMenu(id);
     }
 
     @Override

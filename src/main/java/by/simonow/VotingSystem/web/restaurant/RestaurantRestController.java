@@ -2,7 +2,7 @@ package by.simonow.VotingSystem.web.restaurant;
 
 import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
-import by.simonow.VotingSystem.to.RestaurantWithVotes;
+import by.simonow.VotingSystem.to.RestaurantTo;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
     @Override
     @GetMapping(value = "/{id}")
-    public RestaurantWithVotes get(@PathVariable("id") int id) {
+    public RestaurantTo get(@PathVariable("id") int id) {
         return super.get(id);
     }
 
@@ -37,7 +37,7 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
     @Override
     @GetMapping
-    public List<RestaurantWithVotes> getAllWithVotes() {
+    public List<RestaurantTo> getAllWithVotes() {
         return super.getAllWithVotes();
     }
 
@@ -63,6 +63,4 @@ public class RestaurantRestController extends AbstractRestaurantController {
     public void doVote(@PathVariable("id") int id) {
         super.doVote(id);
     }
-
-    //TODO, doVote
 }

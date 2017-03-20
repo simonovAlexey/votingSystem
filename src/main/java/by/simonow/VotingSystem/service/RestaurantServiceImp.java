@@ -2,7 +2,7 @@ package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.repository.RestaurantRepository;
-import by.simonow.VotingSystem.to.RestaurantWithVotes;
+import by.simonow.VotingSystem.to.RestaurantTo;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,9 +32,9 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public RestaurantWithVotes getWithVotes(int id) throws NotFoundException {
+    public RestaurantTo getWithVotes(int id) throws NotFoundException {
         Restaurant rest = checkNotFoundWithId(repository.get(id), id);
-        return new RestaurantWithVotes(rest.getId(),rest.getName(),rest.getVotes().size());
+        return new RestaurantTo(rest.getId(),rest.getName(),rest.getVotes().size());
     }
     @Override
     public Restaurant get(int id) throws NotFoundException {
@@ -47,9 +47,9 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public List<RestaurantWithVotes> getAllWithVotes() {
+    public List<RestaurantTo> getAllWithVotesMeals() {
         return repository.getAllWithVotes().stream().
-                map((s) -> new RestaurantWithVotes(s.getId(), s.getName(), s.getVotes().size())).
+                map((s) -> new RestaurantTo(s.getId(), s.getName(), s.getVotes().size())).
                 collect(Collectors.toList());
     }
 
@@ -63,6 +63,5 @@ public class RestaurantServiceImp implements RestaurantService {
     public Restaurant getWithMeals(int id) {
         return repository.getWithMeals(id);
     }
-
 
 }

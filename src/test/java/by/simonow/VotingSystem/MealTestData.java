@@ -27,6 +27,8 @@ public class MealTestData {
     public static final Meal MEAL9 = new Meal(MEAL1_ID + 8, false, "Р3 Ужин-б не в меню", 90);
 
     public static final List<Meal> MENU1 = Arrays.asList(MEAL1,MEAL3);
+    public static final List<Meal> MENU2 = Arrays.asList(MEAL4,MEAL5);
+    public static final List<Meal> MENU3 = Arrays.asList(MEAL7,MEAL8);
     public static final List<Meal> MEALS_R1 = Arrays.asList(MEAL1,MEAL3,MEAL2);
     public static final List<Meal> MEALS_R2 = Arrays.asList(MEAL4,MEAL5,MEAL6);
     public static final List<Meal> MEALS_R3 = Arrays.asList(MEAL7,MEAL8,MEAL9);
