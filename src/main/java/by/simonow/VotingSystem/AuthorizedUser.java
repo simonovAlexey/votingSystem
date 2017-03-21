@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import static java.util.Objects.requireNonNull;
 
 public class AuthorizedUser extends org.springframework.security.core.userdetails.User{
+
     public static int id = BaseEntity.START_SEQ + 4;
 
 
@@ -44,7 +45,8 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
     }
 
     public static int id() {
-        return get().userTo.getId();
+//        return get().userTo.getId();
+        return id;
     }
 
     public void update(UserTo newTo) {
