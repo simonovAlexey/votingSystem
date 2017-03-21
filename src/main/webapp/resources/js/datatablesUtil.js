@@ -1,7 +1,9 @@
 var form;
+var menuModal;
 
 function makeEditable() {
     form = $('#detailsForm');
+    menuModal = $('#showMenu');
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
         failNoty(event, jqXHR, options, jsExc);
     });

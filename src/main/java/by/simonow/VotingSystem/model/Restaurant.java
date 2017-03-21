@@ -11,11 +11,12 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
-@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")})
+@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")}),
+        @NamedEntityGraph(name = Restaurant.GRAPH_WITH_VOTES, attributeNodes = {@NamedAttributeNode("votes")})})
 public class Restaurant extends NamedEntity {
 
     public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
-//    public static final String GRAPH_WITH_VOTES = "Restaurant.withVotes";
+    public static final String GRAPH_WITH_VOTES = "Restaurant.withVotes";
 
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)

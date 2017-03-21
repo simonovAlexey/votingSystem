@@ -42,7 +42,7 @@
 
     <jsp:include page="fragments/footer.jsp"/>
 
-<div class="modal fade" id="showMenu">
+<div class="modal" id="showMenu">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -60,8 +60,8 @@
                     <c:forEach items="${meals}" var="meal">
                         <jsp:useBean id="meal" scope="page" type="by.simonow.VotingSystem.model.Meal"/>
                         <tr>
-                            <td><c:out value="${meal.description}"/></td>
-                            <td>${meal.price/10},${meal.price%10}</td>
+                            <td id="description"><c:out value="${meal.description}"/></td>
+                            <td id="price">${meal.price/100},${meal.price%100}</td>
                         </tr>
                     </c:forEach>
                 </table>

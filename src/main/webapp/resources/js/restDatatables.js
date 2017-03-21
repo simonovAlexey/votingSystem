@@ -1,6 +1,7 @@
 var ajaxUrl = "ajax/restaurants/";
 var datatableApi;
 var editTitleKey = "rest.edit";
+var menuTitleKey = "rest.menu";
 
 // $(document).ready(function () {
 function clearFilter() {
@@ -17,6 +18,30 @@ function updateTable() {
     });
 }
 
+function drawMenu(id) {
+    $('#modalTitle').html(i18n[menuTitleKey]);
+    debugger;
+    $.ajax({
+        url: "ajax/restaurants/menu=" + id,
+        type: 'GET',
+        dataType: 'json',
+        success: function () {
+            $.each(data, function (key, value) {
+                alert( key + ": " + value );
+            });
+            $('#showMenu').modal()
+        }
+    });
+    /*$.get( + id,
+        function (data) {
+            $.each(data, function (key, value) {
+                alert( key + ": " + value );
+                // $('#showMenu').find("td id='" + key + "']").val(value);
+            });
+            $('#showMenu').modal();
+        });*/
+}
+
 $(function () {
     datatableApi = $('#datatable').DataTable(extendsOpts({
         "columns": [
@@ -25,16 +50,15 @@ $(function () {
 
             },
             {
-                "data": "menu"
-                /*"render": function (data, type, row) {
+                "render": function (data, type, row) {
                     if (type == 'display') {
-                        return '<a class="btn btn-xs btn-primary" href="ajax/restaurants/menu=' + row.id + '">' +
+                        return '<a class="btn btn-xs btn-primary" onclick="drawMenu(' + row.id + ');">' +
                             '<span class="glyphicon glyphicon-cutlery" aria-hidden="true"><spring:message code="rest.menu"/></span></a>';
                     }
                     return data;
                 },
                 "defaultContent": "",
-                "orderable": false*/
+                "orderable": false
             },
             {
                 "data": "votes"
@@ -57,7 +81,7 @@ $(function () {
             ]
         ],
         "createdRow": function (row, data, dataIndex) {
-            $(row).addClass(data.votes>3 ? 'exceeded' : 'normal');
+            $(row).addClass(data.votes > 3 ? 'exceeded' : 'normal');
         }
     }));
 });

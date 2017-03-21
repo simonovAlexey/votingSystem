@@ -74,7 +74,7 @@ $(function () {
             ]
         ],
         "createdRow": function (row, data, dataIndex) {
-            debugger;
+            // debugger;
             if (!data.enabled) {
                 $(row).addClass("disabled");
             }
