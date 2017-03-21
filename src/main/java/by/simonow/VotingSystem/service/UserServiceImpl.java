@@ -1,5 +1,6 @@
 package by.simonow.VotingSystem.service;
 
+import by.simonow.VotingSystem.AuthorizedUser;
 import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.repository.UserRepository;
 import by.simonow.VotingSystem.to.UserTo;
@@ -8,6 +9,8 @@ import by.simonow.VotingSystem.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -18,7 +21,7 @@ import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFound;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
 @Service("userService")
-public class UserServiceImpl implements UserService { //, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -75,14 +78,13 @@ public class UserServiceImpl implements UserService { //, UserDetailsService {
         user.setEnabled(enabled);
         userRepository.save(user);
     }
-
-   /* @Override
+ @Override
     public AuthorizedUser loadUserByUsername(String email) throws UsernameNotFoundException {
-        User u = repository.getByEmail(email.toLowerCase());
+        User u = userRepository.getByEmail(email.toLowerCase());
         if (u == null) {
             throw new UsernameNotFoundException("User " + email + " is not found");
         }
         return new AuthorizedUser(u);
-    }*/
+    }
 
 }
