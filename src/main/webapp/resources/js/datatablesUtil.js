@@ -6,11 +6,11 @@ function makeEditable() {
         failNoty(event, jqXHR, options, jsExc);
     });
 
-    var token = $("meta[name='_csrf']").attr("content");
+   /* var token = $("meta[name='_csrf']").attr("content"); //TODO after spring security
     var header = $("meta[name='_csrf_header']").attr("content");
     $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader(header, token);
-    });
+    });*/
 }
 
 // https://api.jquery.com/jquery.extend/#jQuery-extend-deep-target-object1-objectN
@@ -55,13 +55,12 @@ function formatDate(date) {
 }
 
 function deleteRow(id) {
-    var u = ajaxUrl + id;
     $.ajax({
-        url: u,
+        url: ajaxUrl + id,
         type: 'DELETE',
         success: function () {
             updateTable();
-            // successNoty('common.deleted');
+            successNoty('common.deleted');
         }
     });
 }
@@ -111,6 +110,7 @@ function failNoty(event, jqXHR, options, jsExc) {
     // Since the reason phrase is optional, Tomcat no longer sends it (statusText).
     failedNote = noty({
         text: i18n['common.status'] + ': ' + jqXHR.status + "<br>"+ errorInfo.cause + "<br>" + errorInfo.details.join("<br>"),
+        // text: i18n['common.status'] + ': ' + jqXHR.statusText + "<br>",
         type: 'error',
         layout: 'bottomRight'
     });

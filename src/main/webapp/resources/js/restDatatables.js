@@ -20,7 +20,7 @@ function updateTable() {
 
 function drawMenu(id) {
     $('#modalTitle').html(i18n[menuTitleKey]);
-    debugger;
+    // debugger;
     $.ajax({
         url: 'ajax/restaurants/menu=' + id,
         type: 'GET',

@@ -1,27 +1,16 @@
 package by.simonow.VotingSystem;
 
 
-import by.simonow.VotingSystem.model.BaseEntity;
+import by.simonow.VotingSystem.model.Role;
 import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import static java.util.Objects.requireNonNull;
 
 public class AuthorizedUser extends org.springframework.security.core.userdetails.User{
 
-    public static int id = BaseEntity.START_SEQ + 4;
-
-
-    public static void setId(int id) {
-        AuthorizedUser.id = id;
-    }
-
-
-    private static final long serialVersionUID = 1L;
-
+    private static final User USER = new User(100003, "Admin", "admin@gmail.com", "admin", Role.ROLE_ADMIN, Role.ROLE_USER);
     private UserTo userTo;
 
     public AuthorizedUser(User user) {
@@ -30,12 +19,13 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
     }
 
     public static AuthorizedUser safeGet() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth == null) {
             return null;
         }
         Object principal = auth.getPrincipal();
-        return (principal instanceof AuthorizedUser) ? (AuthorizedUser) principal : null;
+        return (principal instanceof AuthorizedUser) ? (AuthorizedUser) principal : null;*/ //TODO after spring security
+        return new AuthorizedUser(USER);
     }
 
     public static AuthorizedUser get() {
@@ -45,8 +35,8 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
     }
 
     public static int id() {
-//        return get().userTo.getId();
-        return id;
+        return get().userTo.getId();
+//        return id;
     }
 
     public void update(UserTo newTo) {
