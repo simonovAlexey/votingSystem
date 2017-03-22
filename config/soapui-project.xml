@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project activeEnvironment="Default" name="Topjava" resourceRoot="" soapui-version="5.2.0" abortOnError="false" runType="SEQUENTIAL" id="b6a174fe-9cda-4410-af25-bdf04e1fed39" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project activeEnvironment="Default" name="VotingSystem" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" id="b6a174fe-9cda-4410-af25-bdf04e1fed39" xmlns:con="http://eviware.com/soapui/config">
     <con:settings/>
     <con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://localhost:8080" type="rest" id="eebe6f3c-c045-444a-ae8f-c0f4bbb345b5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <con:settings/>
@@ -7,7 +7,7 @@
         <con:endpoints>
             <con:endpoint>http://localhost:8080</con:endpoint>
         </con:endpoints>
-        <con:resource name="adminAll" path="/topjava/rest/admin/users" id="6da03be8-b9dc-43d8-a333-3253fa8d4dad">
+        <con:resource name="adminAll" path="/votingSystem/rest/admin/users" id="6da03be8-b9dc-43d8-a333-3253fa8d4dad">
             <con:settings/>
             <con:parameters/>
             <con:method name="adminGetAll" method="GET" id="d020d56b-e008-4f4a-8234-35767b093863">
@@ -23,7 +23,7 @@
                     <con:mediaType>application/json</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:ns="http://localhost/topjava/rest/admin/users/100000">ns:Response</con:element>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
                 </con:representation>
                 <con:representation type="RESPONSE">
                     <con:mediaType xsi:nil="true"/>
@@ -39,12 +39,11 @@
                 </con:representation>
                 <con:request name="AdminGetAll" mediaType="application/json" id="e073a168-8421-4a54-99db-5a321de647a7">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/admin/users</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users</con:originalUri>
                     <con:credentials>
                         <con:username>user@yandex.ru</con:username>
                         <con:password>password</con:password>
@@ -74,18 +73,17 @@
                     <con:mediaType>application/json</con:mediaType>
                     <con:status>201</con:status>
                     <con:params/>
-                    <con:element xmlns:user="http://localhost/topjava/rest/admin/users">user:Response</con:element>
+                    <con:element xmlns:user="http://localhost/votingSystem/rest/admin/users">user:Response</con:element>
                 </con:representation>
                 <con:representation type="RESPONSE">
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>201</con:status>
                     <con:params/>
-                    <con:element xmlns:user="http://localhost/topjava/rest/admin/users">user:Response</con:element>
+                    <con:element xmlns:user="http://localhost/votingSystem/rest/admin/users">user:Response</con:element>
                 </con:representation>
                 <con:request name="AdminCreate" mediaType="application/json" postQueryString="false" id="5bd4c733-d82e-4d43-b193-ab6e0f898c26">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request>{
@@ -95,7 +93,7 @@
   "roles": ["ROLE_USER"]
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/topjava/rest/admin/users</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users</con:originalUri>
                     <con:credentials>
                         <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
                         <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
@@ -107,7 +105,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="admin" path="/topjava/rest/admin/users/100000" id="7f8ab4ae-b6a8-4aa8-a502-9dbebb27ad8b">
+        <con:resource name="admin" path="/votingSystem/rest/admin/users/100003" id="7f8ab4ae-b6a8-4aa8-a502-9dbebb27ad8b">
             <con:settings/>
             <con:parameters/>
             <con:method name="adminGet" method="GET" id="7a2525a5-8d97-4c33-97ab-dc071c529154">
@@ -123,22 +121,21 @@
                     <con:mediaType>application/json</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:ns="http://localhost/topjava/rest/admin/users/100000">ns:Response</con:element>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
                 </con:representation>
                 <con:representation type="RESPONSE">
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:ns="http://localhost/topjava/rest/admin/users/100000">ns:Response</con:element>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
                 </con:representation>
                 <con:request name="AdminGet" mediaType="application/json" id="4f099c7f-94dc-466b-a544-6c8e41bdd691">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/admin/users/100000</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users/100000</con:originalUri>
                     <con:credentials>
                         <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
                         <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
@@ -186,20 +183,19 @@
                     <con:params/>
                     <con:element>data</con:element>
                 </con:representation>
-                <con:request name="AdminUpdate" mediaType="application/json" postQueryString="false" id="efc6bc55-7b69-4992-974d-9a1c54d342ed">
+                <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>409</con:status><con:params/><con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="AdminUpdate" mediaType="application/json" postQueryString="false" id="efc6bc55-7b69-4992-974d-9a1c54d342ed">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request>{
   "name": "UserUpdated",
-   "email": "user@yandex.ru",
+   "email": "user@ya.ru",
    "password": "passwordNew",
   "roles": ["ROLE_USER"]
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/topjava/rest/admin/users/100000</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users/100000</con:originalUri>
                     <con:credentials>
                         <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
                         <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
@@ -211,7 +207,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="profile" path="/topjava/rest/profile" id="dc6bc427-b446-4a76-bbb7-94608e15aa11">
+        <con:resource name="profile" path="/votingSystem/rest/profile" id="dc6bc427-b446-4a76-bbb7-94608e15aa11">
             <con:settings/>
             <con:parameters/>
             <con:method name="profileGet" method="GET" id="4970902f-2d28-4e9e-bece-e944ea382323">
@@ -227,22 +223,21 @@
                     <con:mediaType>application/json</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:ns="http://localhost/topjava/rest/admin/users/100000">ns:Response</con:element>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
                 </con:representation>
                 <con:representation type="RESPONSE">
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:prof="http://localhost/topjava/rest/profile">prof:Response</con:element>
+                    <con:element xmlns:prof="http://localhost/votingSystem/rest/profile">prof:Response</con:element>
                 </con:representation>
                 <con:request name="ProfileGet" mediaType="application/json" id="284adf4f-eb7e-44eb-83a9-b038a370efc4">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/profile</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile</con:originalUri>
                     <con:credentials>
                         <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
                         <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
@@ -270,7 +265,7 @@
                     <con:mediaType>application/json</con:mediaType>
                     <con:status>201</con:status>
                     <con:params/>
-                    <con:element xmlns:user="http://localhost/topjava/rest/admin/users">user:Response</con:element>
+                    <con:element xmlns:user="http://localhost/votingSystem/rest/admin/users">user:Response</con:element>
                 </con:representation>
                 <con:representation type="RESPONSE">
                     <con:mediaType xsi:nil="true"/>
@@ -308,20 +303,18 @@
                     <con:params/>
                     <con:element>data</con:element>
                 </con:representation>
-                <con:request name="ProfileUpdate" mediaType="application/json" postQueryString="false" id="e45dfcce-1514-43ae-9233-a60407161db6">
+                <con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/><con:element xmlns:prof="http://localhost/votingSystem/rest/profile">prof:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="ProfileUpdate" mediaType="application/json" postQueryString="false" id="e45dfcce-1514-43ae-9233-a60407161db6">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request>{
   "name": "New777",
-   "email": "new777@yandex.ru",
-   "password": "passwordNew",
-  "roles": ["ROLE_USER"]
+   "email": "new777@ya.ru",
+   "password": "passwordNew"
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/topjava/rest/profile</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile</con:originalUri>
                     <con:credentials>
                         <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
                         <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
@@ -357,14 +350,13 @@
                     <con:params/>
                     <con:element>data</con:element>
                 </con:representation>
-                <con:request name="ProfileDelete" mediaType="application/json" id="efec2863-f29c-436a-8509-71ab92e2e670" postQueryString="false">
+                <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="ProfileDelete" mediaType="application/json" id="efec2863-f29c-436a-8509-71ab92e2e670" postQueryString="false">
                     <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/profile</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile</con:originalUri>
                     <con:credentials>
                         <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
                         <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
@@ -376,7 +368,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="mealsAll" path="/topjava/rest/profile/meals" id="f355b450-c1d3-4856-8a77-20e7ed2847c0">
+        <con:resource name="mealsAll" path="/votingSystem/rest/meals" id="f355b450-c1d3-4856-8a77-20e7ed2847c0">
             <con:settings/>
             <con:parameters/>
             <con:method name="mealsGetAll" id="4ceea899-2f7e-4f78-b785-6fccb69344ea" method="GET">
@@ -395,7 +387,7 @@
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/profile/meals</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -427,7 +419,7 @@
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>201</con:status>
                     <con:params/>
-                    <con:element xmlns:meal="http://localhost/topjava/rest/profile/meals">meal:Response</con:element>
+                    <con:element xmlns:meal="http://localhost/votingSystem/rest/profile/meals">meal:Response</con:element>
                 </con:representation>
                 <con:request name="MealsСreate" id="2bb0c527-598d-41c3-b435-76ebe5b8566d" mediaType="application/json" postQueryString="false">
                     <con:settings>
@@ -441,7 +433,7 @@
                         "calories": 777
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/topjava/rest/profile/meals</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -451,7 +443,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="meal" path="/topjava/rest/profile/meals/100002" id="0845e038-cccd-474a-9d22-61d86a2d7a7f">
+        <con:resource name="meal" path="/votingSystem/rest/meals/100002" id="0845e038-cccd-474a-9d22-61d86a2d7a7f">
             <con:settings/>
             <con:parameters/>
             <con:method name="mealGet" id="e626de66-db50-46c2-998d-bc678628f063" method="GET">
@@ -461,7 +453,7 @@
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:ns="http://localhost/topjava/rest/profile/meals/100002">ns:Response</con:element>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/profile/meals/100002">ns:Response</con:element>
                 </con:representation>
                 <con:request name="MealGet" id="5efbd6aa-f213-483f-9bde-586877302a68" mediaType="application/json">
                     <con:settings>
@@ -470,7 +462,7 @@
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/profile/meals/100002</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals/100002</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -523,7 +515,7 @@
                         "calories": 500
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/topjava/rest/profile/meals/100002</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals/100002</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -533,101 +525,234 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="between" path="/topjava/rest/profile/meals/between" id="c500d8b3-0586-4f5a-8d27-a7d6aede281f">
+        
+        
+    <con:resource name="adminAll AJAX" path="/votingSystem/ajax/admin/users" id="6da03be8-b9dc-43d8-a333-3253fa8d4dad">
             <con:settings/>
-            <con:parameters>
-                <con:parameter>
-                    <con:name>startDateTime</con:name>
-                    <con:value/>
-                    <con:style>QUERY</con:style>
-                    <con:default/>
-                    <con:description xsi:nil="true"/>
-                </con:parameter>
-                <con:parameter>
-                    <con:name>endDateTime</con:name>
-                    <con:value/>
-                    <con:style>QUERY</con:style>
-                    <con:default/>
-                    <con:description xsi:nil="true"/>
-                </con:parameter>
-            </con:parameters>
-            <con:method name="mealsGetBetween" id="b40a9073-16ef-4c0b-b494-96c5e949557e" method="GET">
+            <con:parameters/>
+            <con:method name="adminGetAll" method="GET" id="d020d56b-e008-4f4a-8234-35767b093863">
                 <con:settings/>
                 <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>text/html;charset=utf-8</con:mediaType>
+                    <con:status>500 401</con:status>
+                    <con:params/>
+                    <con:element>html</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>0</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
                 <con:representation type="RESPONSE">
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
                     <con:element>Response</con:element>
                 </con:representation>
-                <con:request name="MealsBetween" id="80f7767c-8730-4f00-a7cf-eee7b47b0564" mediaType="application/json">
-                    <con:settings>
-                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
-                        </con:setting>
-                    </con:settings>
-                    <con:endpoint>http://localhost:8080</con:endpoint>
-                    <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/profile/meals/between</con:originalUri>
-                    <con:credentials>
-                        <con:authType>No Authorization</con:authType>
-                    </con:credentials>
-                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-                    <con:jmsPropertyConfig/>
-                    <con:parameters>
-                        <con:entry key="startDateTime" value="2015-05-30T07:00"/>
-                        <con:entry key="endDateTime" value="2015-05-31T11:00:00"/>
-                    </con:parameters>
-                    <con:parameterOrder>
-                        <con:entry>startDateTime</con:entry>
-                        <con:entry>endDateTime</con:entry>
-                    </con:parameterOrder>
-                </con:request>
-            </con:method>
-        </con:resource>
-        <con:resource name="filter" path="/topjava/rest/profile/meals/filter" id="bdd36cb7-be1e-4806-b110-1a3001b46823">
-            <con:settings/>
-            <con:parameters>
-                <con:parameter>
-                    <con:name>startDate</con:name>
-                    <con:value/>
-                    <con:style>QUERY</con:style>
-                    <con:default/>
-                    <con:description xsi:nil="true"/>
-                </con:parameter>
-            <con:parameter><con:name>endTime</con:name><con:value/><con:style>QUERY</con:style><con:default/><con:description xsi:nil="true"/></con:parameter></con:parameters>
-            <con:method name="mealsGetFilter" id="cb151971-7d79-49fa-a743-d313fe138986" method="GET">
-                <con:settings/>
-                <con:parameters/>
-                <con:representation type="RESPONSE">
-                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
-                    <con:status>200</con:status>
-                    <con:params/>
-                    <con:element>Response</con:element>
-                </con:representation>
-                <con:request name="MealFilter" id="0ee8475d-06f1-41a8-8a3e-d4c7631558b9" mediaType="application/json">
+                <con:request name="AdminGetAll" mediaType="application/json" id="e073a168-8421-4a54-99db-5a321de647a7">
                     <con:settings>
                         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/topjava/rest/profile/meals/filter</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users</con:originalUri>
                     <con:credentials>
+                        <con:username>user@yandex.ru</con:username>
+                        <con:password>password</con:password>
+                        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+                        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                <con:parameterOrder/></con:request>
+            </con:method>
+            <con:method name="adminPost" method="POST" id="fdc81cfb-9aee-42c6-a904-39392550d302">
+                <con:settings/>
+                <con:parameters><con:parameter><con:name>name</con:name><con:value>New2</con:value><con:style>QUERY</con:style><con:default>New2</con:default><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>email</con:name><con:value>new2@ya2.ru</con:value><con:style>QUERY</con:style><con:default>new2@ya2.ru</con:default><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>password</con:name><con:value>12345</con:value><con:style>QUERY</con:style><con:default>12345</con:default><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>id</con:name><con:value>100003</con:value><con:style>QUERY</con:style><con:default>100003</con:default><con:description xsi:nil="true"/></con:parameter></con:parameters>
+                <con:representation type="REQUEST">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:params/>
+                </con:representation>
+                <con:representation type="FAULT">
+                    <con:mediaType>text/html;charset=utf-8</con:mediaType>
+                    <con:status>500</con:status>
+                    <con:params/>
+                    <con:element>html</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:status>201</con:status>
+                    <con:params/>
+                    <con:element xmlns:user="http://localhost/votingSystem/rest/admin/users">user:Response</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>201</con:status>
+                    <con:params/>
+                    <con:element xmlns:user="http://localhost/votingSystem/rest/admin/users">user:Response</con:element>
+                </con:representation>
+                <con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>422 409</con:status><con:params/><con:element xmlns:user="http://localhost/votingSystem/rest/admin/users">user:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>multipart/form-data</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Create" mediaType="multipart/form-data" postQueryString="false" id="5bd4c733-d82e-4d43-b193-ab6e0f898c26">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request>
+                    </con:request>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users</con:originalUri>
+                    <con:credentials>
+                        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+                        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
                     <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
                     <con:jmsPropertyConfig/>
                     <con:parameters>
-  <con:entry key="startDate" value="2015-05-31"/>
-  <con:entry key="endTime" value="11:00"/>
-  <con:entry key="2015-05-31" value="2015-05-31"/>
+  <con:entry key="id" value="100003"/>
+  <con:entry key="email" value="new2@ya2.ru"/>
+  <con:entry key="name" value="New2"/>
+  <con:entry key="password" value="12345"/>
 </con:parameters>
-                    <con:parameterOrder><con:entry>startDate</con:entry><con:entry>endTime</con:entry></con:parameterOrder>
-                </con:request>
+                <con:parameterOrder><con:entry>name</con:entry><con:entry>email</con:entry><con:entry>password</con:entry><con:entry>id</con:entry></con:parameterOrder></con:request>
+            <con:request name="Update" mediaType="multipart/form-data" postQueryString="false" id="5bd4c733-d82e-4d43-b193-ab6e0f898c26">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request>
+                    </con:request>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users</con:originalUri>
+                    <con:credentials>
+                        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+                        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters><entry key="email" value="new22@ya.ru" xmlns="http://eviware.com/soapui/config"/></con:parameters>
+                <con:parameterOrder><con:entry>name</con:entry><con:entry>email</con:entry><con:entry>password</con:entry><con:entry>id</con:entry></con:parameterOrder></con:request></con:method>
+        </con:resource><con:resource name="admin AJAX" path="/votingSystem/ajax/admin/users/100003" id="7f8ab4ae-b6a8-4aa8-a502-9dbebb27ad8b">
+            <con:settings/>
+            <con:parameters/>
+            <con:method name="adminGet" method="GET" id="7a2525a5-8d97-4c33-97ab-dc071c529154">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>text/html;charset=utf-8</con:mediaType>
+                    <con:status>500</con:status>
+                    <con:params/>
+                    <con:element>html</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType>application/json;charset=UTF-8</con:mediaType>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Response</con:element>
+                </con:representation>
+                <con:request name="AdminGet" mediaType="application/json" id="4f099c7f-94dc-466b-a544-6c8e41bdd691">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users/100000</con:originalUri>
+                    <con:credentials>
+                        <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+                        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+                        <con:authType>No Authorization</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                <con:parameterOrder/></con:request>
             </con:method>
-        </con:resource>
-    </con:interface>
+            <con:method name="adminPut" method="DELETE" id="6ba10636-f473-4505-8c66-673b087953df">
+                <con:settings/>
+                <con:parameters/>
+                <con:representation type="FAULT">
+                    <con:mediaType>text/html;charset=utf-8</con:mediaType>
+                    <con:status>405 500</con:status>
+                    <con:params/>
+                    <con:element>html</con:element>
+                </con:representation>
+                <con:representation type="REQUEST">
+                    <con:mediaType>application/json</con:mediaType>
+                    <con:params/>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE">
+                    <con:mediaType xsi:nil="true"/>
+                    <con:status>200</con:status>
+                    <con:params/>
+                    <con:element>data</con:element>
+                </con:representation>
+                <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json;charset=UTF-8</con:mediaType><con:status>409 500</con:status><con:params/><con:element xmlns:ns="http://localhost/votingSystem/rest/admin/users/100000">ns:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>text/html;charset=UTF-8</con:mediaType><con:status>500</con:status><con:params/><con:element>html</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>multipart/form-data</con:mediaType><con:params/></con:representation><con:representation type="REQUEST"><con:mediaType>multipart/mixed</con:mediaType><con:params/></con:representation><con:representation type="REQUEST"><con:mediaType>text/xml</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Enable" mediaType="text/xml" postQueryString="false" id="efc6bc55-7b69-4992-974d-9a1c54d342ed">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users/100000</con:originalUri>
+                    <con:credentials>
+                        <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+                        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+                        <con:authType>Global HTTP Settings</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                <con:parameterOrder/></con:request>
+            <con:request name="Delete" mediaType="text/xml" postQueryString="false" id="efc6bc55-7b69-4992-974d-9a1c54d342ed">
+                    <con:settings>
+                        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+                    </con:settings>
+                    <con:endpoint>http://localhost:8080</con:endpoint>
+                    <con:request/>
+                    <con:originalUri>http://localhost/votingSystem/rest/admin/users/100000</con:originalUri>
+                    <con:credentials>
+                        <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+                        <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+                        <con:authType>Global HTTP Settings</con:authType>
+                    </con:credentials>
+                    <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                    <con:jmsPropertyConfig/>
+                    <con:parameters/>
+                <con:parameterOrder/></con:request></con:method>
+        </con:resource></con:interface>
     <con:properties/>
     <con:wssContainer/>
     <con:oAuth2ProfileContainer/>
-    <con:sensitiveInformation/>
+    <con:oAuth1ProfileContainer/><con:sensitiveInformation/>
 </con:soapui-project>
