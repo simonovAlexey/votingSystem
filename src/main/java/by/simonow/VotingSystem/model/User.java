@@ -99,16 +99,27 @@ public class User extends NamedEntity {
         return enabled;
     }
 
-    public void setRoles(Collection<Role> roles) {
-        this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }
 
+    public void setRoles(Collection<Role> roles) {
+        this.roles = CollectionUtils.isEmpty(roles) ? Collections.emptySet() : EnumSet.copyOf(roles);
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return "User (" +
+                "id=" + getId() +
+                ", email=" + email +
+                ", name=" + name +
+                ", enabled=" + enabled +
+                ", roles=" + roles +
+                ')';
     }
 
 }

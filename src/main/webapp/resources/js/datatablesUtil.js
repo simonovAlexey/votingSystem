@@ -1,9 +1,7 @@
 var form;
-var menuModal;
 
 function makeEditable() {
     form = $('#detailsForm');
-    menuModal = $('#showMenu');
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
         failNoty(event, jqXHR, options, jsExc);
     });
@@ -57,12 +55,13 @@ function formatDate(date) {
 }
 
 function deleteRow(id) {
+    var u = ajaxUrl + id;
     $.ajax({
-        url: ajaxUrl + id,
+        url: u,
         type: 'DELETE',
         success: function () {
             updateTable();
-            successNoty('common.deleted');
+            // successNoty('common.deleted');
         }
     });
 }
