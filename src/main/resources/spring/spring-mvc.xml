@@ -31,6 +31,15 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
+        <property name="formatters">
+            <set>
+                <bean class="by.simonow.VotingSystem.util.converter.DateTimeFormatters.LocalTimeFormatter"/>
+                <bean class="by.simonow.VotingSystem.util.converter.DateTimeFormatters.LocalDateFormatter"/>
+            </set>
+        </property>
+    </bean>
+
     <context:component-scan base-package="by.simonow.**.web"/>
 
     <!--  all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files -->
