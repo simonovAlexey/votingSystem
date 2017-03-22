@@ -11,7 +11,7 @@ function clearFilter() {
 
 function updateTable() {
     $.ajax({
-        type: "POST",
+        type: 'POST',
         url: ajaxUrl + "filter",
         data: $("#filter").serialize(),
         success: updateTableByData
@@ -22,9 +22,9 @@ function drawMenu(id) {
     $('#modalTitle').html(i18n[menuTitleKey]);
     debugger;
     $.ajax({
-        url: "ajax/restaurants/menu=" + id,
+        url: 'ajax/restaurants/menu=' + id,
         type: 'GET',
-        dataType: 'json',
+        dataType: 'JSON',
         success: function () {
             $.each(data, function (key, value) {
                 alert( key + ": " + value );
