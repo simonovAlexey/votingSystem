@@ -1,21 +1,37 @@
 package by.simonow.VotingSystem;
 
 
+import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.model.Role;
 import by.simonow.VotingSystem.model.User;
+import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
 
+import java.time.LocalDateTime;
+
 import static java.util.Objects.requireNonNull;
 
-public class AuthorizedUser extends org.springframework.security.core.userdetails.User{
+public class AuthorizedUser extends org.springframework.security.core.userdetails.User {
 
     private static final User USER = new User(100003, "Admin", "admin@gmail.com", "admin", Role.ROLE_ADMIN, Role.ROLE_USER);
+    private static final Votes VOTE = new Votes(100100, LocalDateTime.now());
+    private static final Restaurant REST = new Restaurant(100000, "Р1 Mak",  null);
+    private static AuthorizedUser temp;
+
+    private static AuthorizedUser getTemp() {
+        if (temp == null) {
+            VOTE.setRestaurant(REST);
+            temp = new AuthorizedUser(USER, VOTE);
+        }
+        return temp;
+    }
+
     private UserTo userTo;
 
-    public AuthorizedUser(User user) {
+    public AuthorizedUser(User user, Votes vote) {
         super(user.getEmail(), user.getPassword(), user.isEnabled(), true, true, true, user.getRoles());
-        this.userTo = UserUtil.asTo(user);
+        this.userTo = UserUtil.asTo(user, vote);
     }
 
 
@@ -26,7 +42,7 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
         }
         Object principal = auth.getPrincipal();
         return (principal instanceof AuthorizedUser) ? (AuthorizedUser) principal : null;*/ //TODO after spring security
-        return new AuthorizedUser(USER);
+        return getTemp();
     }
 
     public static AuthorizedUser get() {
@@ -37,7 +53,6 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
 
     public static int id() {
         return get().userTo.getId();
-//        return id;
     }
 
     public void update(UserTo newTo) {

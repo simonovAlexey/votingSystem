@@ -3,6 +3,7 @@ package by.simonow.VotingSystem.util;
 
 import by.simonow.VotingSystem.model.Role;
 import by.simonow.VotingSystem.model.User;
+import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.to.UserTo;
 
 public class UserUtil {
@@ -12,8 +13,8 @@ public class UserUtil {
         return new User(null, newUser.getName(), newUser.getEmail().toLowerCase(), newUser.getPassword(), Role.ROLE_USER);
     }
 
-    public static UserTo asTo(User user) {
-        return new UserTo(user.getId(), user.getName(), user.getEmail(), user.getPassword());
+    public static UserTo asTo(User user, Votes vote) {
+        return new UserTo(user.getId(), user.getName(), user.getEmail(), user.getPassword(),vote);
     }
 
     public static User updateFromTo(User user, UserTo userTo) {

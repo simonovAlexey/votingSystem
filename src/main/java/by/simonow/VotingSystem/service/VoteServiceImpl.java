@@ -14,12 +14,10 @@ import org.springframework.util.Assert;
 
 import java.time.DateTimeException;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 import static java.time.LocalDateTime.now;
-import static java.time.LocalDateTime.of;
 
 @Service("voteService")
 public class VoteServiceImpl implements VoteService {
@@ -60,13 +58,11 @@ public class VoteServiceImpl implements VoteService {
         Assert.notNull(rest, "rest must not be null");
         Assert.notNull(user, "user must not be null");
         LocalDateTime dateTime = now();
-        LocalDateTime startDate = of(dateTime.toLocalDate(), LocalTime.MIN);
-        LocalDateTime endDate = of(dateTime.toLocalDate(), LocalTime.MAX);
         Votes voteOld = null;
         Integer userId = user.getId();
         try {
             //TODO refactory whith using UserTo todayVotedRest
-            voteOld = getTodayVote(startDate, endDate, userId);
+            voteOld = repository.getTodayVote(userId);
         } catch (NotFoundException e) {
             return repository.save(new Votes(dateTime, rest, user), userId);
         }
@@ -79,9 +75,9 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public Votes getTodayVote(LocalDateTime startDate, LocalDateTime endDate, int userId) {
+    public Votes getVoteByDate(LocalDateTime startDate, LocalDateTime endDate, int userId) {
         Assert.notNull(startDate, "startDate must not be null");
         Assert.notNull(endDate, "endDate must not be null");
-        return checkNotFoundWithId(repository.getTodayVote(startDate, endDate, userId), userId);
+        return checkNotFoundWithId(repository.getVoteByDate(startDate, endDate, userId), userId);
     }
 }

@@ -62,7 +62,7 @@ public class VoteServiceImplTest extends AbstractServiceTest {
 
     @Test
     public void testGetTodayVote() throws Exception {
-        Votes todayVote = service.getTodayVote(of(2017, Month.JANUARY, 12, 0, 0), of(2017, Month.JANUARY, 12, 23, 59), USER_ID);
+        Votes todayVote = service.getVoteByDate(of(2017, Month.JANUARY, 12, 0, 0), of(2017, Month.JANUARY, 12, 23, 59), USER_ID);
         MATCHER.assertEquals(VOTE2, todayVote);
     }
 
@@ -70,7 +70,7 @@ public class VoteServiceImplTest extends AbstractServiceTest {
     public void testNotFoundGetTodayVote() throws Exception {
         thrown.expect(NotFoundException.class);
         thrown.expectMessage("Not found entity with id=" + ADMIN_ID);
-        Votes todayVote = service.getTodayVote(of(2017, Month.JANUARY, 10, 0, 0), of(2017, Month.JANUARY, 10, 23, 59), ADMIN_ID);
+        Votes todayVote = service.getVoteByDate(of(2017, Month.JANUARY, 10, 0, 0), of(2017, Month.JANUARY, 10, 23, 59), ADMIN_ID);
     }
 
     @Test

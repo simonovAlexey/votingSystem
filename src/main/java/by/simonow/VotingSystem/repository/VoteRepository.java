@@ -19,6 +19,8 @@ public interface VoteRepository {
 
     List<Votes> getAllByUser(int userId);
 
-    Votes getTodayVote(LocalDateTime startDate, LocalDateTime endDate, int userId);
+    Votes getVoteByDate(LocalDateTime startDate, LocalDateTime endDate, int userId);
+
+    Votes getTodayVote(int userId);
 
 }

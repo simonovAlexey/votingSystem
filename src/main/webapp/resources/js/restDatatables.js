@@ -53,17 +53,6 @@ $(function () {
                 "data": "votes"
             },
             {
-                "render": function (data, type, row) {
-                    if (type == 'display') {
-                        return '<a class="btn btn-xs btn-primary" onclick="drawMenu(' + row.id + ');">' +
-                            '<span class="glyphicon glyphicon-cutlery" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
-                    }
-                    return data;
-                },
-                "defaultContent": "",
-                "orderable": false
-            },
-            {
                 "render": renderEditBtn,
                 "defaultContent": "",
                 "orderable": false

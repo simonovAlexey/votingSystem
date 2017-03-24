@@ -2,6 +2,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -13,7 +15,16 @@
             <li><a href="users"><spring:message code="users.title"/></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a class="btn btn-default btn-sm" role="button" href="profile">${userTo.name} <spring:message code="app.profile"/></a></li>
+            <%--<jsp:useBean id="userTo" scope="page" type="by.simonow.VotingSystem.to.UserTo"/>--%>
+            <li><a href="profile">${userTo.name} <spring:message code="app.profile"/></a></li>
+                <c:choose>
+                    <c:when test="${userTo.todayVote!=null}">
+                        <li><p class="navbar-text"><spring:message code="users.todayVote"/> <b>${userTo.todayVote.restaurant.name}</b></p></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li><p class="navbar-text text-primary"><spring:message code="users.notVote"/></p></li>
+                    </c:otherwise>
+                </c:choose>
             <%--<li>
                     <form:form class="navbar-form" action="logout" method="post">
                         <sec:authorize access="isAuthenticated()">

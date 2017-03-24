@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
+
+import static java.time.LocalDateTime.now;
+import static java.time.LocalDateTime.of;
 
 
 @Repository
@@ -46,7 +50,15 @@ public class DataJpaVoteRepositoryImpl implements VoteRepository {
     }
 
     @Override
-    public Votes getTodayVote(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-        return crudRepository.getTodayVote(startDate, endDate, userId);
+    public Votes getVoteByDate(LocalDateTime startDate, LocalDateTime endDate, int userId) {
+        return crudRepository.getVoteByDate(startDate, endDate, userId);
+    }
+
+    @Override
+    public Votes getTodayVote(int userId) {
+        LocalDateTime dateTime = now();
+        LocalDateTime startDate = of(dateTime.toLocalDate(), LocalTime.MIN);
+        LocalDateTime endDate = of(dateTime.toLocalDate(), LocalTime.MAX);
+        return getVoteByDate(startDate,endDate,userId);
     }
 }

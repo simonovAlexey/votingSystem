@@ -22,7 +22,7 @@ public interface VoteService {
 
     Votes save(Votes votes, int userId);
 
-    Votes getTodayVote(LocalDateTime startDate, LocalDateTime endDate, int userId);
+    Votes getVoteByDate(LocalDateTime startDate, LocalDateTime endDate, int userId);
 
     Votes vote(Restaurant rest, User user) throws DateTimeException, IllegalArgumentException, NotFoundException;
 

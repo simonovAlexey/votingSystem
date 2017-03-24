@@ -2,7 +2,9 @@ package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.AuthorizedUser;
 import by.simonow.VotingSystem.model.User;
+import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.repository.UserRepository;
+import by.simonow.VotingSystem.repository.VoteRepository;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
@@ -23,6 +25,8 @@ import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
+    @Autowired
+    private VoteRepository voteRepository;
     @Autowired
     private UserRepository userRepository;
 
@@ -54,7 +58,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public Page<User> getAllByPage(Pageable pageable){
+    public Page<User> getAllByPage(Pageable pageable) {
         return userRepository.findAllByPage(pageable);
     }
 
@@ -78,13 +82,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setEnabled(enabled);
         userRepository.save(user);
     }
- @Override
+
+    @Override
     public AuthorizedUser loadUserByUsername(String email) throws UsernameNotFoundException {
         User u = userRepository.getByEmail(email.toLowerCase());
         if (u == null) {
             throw new UsernameNotFoundException("User " + email + " is not found");
         }
-        return new AuthorizedUser(u);
+
+        Votes todayVote = null;
+        try {
+            todayVote = voteRepository.getTodayVote(u.getId());
+        } catch (Exception e) {
+            //user not voted today
+        }
+        return new AuthorizedUser(u, todayVote);
     }
 
 }
