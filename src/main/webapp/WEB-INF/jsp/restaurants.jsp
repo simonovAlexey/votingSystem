@@ -20,9 +20,9 @@
     </div>
 
     <div class="view-box">
-            <%--<a class="btn btn-info" onclick="add('<spring:message code="meals.add"/>')">
+            <a class="btn btn-info" onclick="add('<spring:message code="rest.add"/>')">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            </a>--%>
+            </a>
 
             <table class="table table-striped display" id="datatable">
                 <thead>
@@ -47,7 +47,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="modalTitle"></h2>
+                <h2 class="modal-title" id="modalTitleMenu"></h2>
             </div>
             <div class="modal-body">
                 <table class="table table-striped display" id="menutable">
@@ -60,7 +60,7 @@
                     <c:forEach items="${meals}" var="meal">
                         <jsp:useBean id="meal" scope="page" type="by.simonow.VotingSystem.model.Meal"/>
                         <tr>
-                            <td id="description"><c:out value="${meal.description}"/></td>
+                            <td id="descriptionM"><c:out value="${meal.description}"/></td>
                             <td id="price">${meal.price/100},${meal.price%100}</td>
                         </tr>
                     </c:forEach>
@@ -71,7 +71,7 @@
     </div>
 </div>
 
-    <%--<div class="modal fade" id="editRow">
+    <div class="modal fade" id="editRow">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -83,31 +83,15 @@
                         <input type="hidden" id="id" name="id">
 
                         <div class="form-group">
-                            <label for="dateTime" class="control-label col-xs-3"><spring:message
-                                    code="meals.dateTime"/></label>
+                            <label for="name" class="control-label col-xs-3"><spring:message
+                                    code="rest.name"/></label>
 
                             <div class="col-xs-9">
-                                <input class="form-control" id="dateTime" name="dateTime"
-                                       placeholder="<spring:message code="meals.dateTime"/>">
+                                <input class="form-control" id="name" name="name"
+                                       placeholder="<spring:message code="rest.name"/>">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="description" class="control-label col-xs-3"><spring:message
-                                    code="meals.description"/></label>
 
-                            <div class="col-xs-9">
-                                <input type="text" class="form-control" id="description" name="description"
-                                       placeholder="<spring:message code="meals.description"/>">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="calories" class="control-label col-xs-3"><spring:message
-                                    code="meals.calories"/></label>
-
-                            <div class="col-xs-9">
-                                <input type="number" class="form-control" id="calories" name="calories" placeholder="1000">
-                            </div>
-                        </div>
                         <div class="form-group">
                             <div class="col-xs-offset-3 col-xs-9">
                                 <button class="btn btn-primary" type="button" onclick="save()">
@@ -119,6 +103,6 @@
                 </div>
             </div>
         </div>
-    </div>--%>
+    </div>
 </body>
 </html>

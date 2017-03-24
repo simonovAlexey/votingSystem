@@ -6,7 +6,7 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header navbar-brand"><spring:message code="app.title"/></div>
         <div class="navbar-collapse collapse">
@@ -45,7 +45,7 @@
         <br/>
         <p>
             <a class="btn btn-lg btn-success" href="register"><spring:message code="app.register"/> &raquo;</a>
-            <button type="submit" class="btn btn-lg btn-primary" onclick="setCredentials('user@yandex.ru', 'password')">
+            <button type="submit" class="btn btn-lg btn-primary" onclick="setCredentials('user@ya.ru', 'password')">
                 <spring:message code="app.enter"/> User
             </button>
             <button type="submit" class="btn btn-lg btn-primary" onclick="setCredentials('admin@gmail.com', 'admin')">

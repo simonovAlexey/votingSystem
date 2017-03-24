@@ -13,6 +13,7 @@
             <li><a href="users"><spring:message code="users.title"/></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+            <li><a class="btn btn-default btn-sm" role="button" href="profile">${userTo.name} <spring:message code="app.profile"/></a></li>
             <%--<li>
                     <form:form class="navbar-form" action="logout" method="post">
                         <sec:authorize access="isAuthenticated()">

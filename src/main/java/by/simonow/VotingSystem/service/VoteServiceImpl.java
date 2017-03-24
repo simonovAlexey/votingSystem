@@ -65,6 +65,7 @@ public class VoteServiceImpl implements VoteService {
         Votes voteOld = null;
         Integer userId = user.getId();
         try {
+            //TODO refactory whith using UserTo todayVotedRest
             voteOld = getTodayVote(startDate, endDate, userId);
         } catch (NotFoundException e) {
             return repository.save(new Votes(dateTime, rest, user), userId);

@@ -3,23 +3,12 @@ var datatableApi;
 var editTitleKey = "rest.edit";
 var menuTitleKey = "rest.menu";
 
-// $(document).ready(function () {
-function clearFilter() {
-    $("#filter")[0].reset();
+function updateTable() {
     $.get(ajaxUrl, updateTableByData);
 }
 
-function updateTable() {
-    $.ajax({
-        type: 'POST',
-        url: ajaxUrl + "filter",
-        data: $("#filter").serialize(),
-        success: updateTableByData
-    });
-}
-
 function drawMenu(id) {
-    $('#modalTitle').html(i18n[menuTitleKey]);
+    $('#modalTitleMenu').html(i18n[menuTitleKey]);
     // debugger;
     $.ajax({
         url: 'ajax/restaurants/menu=' + id,
@@ -29,7 +18,7 @@ function drawMenu(id) {
             $.each(data, function (key, value) {
                 alert( key + ": " + value );
             });
-            $('#showMenu').modal()
+            // $('#showMenu').modal()
         }
     });
     /*$.get( + id,
@@ -64,6 +53,17 @@ $(function () {
                 "data": "votes"
             },
             {
+                "render": function (data, type, row) {
+                    if (type == 'display') {
+                        return '<a class="btn btn-xs btn-primary" onclick="drawMenu(' + row.id + ');">' +
+                            '<span class="glyphicon glyphicon-cutlery" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
+                    }
+                    return data;
+                },
+                "defaultContent": "",
+                "orderable": false
+            },
+            {
                 "render": renderEditBtn,
                 "defaultContent": "",
                 "orderable": false
@@ -76,7 +76,7 @@ $(function () {
         ],
         "order": [
             [
-                0,
+                2,
                 "desc"
             ]
         ],
