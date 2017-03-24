@@ -22,6 +22,7 @@ function extendsOpts(opts) {
                 "dataSrc": ""
             },
             "paging": false,
+            "scrollY": "200px",
             "info": true,
             "language": {
                 "search": i18n["common.search"]
