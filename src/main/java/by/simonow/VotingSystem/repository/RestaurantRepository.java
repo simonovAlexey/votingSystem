@@ -16,6 +16,8 @@ public interface RestaurantRepository {
     // null if restaurant do not belong to userId
     Restaurant get(int id);
 
+    Restaurant getWithVotes(int id);
+
     List<Restaurant> getAll();
 
     Restaurant getWithMeals(int id);

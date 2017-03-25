@@ -60,7 +60,7 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
     @Override
     @PostMapping(value = "/vote={id}")
-    public void doVote(@PathVariable("id") int id) {
-        super.doVote(id);
+    public void doVote(@PathVariable("id") int restId) {
+        super.doVote(restId);
     }
 }

@@ -33,7 +33,7 @@ public class RestaurantServiceImp implements RestaurantService {
 
     @Override
     public RestaurantTo getWithVotes(int id) throws NotFoundException {
-        Restaurant rest = checkNotFoundWithId(repository.get(id), id);
+        Restaurant rest = checkNotFoundWithId(repository.getWithVotes(id), id);
         return new RestaurantTo(rest.getId(),rest.getName(),rest.getVotes().size());
     }
     @Override

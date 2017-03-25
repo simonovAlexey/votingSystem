@@ -1,5 +1,6 @@
 package by.simonow.VotingSystem.web.restaurant;
 
+import by.simonow.VotingSystem.AuthorizedUser;
 import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.to.RestaurantTo;
@@ -26,6 +27,11 @@ public class RestaurantAjaxController extends AbstractRestaurantController {
         return super.get(id);
     }
 
+    @GetMapping(value = "/vRest")
+    public String getVotedResaurant() {
+        return AuthorizedUser.get().getUserTo().getTodayVote().getRestaurant().getName();
+    }
+
     @Override
     @GetMapping(value = "/menu={id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Meal> getMenu(@PathVariable("id") int id) {
@@ -45,5 +51,12 @@ public class RestaurantAjaxController extends AbstractRestaurantController {
         } else {
             super.update(rest, rest.getId());
         }
+    }
+
+    @Override
+    @PostMapping(value = "/v")
+    public void doVote(@RequestParam("id") int restId){
+        super.doVote(restId);
+
     }
 }

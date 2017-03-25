@@ -4,6 +4,7 @@ import by.simonow.VotingSystem.AuthorizedUser;
 import by.simonow.VotingSystem.model.Meal;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.model.User;
+import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.service.MealService;
 import by.simonow.VotingSystem.service.RestaurantService;
 import by.simonow.VotingSystem.service.UserService;
@@ -72,11 +73,12 @@ public abstract class AbstractRestaurantController {
         return service.getAllWithVotes();
     }
 
-    public void doVote(int id){
+    public void doVote(int restId){
         User user = userService.get(AuthorizedUser.id());
-        Restaurant rest = service.get(id);
-        LOG.info("doVote {} from User {}", id, user);
-        voteService.vote(rest,user);
+        Restaurant rest = service.get(restId);
+        LOG.info("doVote {} from User {}", restId, user);
+        Votes vote = voteService.vote(rest, user);
+        AuthorizedUser.get().getUserTo().setTodayVote(vote);
 
     }
 

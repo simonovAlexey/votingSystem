@@ -30,6 +30,11 @@ public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository {
     }
 
     @Override
+    public Restaurant getWithVotes(int id) {
+        return crudRepository.getWithVotes(id);
+    }
+
+    @Override
     public List<Restaurant> getAll() {
         return crudRepository.findAll();
     }

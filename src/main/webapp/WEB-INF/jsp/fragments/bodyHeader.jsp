@@ -19,10 +19,10 @@
             <li><a href="profile"><spring:message code="app.profile"/> <b>${userTo.name}</b></a></li>
                 <c:choose>
                     <c:when test="${userTo.todayVote!=null}">
-                        <li><p class="navbar-text"><spring:message code="users.todayVote"/> <b>${userTo.todayVote.restaurant.name}</b></p></li>
+                        <li><p class="navbar-text"><spring:message code="users.todayVote"/> <b id="votedRest">${userTo.todayVote.restaurant.name}</b></p></li>
                     </c:when>
                     <c:otherwise>
-                        <li><p class="navbar-text text-primary"><spring:message code="users.notVote"/></p></li>
+                        <li><p class="navbar-text text-primary"><spring:message code="users.notVote"/><b id="votedRest"></b></p></li>
                     </c:otherwise>
                 </c:choose>
             <%--<li>

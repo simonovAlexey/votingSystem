@@ -1,10 +1,44 @@
 var ajaxUrl = "ajax/restaurants/";
 var datatableApi;
+var disableVoting = ( voteRest != null && new Date().getHours() >= 11 );
 var editTitleKey = "rest.edit";
 var menuTitleKey = "rest.menu";
 
+
 function updateTable() {
     $.get(ajaxUrl, updateTableByData);
+}
+function showNote() {
+    $('#WarnNote').show(100);
+}
+
+function vote(element, id) {
+    $.ajax({
+        url: ajaxUrl + 'v',
+        type: 'POST',
+        data: 'id=' + id,
+        success: function () {
+            $('#votedRest').load("ajax/restaurants/vRest");
+            disableVoting = ( new Date().getHours() >= 11 );
+            updateTable();
+            // $('.vote').toggleClass('disabled');
+            successNoty('common.saved');
+        }
+    });
+}
+
+function renderVoteBtn(data, type, row) {
+    if (type == 'display') {
+        if (disableVoting) {
+            return '<a class="btn btn-xs btn-primary vote" disabled="true" onclick="showNote()" >' +
+                '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
+        }
+        else {
+            return '<a class="btn btn-xs btn-primary vote" onclick="vote($(this),' + row.id + ')">' +
+                '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
+        }
+    }
+    return data;
 }
 
 function drawMenu(id) {
@@ -16,19 +50,19 @@ function drawMenu(id) {
         dataType: 'JSON',
         success: function () {
             $.each(data, function (key, value) {
-                alert( key + ": " + value );
+                alert(key + ": " + value);
             });
             // $('#showMenu').modal()
         }
     });
     /*$.get( + id,
-        function (data) {
-            $.each(data, function (key, value) {
-                alert( key + ": " + value );
-                // $('#showMenu').find("td id='" + key + "']").val(value);
-            });
-            $('#showMenu').modal();
-        });*/
+     function (data) {
+     $.each(data, function (key, value) {
+     alert( key + ": " + value );
+     // $('#showMenu').find("td id='" + key + "']").val(value);
+     });
+     $('#showMenu').modal();
+     });*/
 }
 
 $(function () {
@@ -53,6 +87,11 @@ $(function () {
                 "data": "votes"
             },
             {
+                "render": renderVoteBtn,
+                "defaultContent": "",
+                "orderable": false
+            },
+            {
                 "render": renderEditBtn,
                 "defaultContent": "",
                 "orderable": false
@@ -70,7 +109,9 @@ $(function () {
             ]
         ],
         "createdRow": function (row, data, dataIndex) {
-            $(row).addClass(data.votes == 0 ? 'exceeded' : 'normal');
+            $(row).addClass(data.votes == 0 ? 'notVoted' : 'voted');
+            // datatableApi.column( 'restVote:name' ).addClass('disabled');
+            //addClass(data.votes == 0 ? 'notVoted' : 'voted');
         }
     }));
 });

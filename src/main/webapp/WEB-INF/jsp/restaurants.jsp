@@ -28,6 +28,7 @@
                 <th><spring:message code="rest.name"/></th>
                 <th><spring:message code="rest.menu"/></th>
                 <th><spring:message code="rest.votes"/></th>
+                <th><spring:message code="rest.vote"/></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -35,7 +36,12 @@
         </table>
     </div>
     <br>
+    <div id="WarnNote" class="alert alert-warning  alert-dismissable fade in" hidden="hidden">
+        <a class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <spring:message code="rest.noty"/>
+    </div>
 </div>
+
 
 <jsp:include page="fragments/footer.jsp"/>
 

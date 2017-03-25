@@ -10,6 +10,7 @@
     </li>
 <script type="text/javascript">
     var localeCode = "${pageContext.response.locale}";
+    var voteRest = "${userTo.todayVote.restaurant.name}";
     function show(lang) {
         window.location.href = window.location.href.split('?')[0] + '?lang=' + lang;
     }

@@ -58,14 +58,10 @@ public class VoteServiceImpl implements VoteService {
         Assert.notNull(rest, "rest must not be null");
         Assert.notNull(user, "user must not be null");
         LocalDateTime dateTime = now();
-        Votes voteOld = null;
         Integer userId = user.getId();
-        try {
-            //TODO refactory whith using UserTo todayVotedRest
-            voteOld = repository.getTodayVote(userId);
-        } catch (NotFoundException e) {
-            return repository.save(new Votes(dateTime, rest, user), userId);
-        }
+        Votes voteOld = repository.getTodayVote(userId);
+        if (voteOld == null) return repository.save(new Votes(dateTime, rest, user), userId);
+        if (voteOld.getRestaurant().getId()==rest.getId()) return voteOld;
 
         if (dateTime.toLocalTime().isBefore(VoteTime.MAX_VOTE_TIME)) {
             voteOld.setRestaurant(rest);
