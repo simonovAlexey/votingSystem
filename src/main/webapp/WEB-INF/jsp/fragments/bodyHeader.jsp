@@ -16,7 +16,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <%--<jsp:useBean id="userTo" scope="page" type="by.simonow.VotingSystem.to.UserTo"/>--%>
-            <li><a href="profile">${userTo.name} <spring:message code="app.profile"/></a></li>
+            <li><a href="profile"><spring:message code="app.profile"/> <b>${userTo.name}</b></a></li>
                 <c:choose>
                     <c:when test="${userTo.todayVote!=null}">
                         <li><p class="navbar-text"><spring:message code="users.todayVote"/> <b>${userTo.todayVote.restaurant.name}</b></p></li>

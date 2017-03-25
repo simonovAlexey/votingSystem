@@ -9,6 +9,9 @@
 .footer {
     padding-bottom: 15px;
 }
+.bg-grey {
+    background-color: #d7d7d7;
+}
 
 .disabled {
     opacity: 0.3;

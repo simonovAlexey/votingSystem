@@ -70,7 +70,7 @@ $(function () {
             ]
         ],
         "createdRow": function (row, data, dataIndex) {
-            $(row).addClass(data.votes > 3 ? 'exceeded' : 'normal');
+            $(row).addClass(data.votes == 0 ? 'exceeded' : 'normal');
         }
     }));
 });

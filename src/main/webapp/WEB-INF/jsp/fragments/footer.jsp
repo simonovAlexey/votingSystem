@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="footer">
+<footer class="container-fluid text-center">
     <br>
     <div class="container">
         <div class="page-information">
@@ -10,7 +10,7 @@
         </div>
         <p class="text-muted"><spring:message code="app.footer"/></p>
     </div>
-</div>
+</footer>
 
 <script type="text/javascript">
     var i18n = [];
