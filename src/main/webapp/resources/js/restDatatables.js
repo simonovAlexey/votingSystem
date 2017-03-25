@@ -9,10 +9,10 @@ function updateTable() {
     $.get(ajaxUrl, updateTableByData);
 }
 function showNote() {
-    $('#WarnNote').show(100);
+    $('#WarnNote').show(200);
 }
 
-function vote(element, id) {
+function vote(id) {
     $.ajax({
         url: ajaxUrl + 'v',
         type: 'POST',
@@ -21,7 +21,6 @@ function vote(element, id) {
             $('#votedRest').load("ajax/restaurants/vRest");
             disableVoting = ( new Date().getHours() >= 11 );
             updateTable();
-            // $('.vote').toggleClass('disabled');
             successNoty('common.saved');
         }
     });
@@ -34,7 +33,7 @@ function renderVoteBtn(data, type, row) {
                 '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
         }
         else {
-            return '<a class="btn btn-xs btn-primary vote" onclick="vote($(this),' + row.id + ')">' +
+            return '<a class="btn btn-xs btn-primary vote" onclick="vote( row.id )">' +
                 '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
         }
     }
