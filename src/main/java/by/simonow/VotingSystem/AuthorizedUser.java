@@ -14,7 +14,7 @@ import static java.util.Objects.requireNonNull;
 
 public class AuthorizedUser extends org.springframework.security.core.userdetails.User {
 
-    private static final User USER = new User(100003, "Admin", "admin@gmail.com", "admin", Role.ROLE_ADMIN, Role.ROLE_USER);
+    private static final User USER = new User(100004, "Admin", "admin@gmail.com", "admin", Role.ROLE_ADMIN, Role.ROLE_USER);
     private static final Votes VOTE = new Votes(100100, LocalDateTime.now());
     private static final Restaurant REST = new Restaurant(100000, "Р1 Mak",  null);
     private static AuthorizedUser temp;

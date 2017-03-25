@@ -50,9 +50,9 @@ public class RootController extends AbstractUserController {
         if (!result.hasErrors()) {
             try {
                 super.update(userTo, AuthorizedUser.id());
-//                AuthorizedUser.getWithVotes().update(userTo);  //TODO включить with security
+                AuthorizedUser.get().update(userTo);
                 status.setComplete();
-                return "redirect:meals";
+                return "redirect:restaurants";
             } catch (DataIntegrityViolationException ex) {
                 result.rejectValue("email", "exception.users.duplicate_email");
             }
