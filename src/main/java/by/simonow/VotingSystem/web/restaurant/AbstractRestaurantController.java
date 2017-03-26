@@ -36,9 +36,9 @@ public abstract class AbstractRestaurantController {
     private MealService mealService;
 
 
-    public RestaurantTo get(int id) {
-        LOG.info("getWithVotes restaurant id=", id);
-        return service.getWithVotes(id);
+    public RestaurantTo getTo(int id) {
+        LOG.info("getTo restaurant id=", id);
+        return service.getTo(id);
     }
 
     public Restaurant getWithMeals(int id) {

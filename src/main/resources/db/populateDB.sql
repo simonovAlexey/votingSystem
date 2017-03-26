@@ -11,10 +11,10 @@ INSERT INTO restaurant (name) VALUES
   ('Р3 Бистро');
 
 INSERT INTO users (name, email, password, registered)
-VALUES ('User', 'user@ya.ru', 'password', '2017-01-10 12:00:00');
+VALUES ('User', 'user@ya.ru', '$2a$10$Sh0ZD2NFrzRRJJEKEWn8l.92ROEuzlVyzB9SV1AM8fdluPR0aC1ni', '2017-01-10 12:00:00');
 
 INSERT INTO users (name, email, password, registered)
-VALUES ('Admin', 'admin@gmail.com', 'admin', '2017-01-09 12:00:00');
+VALUES ('Admin', 'admin@gmail.com', '$2a$10$WejOLxVuXRpOgr4IlzQJ.eT4UcukNqHlAiOVZj1P/nmc8WbpMkiju', '2017-01-09 12:00:00');
 
 INSERT INTO user_roles (role, user_id) VALUES
   ('ROLE_USER', 100003),

@@ -1,6 +1,6 @@
 var ajaxUrl = "ajax/restaurants/";
 var datatableApi;
-var disableVoting = ( voteRest != null && new Date().getHours() >= 11 );
+var disableVoting = ( voteRest != null && new Date().getHours() >= 11 ); //TODO correct disableVoting
 var editTitleKey = "rest.edit";
 var menuTitleKey = "rest.menu";
 

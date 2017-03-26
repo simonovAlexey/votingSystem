@@ -71,12 +71,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="control-label col-xs-3"><spring:message
-                                code="users.password"/></label>
+                        <label for="password" class="control-label col-xs-3"><spring:message code="users.password"/></label>
 
                         <div class="col-xs-9">
-                            <input type="password" class="form-control" id="password" name="password"
-                                   placeholder="<spring:message code="users.password"/>">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="users.password"/>">
                         </div>
                     </div>
 

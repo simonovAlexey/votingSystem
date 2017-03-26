@@ -15,7 +15,6 @@
             <li><a href="users"><spring:message code="users.title"/></a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <%--<jsp:useBean id="userTo" scope="page" type="by.simonow.VotingSystem.to.UserTo"/>--%>
             <li><a href="profile"><spring:message code="app.profile"/> <b>${userTo.name}</b></a></li>
                 <c:choose>
                     <c:when test="${userTo.todayVote!=null}">
@@ -25,7 +24,7 @@
                         <li><p class="navbar-text text-primary"><spring:message code="users.notVote"/><b id="votedRest"></b></p></li>
                     </c:otherwise>
                 </c:choose>
-            <%--<li>
+            <li>
                     <form:form class="navbar-form" action="logout" method="post">
                         <sec:authorize access="isAuthenticated()">
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -37,7 +36,7 @@
                             </button>
                         </sec:authorize>
                     </form:form>
-                </li>--%>
+            </li>
             <%--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>  глификон с текстом--%>
             <jsp:include page="lang.jsp"/>
         </ul>

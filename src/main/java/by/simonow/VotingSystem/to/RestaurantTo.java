@@ -7,12 +7,12 @@ public class RestaurantTo extends BaseTo {
 
     private final String name;
 
-    private final int votes;
+    private final Integer votes;
 
 
     public RestaurantTo(@JsonProperty("id") Integer id,
                         @JsonProperty("name") String name,
-                        @JsonProperty("votes") int votes) {
+                        @JsonProperty("votes") Integer votes) {
         super(id);
         this.name = name;
         this.votes = votes;

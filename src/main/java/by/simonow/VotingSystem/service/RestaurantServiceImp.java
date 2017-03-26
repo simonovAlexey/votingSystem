@@ -36,6 +36,13 @@ public class RestaurantServiceImp implements RestaurantService {
         Restaurant rest = checkNotFoundWithId(repository.getWithVotes(id), id);
         return new RestaurantTo(rest.getId(),rest.getName(),rest.getVotes().size());
     }
+
+    @Override
+    public RestaurantTo getTo(int id) throws NotFoundException {
+        Restaurant rest = checkNotFoundWithId(repository.get(id), id);
+        return new RestaurantTo(rest.getId(),rest.getName(),null);
+    }
+
     @Override
     public Restaurant get(int id) throws NotFoundException {
         return checkNotFoundWithId(repository.get(id), id);

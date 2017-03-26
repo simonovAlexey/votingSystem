@@ -6,11 +6,11 @@ function makeEditable() {
         failNoty(event, jqXHR, options, jsExc);
     });
 
-   /* var token = $("meta[name='_csrf']").attr("content"); //TODO after spring security
+    var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
     $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader(header, token);
-    });*/
+    });
 }
 
 // https://api.jquery.com/jquery.extend/#jQuery-extend-deep-target-object1-objectN
@@ -44,7 +44,7 @@ function updateRow(id) {
     $.get(ajaxUrl + id, function (data) {
         $.each(data, function (key, value) {
             form.find("input[name='" + key + "']").val(
-                // key === "dateTime" ? formatDate(value) : value
+                key === "dateTime" ? formatDate(value) : value
             );
         });
         $('#editRow').modal();

@@ -1,20 +1,18 @@
 package by.simonow.VotingSystem;
 
 
-import by.simonow.VotingSystem.model.Restaurant;
-import by.simonow.VotingSystem.model.Role;
 import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.model.Votes;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
-
-import java.time.LocalDateTime;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import static java.util.Objects.requireNonNull;
 
 public class AuthorizedUser extends org.springframework.security.core.userdetails.User {
 
-    private static final User USER = new User(100004, "Admin", "admin@gmail.com", "admin", Role.ROLE_ADMIN, Role.ROLE_USER);
+    /*private static final User USER = new User(100004, "Admin", "admin@gmail.com", "admin", Role.ROLE_ADMIN, Role.ROLE_USER);
     private static final Votes VOTE = new Votes(100100, LocalDateTime.now());
     private static final Restaurant REST = new Restaurant(100000, "Р1 Mak",  null);
     private static AuthorizedUser temp;
@@ -25,7 +23,7 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
             temp = new AuthorizedUser(USER, VOTE);
         }
         return temp;
-    }
+    }*/
 
     private UserTo userTo;
 
@@ -36,13 +34,12 @@ public class AuthorizedUser extends org.springframework.security.core.userdetail
 
 
     public static AuthorizedUser safeGet() {
-        /*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth == null) {
             return null;
         }
         Object principal = auth.getPrincipal();
-        return (principal instanceof AuthorizedUser) ? (AuthorizedUser) principal : null;*/ //TODO after spring security
-        return getTemp();
+        return (principal instanceof AuthorizedUser) ? (AuthorizedUser) principal : null;
     }
 
     public static AuthorizedUser get() {

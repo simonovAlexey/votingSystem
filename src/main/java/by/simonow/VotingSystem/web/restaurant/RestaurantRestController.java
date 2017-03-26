@@ -19,8 +19,8 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
     @Override
     @GetMapping(value = "/{id}")
-    public RestaurantTo get(@PathVariable("id") int id) {
-        return super.get(id);
+    public RestaurantTo getTo(@PathVariable("id") int id) {
+        return super.getTo(id);
     }
 
     @Override

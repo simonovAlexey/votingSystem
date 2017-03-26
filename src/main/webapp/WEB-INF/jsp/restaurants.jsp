@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://votingSystem.simonow.by/functions" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
@@ -18,9 +19,11 @@
     </div>
 
     <div class="view-box">
-        <a class="btn btn-info" onclick="add('<spring:message code="rest.add"/>')">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </a>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <a class="btn btn-info" onclick="add('<spring:message code="rest.add"/>')">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </a>
+        </sec:authorize>
 
         <table class="table table-striped display" id="datatable">
             <thead>
@@ -46,7 +49,7 @@
 <jsp:include page="fragments/footer.jsp"/>
 
 
-<div class="modal" id="showMenu">
+<%--<div class="modal" id="showMenu">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -73,7 +76,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>--%>
 
 <div class="modal fade" id="editRow">
     <div class="modal-dialog">

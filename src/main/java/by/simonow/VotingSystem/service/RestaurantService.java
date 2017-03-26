@@ -15,6 +15,8 @@ public interface RestaurantService {
 
     RestaurantTo getWithVotes(int id) throws NotFoundException;
 
+    RestaurantTo getTo(int id) throws NotFoundException;
+
     Restaurant get(int id) throws NotFoundException;
 
     List<Restaurant> getAll();

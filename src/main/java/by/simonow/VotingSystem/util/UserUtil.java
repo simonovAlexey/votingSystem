@@ -26,7 +26,7 @@ public class UserUtil {
 
     public static User prepareToSave(User user) {
         user.setPassword(user.getPassword());
-//        user.setPassword(PasswordUtil.encode(user.getPassword())); //TODO  after Spring Security
+        user.setPassword(PasswordUtil.encode(user.getPassword()));
         user.setEmail(user.getEmail().toLowerCase());
         return user;
     }

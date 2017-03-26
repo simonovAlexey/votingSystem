@@ -19,6 +19,7 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
+import static by.simonow.VotingSystem.util.UserUtil.prepareToSave;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFound;
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
@@ -33,7 +34,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User save(User user) {
         Assert.notNull(user, "user must not be null");
-        return userRepository.save(user);
+        return userRepository.save(prepareToSave(user));
     }
 
     @Override
@@ -65,14 +66,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
-        userRepository.save(user);
+        userRepository.save(prepareToSave(user));
     }
 
     @Transactional
     @Override
     public void update(UserTo userTo) {
-        User user = get(userTo.getId());
-        userRepository.save(UserUtil.updateFromTo(user, userTo));
+        User user = UserUtil.updateFromTo(get(userTo.getId()), userTo);
+        userRepository.save(prepareToSave(user));
     }
 
     @Override
