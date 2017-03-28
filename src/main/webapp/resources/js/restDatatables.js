@@ -1,6 +1,6 @@
 var ajaxUrl = "ajax/restaurants/";
 var datatableApi;
-var disableVoting = ( voteRest != null && new Date().getHours() >= 11 ); //TODO correct disableVoting
+var disableVoting = ( voteRest != "" && timeToVoting ); //see lang.jsp
 var editTitleKey = "rest.edit";
 var menuTitleKey = "rest.menu";
 
@@ -33,7 +33,7 @@ function renderVoteBtn(data, type, row) {
                 '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
         }
         else {
-            return '<a class="btn btn-xs btn-primary vote" onclick="vote( row.id )">' +
+            return '<a class="btn btn-xs btn-primary vote" onclick="vote(' + row.id + ')">' +
                 '<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"><spring:message code="rest.vote"/></span></a>';
         }
     }

@@ -1,6 +1,7 @@
 package by.simonow.VotingSystem.web.interceptor;
 
 import by.simonow.VotingSystem.AuthorizedUser;
+import by.simonow.VotingSystem.VoteTime;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -18,6 +19,7 @@ public class ModelInterceptor extends HandlerInterceptorAdapter {
             AuthorizedUser authorizedUser = AuthorizedUser.safeGet();
             if (authorizedUser != null) {
                 modelAndView.getModelMap().addAttribute("userTo", authorizedUser.getUserTo());
+                modelAndView.getModelMap().addAttribute("maxVoteTime", VoteTime.MAX_VOTE_TIME);
             }
         }
     }
