@@ -1,5 +1,4 @@
 var ajaxUrl = "ajax/restaurants/";
-var datatableApi;
 var disableVoting = ( voteRest != "" && timeToVoting ); //see lang.jsp
 var editTitleKey = "rest.edit";
 var menuTitleKey = "rest.menu";
@@ -19,7 +18,7 @@ function vote(id) {
         data: 'id=' + id,
         success: function () {
             $('#votedRest').load("ajax/restaurants/vRest");
-            disableVoting = ( new Date().getHours() >= 11 );
+            disableVoting = ( new Date().getHours() >= voteT );
             updateTable();
             successNoty('common.saved');
         }
@@ -64,53 +63,3 @@ function drawMenu(id) {
      });*/
 }
 
-$(function () {
-    datatableApi = $('#datatable').DataTable(extendsOpts({
-        "columns": [
-            {
-                "data": "name"
-
-            },
-            {
-                "render": function (data, type, row) {
-                    if (type == 'display') {
-                        return '<a class="btn btn-xs btn-primary" onclick="drawMenu(' + row.id + ');">' +
-                            '<span class="glyphicon glyphicon-cutlery" aria-hidden="true"><spring:message code="rest.menu"/></span></a>';
-                    }
-                    return data;
-                },
-                "defaultContent": "",
-                "orderable": false
-            },
-            {
-                "data": "votes"
-            },
-            {
-                "render": renderVoteBtn,
-                "defaultContent": "",
-                "orderable": false
-            },
-            {
-                "render": renderEditBtn,
-                "defaultContent": "",
-                "orderable": false
-            },
-            {
-                "render": renderDeleteBtn,
-                "defaultContent": "",
-                "orderable": false
-            }
-        ],
-        "order": [
-            [
-                2,
-                "desc"
-            ]
-        ],
-        "createdRow": function (row, data, dataIndex) {
-            $(row).addClass(data.votes == 0 ? 'notVoted' : 'voted');
-            // datatableApi.column( 'restVote:name' ).addClass('disabled');
-            //addClass(data.votes == 0 ? 'notVoted' : 'voted');
-        }
-    }));
-});

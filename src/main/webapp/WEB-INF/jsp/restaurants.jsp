@@ -7,9 +7,69 @@
 
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
+
+
 <body>
 <script type="text/javascript" src="resources/js/datatablesUtil.js" defer></script>
 <script type="text/javascript" src="resources/js/restDatatables.js" defer></script>
+
+<script type="text/javascript">
+    var datatableApi;
+    $(function () {
+        datatableApi = $('#datatable').DataTable(extendsOpts({
+            "columns": [
+                {
+                    "data": "name"
+
+                },
+                {
+                    "render": function (data, type, row) {
+                        if (type == 'display') {
+                            return '<a class="btn btn-sm btn-primary" onclick="drawMenu(' + row.id + ');">' +
+                                '<span class="glyphicon glyphicon-cutlery" aria-hidden="true"> <spring:message code="rest.menu"/></span></a>';
+                        }
+                        return data;
+                    },
+                    "defaultContent": "",
+                    "orderable": false
+                },
+                {
+                    "data": "votes"
+                },
+                {
+                    "render": renderVoteBtn,
+                    "defaultContent": "",
+                    "orderable": false
+                },
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                {
+                    "render": renderEditBtn,
+                    "defaultContent": "",
+                    "orderable": false
+                },
+                {
+                    "render": renderDeleteBtn,
+                    "defaultContent": "",
+                    "orderable": false
+                }
+            </sec:authorize>
+
+            ],
+            "order": [
+                [
+                    2,
+                    "desc"
+                ]
+            ],
+            "createdRow": function (row, data, dataIndex) {
+                $(row).addClass(data.votes == 0 ? 'notVoted' : 'voted');
+                // datatableApi.column( 'restVote:name' ).addClass('disabled');
+                //addClass(data.votes == 0 ? 'notVoted' : 'voted');
+            }
+        }));
+    });
+</script>
+
 <jsp:include page="fragments/bodyHeader.jsp"/>
 <br>
 <br>
@@ -32,8 +92,12 @@
                 <th><spring:message code="rest.menu"/></th>
                 <th><spring:message code="rest.votes"/></th>
                 <th><spring:message code="rest.vote"/></th>
+
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <th></th>
                 <th></th>
+            </sec:authorize>
+
             </tr>
             </thead>
         </table>
