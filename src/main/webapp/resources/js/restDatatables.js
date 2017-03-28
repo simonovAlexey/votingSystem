@@ -10,6 +10,11 @@ function updateTable() {
 function showNote() {
     $('#WarnNote').show(200);
 }
+function showMenu(id) {
+    $("#resultMenuModal").load('menu=' + id);
+    $('#resultMenuModal').modal();
+
+}
 
 function vote(id) {
     $.ajax({
@@ -39,27 +44,14 @@ function renderVoteBtn(data, type, row) {
     return data;
 }
 
-function drawMenu(id) {
-    $('#modalTitleMenu').html(i18n[menuTitleKey]);
-    // debugger;
-    $.ajax({
-        url: 'ajax/restaurants/menu=' + id,
-        type: 'GET',
-        dataType: 'JSON',
-        success: function () {
-            $.each(data, function (key, value) {
-                alert(key + ": " + value);
-            });
-            // $('#showMenu').modal()
+function renderMenuBtn(data, type, row) {
+    if (type == 'display') {
+        if (type == 'display') {
+            return '<a class="btn btn-sm btn-primary" onclick="showMenu(' + row.id + ');">' +
+                '<span class="glyphicon glyphicon-cutlery" aria-hidden="true"> <spring:message code="rest.menu"/></span></a>';
         }
-    });
-    /*$.get( + id,
-     function (data) {
-     $.each(data, function (key, value) {
-     alert( key + ": " + value );
-     // $('#showMenu').find("td id='" + key + "']").val(value);
-     });
-     $('#showMenu').modal();
-     });*/
+        return data;
+    }
 }
+
 

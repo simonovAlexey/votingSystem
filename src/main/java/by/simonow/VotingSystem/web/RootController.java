@@ -1,22 +1,30 @@
 package by.simonow.VotingSystem.web;
 
+import by.simonow.VotingSystem.AuthorizedUser;
+import by.simonow.VotingSystem.model.Meal;
+import by.simonow.VotingSystem.service.MealService;
+import by.simonow.VotingSystem.to.UserTo;
+import by.simonow.VotingSystem.util.UserUtil;
+import by.simonow.VotingSystem.web.user.AbstractUserController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.support.SessionStatus;
-import by.simonow.VotingSystem.AuthorizedUser;
-import by.simonow.VotingSystem.to.UserTo;
-import by.simonow.VotingSystem.util.UserUtil;
-import by.simonow.VotingSystem.web.user.AbstractUserController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class RootController extends AbstractUserController {
+
+    @Autowired
+    private MealService mealService;
 
     @GetMapping("/")
     public String root() {
@@ -80,5 +88,17 @@ public class RootController extends AbstractUserController {
         }
         model.addAttribute("register", true);
         return "profile";
+    }
+
+    @GetMapping(value = "/menu={id}")
+    public String getMenuById(@PathVariable("id") int id, ModelMap model) {
+        List<Meal> menu = mealService.getMenu(id);
+        String rName = null;
+        if (menu.size()>0) {
+            rName = menu.get(0).getRestaurant().getName();
+        }
+        model.addAttribute("meals", menu);
+        model.addAttribute("restaurant",rName);
+        return "fragments/menu";
     }
 }

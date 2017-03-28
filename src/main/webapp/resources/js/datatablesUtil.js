@@ -11,6 +11,8 @@ function makeEditable() {
     $(document).ajaxSend(function(e, xhr, options) {
         xhr.setRequestHeader(header, token);
     });
+
+
 }
 
 // https://api.jquery.com/jquery.extend/#jQuery-extend-deep-target-object1-objectN
