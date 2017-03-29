@@ -11,28 +11,29 @@
 <script type="text/javascript" src="resources/js/mealDatatables.js" defer></script>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
-<div class="jumbotron">
-    <div class="container">
-        <div class="shadow">
-            <h3><spring:message code="meals.title"/></h3>
+<br>
+<br>
+<div class="container">
+    <div class="page-header">
+        <h3><spring:message code="meals.title"/></h3>
+        <h4><c:out value="${restName}"/></h4>
+    </div>
 
-            <div class="view-box">
-                <a class="btn btn-info" onclick="add('<spring:message code="meals.add"/>')">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </a>
-                <table class="table table-striped display" id="datatable">
-                    <thead>
-                    <tr>
-                        <th><spring:message code="meals.description"/></th>
-                        <th><spring:message code="meals.price"/></th>
-                        <th><spring:message code="meals.inMenu"/></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
+    <div class="view-box">
+        <a class="btn btn-info" onclick="add('<spring:message code="meals.add"/>')">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+        <table class="table table-striped display" id="datatable">
+            <thead>
+            <tr>
+                <th><spring:message code="meals.description"/></th>
+                <th><spring:message code="meals.price"/></th>
+                <th><spring:message code="meals.inMenu"/></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
     </div>
 </div>
 <jsp:include page="fragments/footer.jsp"/>

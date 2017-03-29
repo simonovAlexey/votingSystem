@@ -26,4 +26,11 @@
     <script type="text/javascript" src="webjars/datatables/1.10.13/js/dataTables.bootstrap.min.js" defer></script>
     <script type="text/javascript" src="webjars/noty/2.3.8/js/noty/packaged/jquery.noty.packaged.min.js" defer></script>
     <script type="text/javascript" src="webjars/datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js" defer></script>
+
+    <script type="text/javascript">
+        var voteRest = "${userTo.todayVote.restaurant.name}";
+        var mealRestId = "${restId}";
+        var voteT = "${maxVoteTime}".substring(0, 2);
+        var timeToVoting = ( new Date().getHours() >= voteT );
+    </script>
 </head>

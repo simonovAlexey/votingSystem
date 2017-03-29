@@ -37,6 +37,16 @@
                 },
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 {
+                    "render": function (data, type, row) {
+                            if (type == 'display') {
+                                return '<a class="btn btn-sm btn-primary" href="meals/r=' + row.id +'/' + row.name + '">' +
+                                    '<span aria-hidden="true"> <spring:message code="rest.dishes"/></span></a>';
+                            }
+                    },
+                    "defaultContent": "",
+                    "orderable": false
+                },
+                {
                     "render": renderEditBtn,
                     "defaultContent": "",
                     "orderable": false
@@ -86,6 +96,7 @@
                 <th><spring:message code="rest.vote"/></th>
 
             <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <th></th>
                 <th></th>
                 <th></th>
             </sec:authorize>

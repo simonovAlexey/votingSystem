@@ -1,4 +1,4 @@
-var ajaxUrl = "ajax/meals/" + 100001 +'/';
+var ajaxUrl = "ajax/meals/" + mealRestId +'/';
 var datatableApi;
 var editTitleKey = "meals.edit";
 

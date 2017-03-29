@@ -68,7 +68,6 @@
             <a href="http://www.webjars.org/">WebJars</a>,
             <a href="http://datatables.net/">DataTables plugin</a>,
             <a href="http://ehcache.org">Ehcache</a>,
-            <a href="http://www.postgresql.org/">PostgreSQL</a>,
             <a href="http://junit.org/">JUnit</a>,
             <a href="http://hamcrest.org/JavaHamcrest/">Hamcrest</a>,
             <a href="http://jquery.com/">jQuery</a>,
@@ -78,13 +77,10 @@
 </div>
 <div class="container">
     <div class="lead">
-        &nbsp;&nbsp;&nbsp;<a href="https://github.com/JavaOPs/topjava">Java Enterprise проект</a> с
+        &nbsp;&nbsp;&nbsp;<a href="https://github.com/simonovAlexey/votingSystem">Система рейтинга ресторанов</a> с
         регистрацией/авторизацией и интерфейсом на основе ролей (USER, ADMIN).
-        Администратор может создавать/редактировать/удалять/пользователей, а пользователь - управлять своим
-        профилем и данными (день, еда, калории) через UI (по AJAX) и по REST интерфейсу с базовой авторизацией.
-        Возможна фильтрация данных по датам и времени, при этом цвет записи таблицы еды зависит от того, превышает ли
-        сумма
-        калорий за день норму (редактируемый параметр в профиле пользователя).
+        Администратор может создавать/редактировать/удалять/пользователей/рестораны/блюда, а пользователь - управлять своим
+        профилем и голосом (голосовать в течение дня, менять свой голос до 11.00) через UI (по AJAX) и по REST интерфейсу с базовой авторизацией.
         Весь REST интерфейс покрывается JUnit тестами, используя Spring MVC Test и Spring Security Test.
     </div>
 </div>

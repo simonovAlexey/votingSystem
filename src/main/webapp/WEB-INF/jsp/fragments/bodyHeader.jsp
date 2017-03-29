@@ -28,14 +28,13 @@
                             id="votedRest">${userTo.todayVote.restaurant.name}</b></p></li>
                 </c:when>
                 <c:otherwise>
-                    <li><p class="navbar-text text-primary"><spring:message code="users.notVote"/><b id="votedRest"></b>
+                    <li><p class="navbar-text text-primary"><spring:message code="users.notVote"/> <b id="votedRest"></b>
                     </p></li>
                 </c:otherwise>
             </c:choose>
             <li>
                 <form:form class="navbar-form" action="logout" method="post">
                     <sec:authorize access="isAuthenticated()">
-                        <%--<a class="btn btn-info" role="button" href="profile">${userTo.name} <spring:message code="app.profile"/></a>--%>
                         <button class="btn btn-primary" type="submit">
                             <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                         </button>
