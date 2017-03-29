@@ -1,9 +1,8 @@
 # The voting system for quality of  the restaurants
-## Task:
 
 Design and implement a JSON API using Hibernate/Spring/SpringMVC (or Spring-Boot).
 
-The task is:
+###The task is:
 
 Build a voting system for deciding where to have lunch.
 
