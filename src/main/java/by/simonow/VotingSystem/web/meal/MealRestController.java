@@ -16,31 +16,31 @@ public class MealRestController extends AbstractMealController {
     static final String REST_URL = "/rest/meals";
 
     @Override
-    @GetMapping("/r={restId}/{id}")
+    @GetMapping("/{restId}/{id}")
     public Meal get(@PathVariable("id") int id,@PathVariable("restId") int restId) {
         return super.get(id,restId);
     }
 
     @Override
-    @DeleteMapping("/r={restId}/{id}")
+    @DeleteMapping("/{restId}/{id}")
     public void delete(@PathVariable("id") int id,@PathVariable("restId") int restId) {
         super.delete(id,restId);
     }
 
 
     @Override
-    @GetMapping(value = "/r={restId}")
+    @GetMapping(value = "/{restId}")
     public List<Meal> getAll(@PathVariable("restId") int restId) {
         return super.getAll(restId);
     }
 
     @Override
-    @PutMapping(value = "/r={restId}/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/{restId}/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@Valid @RequestBody Meal meal, @PathVariable("restId") int restId, @PathVariable("id") int id) {
         super.update(meal, id,restId);
     }
 
-    @PostMapping(value = "/r={restId}/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/{restId}/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Meal> createWithLocation(@Valid @RequestBody Meal meal,@PathVariable("restId") int restId) {
         Meal created = super.create(meal,restId);
 
