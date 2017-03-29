@@ -6,9 +6,6 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Алексей on 08.01.2017.
- */
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 @NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")}),

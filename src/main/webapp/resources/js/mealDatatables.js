@@ -14,7 +14,7 @@ function menuSelect(chkbox, id) {
         type: 'POST',
         data: 'inMenu=' + inMenu,
         success: function () {
-            chkbox.closest('tr').toggleClass('voted');
+            chkbox.closest('tr').toggleClass('selected');
             successNoty(inMenu ? 'common.enabled' : 'common.disabled');
         }
     });
@@ -63,7 +63,7 @@ $(function () {
         ],
         "createdRow": function (row, data, dataIndex) {
             if (data.inMenu) {
-                $(row).addClass("voted");
+                $(row).addClass("selected");
             }
         }
     }));

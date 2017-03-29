@@ -56,7 +56,7 @@
                 ]
             ],
             "createdRow": function (row, data, dataIndex) {
-                $(row).addClass(data.votes == 0 ? 'notVoted' : 'voted');
+                $(row).addClass(data.votes == 0 ? 'notVoted' : 'selected');
             }
         }));
     });

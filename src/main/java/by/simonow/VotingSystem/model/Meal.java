@@ -10,16 +10,6 @@ import org.hibernate.validator.constraints.SafeHtml;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-/**
- * GKislin
- * 11.01.2015.
- */
-@NamedQueries({
-       /* @NamedQuery(name = Meal.M_DELETE, query = "DELETE FROM Meal m WHERE m.id=:id AND m.user.id=:userId"),
-        @NamedQuery(name = Meal.M_GET, query = "SELECT m FROM Meal m WHERE m.id=:id AND m.user.id=:userId"),
-        @NamedQuery(name = Meal.M_GET_MENU, query = "SELECT m FROM Meal m WHERE m.user.id=?1 and m.dateTime BETWEEN ?2 AND ?3 ORDER BY m.dateTime DESC "),
-        @NamedQuery(name = Meal.M_ALL, query = "SELECT m FROM Meal m WHERE m.user.id=:userId ORDER BY m.dateTime DESC"),*/
-})
 @Entity
 @Table(name = "meals")
 public class Meal extends BaseEntity {
@@ -38,7 +28,7 @@ public class Meal extends BaseEntity {
     private String description;
 
     @Column(name = "price", nullable = false)
-    @Range(min = 100)
+    @Range(min = 10, max = 100000)
     @NotNull
     private int price;
 
