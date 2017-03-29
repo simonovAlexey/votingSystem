@@ -1,4 +1,4 @@
-# The voting system for quality of  the restaurants
+# The voting system for quality of restaurants
 
 Design and implement a JSON API using Hibernate/Spring/SpringMVC (or Spring-Boot).
 
