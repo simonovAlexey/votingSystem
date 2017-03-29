@@ -8,7 +8,7 @@ function makeEditable() {
 
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
-    $(document).ajaxSend(function(e, xhr, options) {
+    $(document).ajaxSend(function (e, xhr, options) {
         xhr.setRequestHeader(header, token);
     });
 
@@ -56,6 +56,12 @@ function updateRow(id) {
 function formatDate(date) {
     return date.replace('T', ' ').substr(0, 16);
 }
+function formatPrice(price) {
+    var a = Math.floor(price / 100);
+    var b = price % 100;
+    return a + ',' + b;
+}
+
 
 function deleteRow(id) {
     $.ajax({
@@ -112,7 +118,7 @@ function failNoty(event, jqXHR, options, jsExc) {
     // RFC 7230 states that clients should ignore reason phrases in HTTP/1.1 response messages.
     // Since the reason phrase is optional, Tomcat no longer sends it (statusText).
     failedNote = noty({
-        text: i18n['common.status'] + ': ' + jqXHR.status + "<br>"+ errorInfo.cause + "<br>" + errorInfo.details.join("<br>"),
+        text: i18n['common.status'] + ': ' + jqXHR.status + "<br>" + errorInfo.cause + "<br>" + errorInfo.details.join("<br>"),
         // text: i18n['common.status'] + ': ' + jqXHR.statusText + "<br>",
         type: 'error',
         layout: 'bottomRight'
@@ -128,7 +134,7 @@ function renderEditBtn(data, type, row) {
 
 function renderDeleteBtn(data, type, row) {
     if (type == 'display') {
-        return '<a class="btn btn-xs btn-danger" onclick="deleteRow(' + row.id + ');">'+
+        return '<a class="btn btn-xs btn-danger" onclick="deleteRow(' + row.id + ');">' +
             '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>';
     }
 }

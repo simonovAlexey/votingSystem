@@ -1,19 +1,22 @@
-var ajaxUrl = "ajax/meals/";
+var ajaxUrl = "ajax/meals/" + 100001 +'/';
 var datatableApi;
 var editTitleKey = "meals.edit";
 
-// $(document).ready(function () {
-function clearFilter() {
-    $("#filter")[0].reset();
+
+function updateTable() {
     $.get(ajaxUrl, updateTableByData);
 }
 
-function updateTable() {
+function menuSelect(chkbox, id) {
+    var inMenu = chkbox.is(":checked");
     $.ajax({
-        type: "POST",
-        url: ajaxUrl + "filter",
-        data: $("#filter").serialize(),
-        success: updateTableByData
+        url: ajaxUrl + id,
+        type: 'POST',
+        data: 'inMenu=' + inMenu,
+        success: function () {
+            chkbox.closest('tr').toggleClass('voted');
+            successNoty(inMenu ? 'common.enabled' : 'common.disabled');
+        }
     });
 }
 
@@ -21,19 +24,25 @@ $(function () {
     datatableApi = $('#datatable').DataTable(extendsOpts({
         "columns": [
             {
-                "data": "dateTime",
-                "render": function (date, type, row) {
-                    if (type == 'display') {
-                        return formatDate(date);
-                    }
-                    return date;
-                }
-            },
-            {
                 "data": "description"
             },
             {
-                "data": "calories"
+                "data": "price",
+                "render": function (price, type, row) {
+                    if (type == 'display') {
+                        return formatPrice(price);
+                    }
+                    return price;
+                }
+            },
+            {
+                "data": "inMenu",
+                "render": function (data, type, row) {
+                    if (type == 'display') {
+                        return '<input type="checkbox" ' + (data ? 'checked' : '') + ' onclick="menuSelect($(this),' + row.id + ');"/>';
+                    }
+                    return data;
+                }
             },
             {
                 "render": renderEditBtn,
@@ -48,46 +57,14 @@ $(function () {
         ],
         "order": [
             [
-                0,
+                2,
                 "desc"
             ]
         ],
         "createdRow": function (row, data, dataIndex) {
-            $(row).addClass(data.exceed ? 'exceeded' : 'normal');
+            if (data.inMenu) {
+                $(row).addClass("voted");
+            }
         }
     }));
-
-    $.datetimepicker.setLocale(localeCode);
-
-    var startDate = $('#startDate');
-    var endDate = $('#endDate');
-    startDate.datetimepicker({
-        timepicker: false,
-        format: 'Y-m-d',
-        formatDate: 'Y-m-d',
-        onShow: function (ct) {
-            this.setOptions({
-                maxDate: endDate.val() ? endDate.val() : false
-            })
-        }
-    });
-    endDate.datetimepicker({
-        timepicker: false,
-        format: 'Y-m-d',
-        formatDate: 'Y-m-d',
-        onShow: function (ct) {
-            this.setOptions({
-                minDate: startDate.val() ? startDate.val() : false
-            })
-        }
-    });
-
-    $('#startTime, #endTime').datetimepicker({
-        datepicker: false,
-        format: 'H:i'
-    });
-
-    $('#dateTime').datetimepicker({
-        format: 'Y-m-d H:i'
-    });
 });

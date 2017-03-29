@@ -48,6 +48,11 @@ public class RootController extends AbstractUserController {
         return "restaurants";
     }
 
+    @GetMapping("/meals")
+    public String meals() {
+        return "meals";
+    }
+
     @GetMapping("/profile")
     public String profile() {
         return "profile";

@@ -24,4 +24,6 @@ public interface MealService {
 
     void evictCache();
 
+    void menuSelect(int id,int restId, boolean enabled);
+
 }

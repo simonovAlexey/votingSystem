@@ -58,7 +58,7 @@ public abstract class AbstractUserController {
     }
 
     public void enable(int id, boolean enabled) {
-        log.info((enabled ? "enable " : "disable ") + id);
+        log.info((enabled ? "menuSelect " : "disable ") + id);
         service.enable(id, enabled);
     }
 }

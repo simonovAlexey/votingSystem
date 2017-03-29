@@ -45,4 +45,9 @@ public abstract class AbstractMealController {
         return service.save(meal, restId);
     }
 
+    public void menuSelect(int id, int restId, boolean inMenu) {
+        LOG.info((inMenu ? "in menu " : "not in menu ") + id + " rest: " + restId);
+        service.menuSelect(id, restId, inMenu);
+    }
+
 }

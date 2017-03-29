@@ -9,33 +9,38 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/ajax/profile/meals")
+@RequestMapping(value = "/ajax/meals")
 public class MealAjaxController extends AbstractMealController {
 
     @Override
-    @GetMapping(value = "/r/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Meal> getAll(@PathVariable("id") int restId) {
+    @GetMapping(value = "/{restId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Meal> getAll(@PathVariable("restId") int restId) {
         return super.getAll(restId);
     }
 
     @Override
-    @GetMapping(value = "/r/{restId}/{id}")
+    @GetMapping(value = "/{restId}/{id}")
     public Meal get(@PathVariable("id") int id, @PathVariable("restId") int restId) {
-        return super.get(id,restId);
+        return super.get(id, restId);
     }
 
     @Override
-    @DeleteMapping(value = "/r/{restId}/{id}")
+    @DeleteMapping(value = "/{restId}/{id}")
     public void delete(@PathVariable("id") int id, @PathVariable("restId") int restId) {
-        super.delete(id,restId);
+        super.delete(id, restId);
     }
 
-    @PostMapping
-    public void updateOrCreate(@Valid Meal meal,@RequestParam("restId") int restId) {
+    @PostMapping(value = "/{restId}")
+    public void updateOrCreate(@Valid Meal meal, @PathVariable("restId") int restId) {
         if (meal.isNew()) {
-            super.create(meal,restId);
+            super.create(meal, restId);
         } else {
-            super.update(meal, meal.getId(),restId);
+            super.update(meal, meal.getId(), restId);
         }
+    }
+
+    @PostMapping(value = "/{restId}/{id}")
+    public void enabled(@PathVariable("id") int id, @PathVariable("restId") int restId, @RequestParam("inMenu") boolean inMenu) {
+        super.menuSelect(id, restId, inMenu);
     }
 }

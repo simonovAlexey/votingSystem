@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/ajax/profile/votes")
+@RequestMapping(value = "/rest/profile/votes")
 public class VoteAjaxController extends AbstractVoteController {
 
     @Override
