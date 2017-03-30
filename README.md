@@ -1,5 +1,6 @@
 # The voting system for quality of restaurants
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6949a1de2a5a4185ba09c5968e2d54cc)](https://www.codacy.com/app/Alexey-SimonovOrganization/votingSystem?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=simonovAlexey/votingSystem&amp;utm_campaign=Badge_Grade)
 [![Dependency Status](https://dependencyci.com/github/simonovAlexey/votingSystem/badge)](https://dependencyci.com/github/simonovAlexey/votingSystem)
 
 Design and implement a JSON API using Hibernate/Spring/SpringMVC.
