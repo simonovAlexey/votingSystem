@@ -31,14 +31,6 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
-        <property name="formatters">
-            <set>
-                <bean class="by.simonow.VotingSystem.util.converter.DateTimeFormatters.LocalTimeFormatter"/>
-                <bean class="by.simonow.VotingSystem.util.converter.DateTimeFormatters.LocalDateFormatter"/>
-            </set>
-        </property>
-    </bean>
 
     <context:component-scan base-package="by.simonow.**.web"/>
 
@@ -52,18 +44,7 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp"/>
 
-    <!--
-        <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-              p:cacheSeconds="60"
-              p:defaultEncoding="UTF-8">
 
-            <property name="basenames">
-                <list>
-                    <value>messages/app</value>
-                </list>
-            </property>
-        </bean>
-    -->
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
           p:cacheSeconds="60"
           p:defaultEncoding="UTF-8" p:basenames="file:///C:/project/votingSystem/config/messages/app">

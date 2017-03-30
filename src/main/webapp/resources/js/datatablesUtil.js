@@ -46,7 +46,6 @@ function updateRow(id) {
     $.get(ajaxUrl + id, function (data) {
         $.each(data, function (key, value) {
             form.find("input[name='" + key + "']").val(
-                key === "dateTime" ? formatDate(value) : value
             );
         });
         $('#editRow').modal();

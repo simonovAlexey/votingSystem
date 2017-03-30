@@ -1,6 +1,8 @@
 # The voting system for quality of restaurants
 
-Design and implement a JSON API using Hibernate/Spring/SpringMVC (or Spring-Boot).
+[![Dependency Status](https://dependencyci.com/github/simonovAlexey/votingSystem/badge)](https://dependencyci.com/github/simonovAlexey/votingSystem)
+
+Design and implement a JSON API using Hibernate/Spring/SpringMVC.
 
 ### The task is:
 
@@ -21,4 +23,17 @@ As a result, provide a link to github repository. It should contain the code, RE
 
 -----------------------------
 
- 
+ Used tools, libraries and frameworks:
+  <a href="http://maven.apache.org/">Maven</a>,
+  <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html">Spring MVC</a>,
+  <a href="http://projects.spring.io/spring-security/">Spring Security</a>,
+  <a href="http://projects.spring.io/spring-data-jpa/">Spring Data JPA</a>,
+  <a href="http://spring.io/blog/2014/05/07/preview-spring-security-test-method-security">Spring Security Test</a>,
+  <a href="http://hibernate.org/orm/">Hibernate ORM</a>,
+  <a href="http://hibernate.org/validator/">Hibernate Validator</a>,
+  <a href="http://www.slf4j.org/">SLF4J</a>,
+  <a href="https://github.com/FasterXML/jackson">Json Jackson</a>,
+  <a href="http://ehcache.org">Ehcache</a>,
+  <a href="http://hsqldb.org//">HSQLDB</a>,
+  <a href="http://junit.org/">JUnit</a>,
+  <a href="http://tomcat.apache.org/">Apache Tomcat</a>.
