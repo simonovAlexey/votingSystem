@@ -43,7 +43,7 @@ public class MealServiceImplTest extends AbstractServiceTest {
     @Test
     public void testDelete() throws Exception {
         service.delete(MEAL1_ID,RESTAURANT1_ID);
-        MATCHER.assertCollectionEquals(Arrays.asList(MEAL3,MEAL2),service.getAll(RESTAURANT1_ID));
+        MATCHER.assertCollectionEquals(Arrays.asList(MEAL2,MEAL3),service.getAll(RESTAURANT1_ID));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class MealServiceImplTest extends AbstractServiceTest {
     public void testSave() throws Exception {
         Meal created = getCreated();
         service.save(created,RESTAURANT1_ID);
-        MATCHER.assertCollectionEquals(Arrays.asList(MEAL1,MEAL3,MEAL2,created),service.getAll(RESTAURANT1_ID));
+        MATCHER.assertCollectionEquals(Arrays.asList(MEAL1,MEAL2,MEAL3,created),service.getAll(RESTAURANT1_ID));
     }
 
     @Test

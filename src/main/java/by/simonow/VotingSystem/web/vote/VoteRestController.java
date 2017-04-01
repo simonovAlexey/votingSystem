@@ -9,23 +9,23 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/rest/profile/votes")
-public class VoteAjaxController extends AbstractVoteController {
+@RequestMapping(value = "/rest/profile/votes/u")
+public class VoteRestController extends AbstractVoteController {
 
     @Override
-    @GetMapping(value = "/u/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Votes> getAll(@PathVariable("userId") int userId) {
         return super.getAll(userId);
     }
 
     @Override
-    @GetMapping(value = "/u/{userId}/{id}")
+    @GetMapping(value = "/{userId}/{id}")
     public Votes get(@PathVariable("id") int id, @PathVariable("userId") int userId) {
         return super.get(id, userId);
     }
 
     @Override
-    @DeleteMapping(value = "/u/{userId}/{id}")
+    @DeleteMapping(value = "/{userId}/{id}")
     public void delete(@PathVariable("id") int id, @PathVariable("userId") int userId) {
         super.delete(id, userId);
     }

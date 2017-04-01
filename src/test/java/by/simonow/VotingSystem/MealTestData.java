@@ -16,22 +16,25 @@ public class MealTestData {
 
     public static final int MEAL1_ID = START_SEQ + 5;
 
-    public static final Meal MEAL1 = new Meal(MEAL1_ID, true, "Р1 Завтрак в меню", 200);
-    public static final Meal MEAL2 = new Meal(MEAL1_ID + 1, false, "Р1 Обед не в меню", 1050);
-    public static final Meal MEAL3 = new Meal(MEAL1_ID + 2, true, "Р1 Ужин в меню", 945);
-    public static final Meal MEAL4 = new Meal(MEAL1_ID + 3, true, "Р2 Завтрак в меню", 200);
-    public static final Meal MEAL5 = new Meal(MEAL1_ID + 4, true, "Р2 Обед в меню", 250);
-    public static final Meal MEAL6 = new Meal(MEAL1_ID + 5, false, "Р2 Ужин не в меню", 250);
-    public static final Meal MEAL7 = new Meal(MEAL1_ID + 6, true, "Р3 Завтрак-б в меню", 90);
-    public static final Meal MEAL8 = new Meal(MEAL1_ID + 7, true, "Р3 Обед-б в меню", 90);
-    public static final Meal MEAL9 = new Meal(MEAL1_ID + 8, false, "Р3 Ужин-б не в меню", 90);
+    public static final Meal MEAL1 = new Meal(MEAL1_ID, true, "Гамбургер", 200);
+    public static final Meal MEAL2 = new Meal(MEAL1_ID + 1, false, "Чизбургер", 1050);
+    public static final Meal MEAL3 = new Meal(MEAL1_ID + 2, true, "Картошка", 945);
+    public static final Meal MEAL4 = new Meal(MEAL1_ID + 3, true, "Стейк", 200);
+    public static final Meal MEAL5 = new Meal(MEAL1_ID + 4, true, "Паста", 250);
+    public static final Meal MEAL6 = new Meal(MEAL1_ID + 5, false, "Дичь", 250);
+    public static final Meal MEAL7 = new Meal(MEAL1_ID + 6, true, "Завтрак", 190);
+    public static final Meal MEAL8 = new Meal(MEAL1_ID + 7, true, "Обед", 90);
+    public static final Meal MEAL9 = new Meal(MEAL1_ID + 8, false, "Комплекс", 290);
+    public static final Meal MEAL10 = new Meal(MEAL1_ID + 9, true, "Компот", 390);
+    public static final Meal MEAL11 = new Meal(MEAL1_ID + 10, true, "Ужин", 490);
+    public static final Meal MEAL12 = new Meal(MEAL1_ID + 11, true, "Кефир", 590);
 
     public static final List<Meal> MENU1 = Arrays.asList(MEAL1,MEAL3);
     public static final List<Meal> MENU2 = Arrays.asList(MEAL4,MEAL5);
-    public static final List<Meal> MENU3 = Arrays.asList(MEAL7,MEAL8);
-    public static final List<Meal> MEALS_R1 = Arrays.asList(MEAL1,MEAL3,MEAL2);
+    public static final List<Meal> MENU3 = Arrays.asList(MEAL7,MEAL8,MEAL10,MEAL11,MEAL12);
+    public static final List<Meal> MEALS_R1 = Arrays.asList(MEAL1,MEAL2,MEAL3);
     public static final List<Meal> MEALS_R2 = Arrays.asList(MEAL4,MEAL5,MEAL6);
-    public static final List<Meal> MEALS_R3 = Arrays.asList(MEAL7,MEAL8,MEAL9);
+    public static final List<Meal> MEALS_R3 = Arrays.asList(MEAL7,MEAL8,MEAL9,MEAL10,MEAL11,MEAL12);
 
     public static Meal getCreated() {
         return new Meal(null, false, "Созданный ужин", 300);

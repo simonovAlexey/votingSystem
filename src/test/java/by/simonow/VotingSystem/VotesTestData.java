@@ -17,7 +17,7 @@ public class VotesTestData {
     public static final ModelMatcher<Votes> MATCHER = ModelMatcher.of(Votes.class);
 
 
-    public static final int VOTE1_ID = START_SEQ + 14;
+    public static final int VOTE1_ID = START_SEQ + 17;
 
     public static final Votes VOTE1 = new Votes(VOTE1_ID, of(2017, Month.JANUARY, 11, 10, 0));
     public static final Votes VOTE2 = new Votes(VOTE1_ID + 1, of(2017, Month.JANUARY, 12, 10, 0));
@@ -48,7 +48,7 @@ public class VotesTestData {
 
     public static Votes getUpdated() {
         Votes updated = VOTE1;
-        updated.setId(100014);
+        updated.setId(VotesTestData.VOTE1_ID);
         updated.setRestaurant(RestaurantTestData.RESTAURANT1);
         updated.setUser(UserTestData.USER);
         return updated;

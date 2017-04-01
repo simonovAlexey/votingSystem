@@ -32,7 +32,7 @@ INSERT INTO meals (description, price, restaurant_id, inmenu) VALUES
   ('Завтрак', 190, 100002, TRUE),
   ('Обед', 90, 100002, TRUE),
   ('Комплекс', 290, 100002, FALSE),
-  ('Кампот', 390, 100002, TRUE ),
+  ('Компот', 390, 100002, TRUE ),
   ('Ужин', 490, 100002, TRUE ),
   ('Кефир', 590, 100002, TRUE );
 
