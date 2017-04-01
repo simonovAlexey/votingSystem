@@ -5,7 +5,7 @@
 
 Design and implement a JSON API using Hibernate/Spring/SpringMVC.
 
-### The task is:
+##### The task is:
 
 Build a voting system for deciding where to have lunch.
 
@@ -21,6 +21,8 @@ Build a voting system for deciding where to have lunch.
 Each restaurant provides new menu each day.
 
 As a result, provide a link to github repository. It should contain the code, README.md <a href="https://github.com/simonovAlexey/votingSystem/blob/master/config/curl.md">couple curl </a> commands to test REST.
+
+##### The application works with HSQLDB. To run it, you do not need to install any database
 
 -----------------------------
 
