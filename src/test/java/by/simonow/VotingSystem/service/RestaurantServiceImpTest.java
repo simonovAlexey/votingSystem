@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import static by.simonow.VotingSystem.MealTestData.MEAL2;
-import static by.simonow.VotingSystem.MealTestData.MEAL3;
+import static by.simonow.VotingSystem.MealTestData.DISH_2;
+import static by.simonow.VotingSystem.MealTestData.DISH_3;
 import static by.simonow.VotingSystem.RestaurantTestData.*;
 
 
@@ -56,10 +56,10 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
     }
 
     @Test
-    public void testGetWithMeals() throws Exception {
-        Restaurant restaurant = service.getWithMeals(RESTAURANT1_ID);
+    public void testGetWithDishes() throws Exception {
+        Restaurant restaurant = service.getWithDishes(RESTAURANT1_ID);
         MATCHER.assertEquals(RESTAURANT1, restaurant);
-        MealTestData.MATCHER.assertCollectionEquals(Arrays.asList(MealTestData.MEAL1,MEAL3,MEAL2), restaurant.getMeals());
+        MealTestData.MATCHER.assertCollectionEquals(Arrays.asList(MealTestData.DISH_1, DISH_3, DISH_2), restaurant.getDishes());
     }
 
     @Test

@@ -368,7 +368,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="mealsAll" path="/votingSystem/rest/meals" id="f355b450-c1d3-4856-8a77-20e7ed2847c0">
+        <con:resource name="mealsAll" path="/votingSystem/rest/dishes" id="f355b450-c1d3-4856-8a77-20e7ed2847c0">
             <con:settings/>
             <con:parameters/>
             <con:method name="mealsGetAll" id="4ceea899-2f7e-4f78-b785-6fccb69344ea" method="GET">
@@ -387,7 +387,7 @@
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/dishes</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -419,7 +419,7 @@
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>201</con:status>
                     <con:params/>
-                    <con:element xmlns:meal="http://localhost/votingSystem/rest/profile/meals">meal:Response</con:element>
+                    <con:element xmlns:dish="http://localhost/votingSystem/rest/profile/dishes">dish:Response</con:element>
                 </con:representation>
                 <con:request name="MealsСreate" id="2bb0c527-598d-41c3-b435-76ebe5b8566d" mediaType="application/json" postQueryString="false">
                     <con:settings>
@@ -433,7 +433,7 @@
                         "calories": 777
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/dishes</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -443,7 +443,7 @@
                 </con:request>
             </con:method>
         </con:resource>
-        <con:resource name="meal" path="/votingSystem/rest/meals/100002" id="0845e038-cccd-474a-9d22-61d86a2d7a7f">
+        <con:resource name="dish" path="/votingSystem/rest/dishes/100002" id="0845e038-cccd-474a-9d22-61d86a2d7a7f">
             <con:settings/>
             <con:parameters/>
             <con:method name="mealGet" id="e626de66-db50-46c2-998d-bc678628f063" method="GET">
@@ -453,7 +453,7 @@
                     <con:mediaType>application/json;charset=UTF-8</con:mediaType>
                     <con:status>200</con:status>
                     <con:params/>
-                    <con:element xmlns:ns="http://localhost/votingSystem/rest/profile/meals/100002">ns:Response</con:element>
+                    <con:element xmlns:ns="http://localhost/votingSystem/rest/profile/dishes/100002">ns:Response</con:element>
                 </con:representation>
                 <con:request name="MealGet" id="5efbd6aa-f213-483f-9bde-586877302a68" mediaType="application/json">
                     <con:settings>
@@ -462,7 +462,7 @@
                     </con:settings>
                     <con:endpoint>http://localhost:8080</con:endpoint>
                     <con:request/>
-                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals/100002</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/dishes/100002</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>
@@ -515,7 +515,7 @@
                         "calories": 500
                         }
                     </con:request>
-                    <con:originalUri>http://localhost/votingSystem/rest/profile/meals/100002</con:originalUri>
+                    <con:originalUri>http://localhost/votingSystem/rest/profile/dishes/100002</con:originalUri>
                     <con:credentials>
                         <con:authType>No Authorization</con:authType>
                     </con:credentials>

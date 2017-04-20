@@ -25,5 +25,5 @@ public interface RestaurantService {
 
     void update(Restaurant restaurant);
 
-    Restaurant getWithMeals(int id);
+    Restaurant getWithDishes(int id);
 }

@@ -8,11 +8,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
-@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_MEALS, attributeNodes = {@NamedAttributeNode("meals")}),
+@NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_DISHES, attributeNodes = {@NamedAttributeNode("dishes")}),
         @NamedEntityGraph(name = Restaurant.GRAPH_WITH_VOTES, attributeNodes = {@NamedAttributeNode("votes")})})
 public class Restaurant extends NamedEntity {
 
-    public static final String GRAPH_WITH_MEALS = "Restaurant.withMeals";
+    public static final String GRAPH_WITH_DISHES = "Restaurant.withDishes";
     public static final String GRAPH_WITH_VOTES = "Restaurant.withVotes";
 
 
@@ -20,7 +20,7 @@ public class Restaurant extends NamedEntity {
     @OrderBy("inMenu DESC")
 //    @JsonIgnore
     @JsonManagedReference
-    protected List<Meal> meals;
+    protected List<Dish> dishes;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")//, cascade = CascadeType.REMOVE, orphanRemoval = true)
 //    @JsonIgnore
@@ -33,21 +33,21 @@ public class Restaurant extends NamedEntity {
         super(id, name);
     }
 
-    public Restaurant(Integer id, String name, List<Meal> meals) {
+    public Restaurant(Integer id, String name, List<Dish> dishes) {
         super(id, name);
-        this.meals = meals;
+        this.dishes = dishes;
     }
 
     public Restaurant(String name) {
         super(null, name);
     }
 
-    public List<Meal> getMeals() {
-        return meals;
+    public List<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setMeals(List<Meal> meals) {
-        this.meals = meals;
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     public Set<Votes> getVotes() {

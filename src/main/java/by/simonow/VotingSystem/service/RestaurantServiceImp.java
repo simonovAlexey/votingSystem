@@ -67,8 +67,8 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public Restaurant getWithMeals(int id) {
-        return repository.getWithMeals(id);
+    public Restaurant getWithDishes(int id) {
+        return repository.getWithDishes(id);
     }
 
 }

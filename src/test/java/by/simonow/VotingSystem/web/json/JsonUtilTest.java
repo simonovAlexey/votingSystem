@@ -27,7 +27,7 @@ public class JsonUtilTest {
     public void testReadWriteValues() throws Exception {
         String json = JsonUtil.writeValue(RestaurantTestData.RESTAURANTS);
         System.out.println(json);
-        List<Restaurant> meals = JsonUtil.readValues(json, Restaurant.class);
-        RestaurantTestData.MATCHER.assertCollectionEquals(RestaurantTestData.RESTAURANTS, meals);
+        List<Restaurant> dishes = JsonUtil.readValues(json, Restaurant.class);
+        RestaurantTestData.MATCHER.assertCollectionEquals(RestaurantTestData.RESTAURANTS, dishes);
     }
 }

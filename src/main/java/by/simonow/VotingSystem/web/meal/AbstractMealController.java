@@ -1,7 +1,7 @@
 package by.simonow.VotingSystem.web.meal;
 
-import by.simonow.VotingSystem.model.Meal;
-import by.simonow.VotingSystem.service.MealService;
+import by.simonow.VotingSystem.model.Dish;
+import by.simonow.VotingSystem.service.DishService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,33 +16,33 @@ public abstract class AbstractMealController {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractMealController.class);
 
     @Autowired
-    private MealService service;
+    private DishService service;
 
-    public Meal get(int id, int restId) {
-        LOG.info("getWithVotes meal {} for Restaurant {}", id, restId);
+    public Dish get(int id, int restId) {
+        LOG.info("getWithVotes dish {} for Restaurant {}", id, restId);
         return service.get(id, restId);
     }
 
     public void delete(int id, int restId) {
-        LOG.info("delete meal {} for Restaurant {}", id, restId);
+        LOG.info("delete dish {} for Restaurant {}", id, restId);
         service.delete(id, restId);
     }
 
-    public List<Meal> getAll(int restId) {
+    public List<Dish> getAll(int restId) {
         LOG.info("getAll for Restaurant id=", restId);
         return service.getAll(restId);
     }
 
-    public void update(Meal meal, int id, int restId) {
-        checkIdConsistent(meal, id);
-        LOG.info("update {} for Restaurant id=", meal, restId);
-        service.update(meal, restId);
+    public void update(Dish dish, int id, int restId) {
+        checkIdConsistent(dish, id);
+        LOG.info("update {} for Restaurant id=", dish, restId);
+        service.update(dish, restId);
     }
 
-    public Meal create(Meal meal, int restId) {
-        checkNew(meal);
-        LOG.info("create {} for Restaurant id=", meal, restId);
-        return service.save(meal, restId);
+    public Dish create(Dish dish, int restId) {
+        checkNew(dish);
+        LOG.info("create {} for Restaurant id=", dish, restId);
+        return service.save(dish, restId);
     }
 
     public void menuSelect(int id, int restId, boolean inMenu) {

@@ -1,8 +1,8 @@
 package by.simonow.VotingSystem.web;
 
 import by.simonow.VotingSystem.AuthorizedUser;
-import by.simonow.VotingSystem.model.Meal;
-import by.simonow.VotingSystem.service.MealService;
+import by.simonow.VotingSystem.model.Dish;
+import by.simonow.VotingSystem.service.DishService;
 import by.simonow.VotingSystem.to.UserTo;
 import by.simonow.VotingSystem.util.UserUtil;
 import by.simonow.VotingSystem.web.user.AbstractUserController;
@@ -24,7 +24,7 @@ import java.util.List;
 public class RootController extends AbstractUserController {
 
     @Autowired
-    private MealService mealService;
+    private DishService dishService;
 
     @GetMapping("/")
     public String root() {
@@ -48,11 +48,11 @@ public class RootController extends AbstractUserController {
         return "restaurants";
     }
 
-    @GetMapping("/meals/{id}/{restName}")
-    public String meals(@PathVariable("id") int id, @PathVariable("restName") String restName, ModelMap model) {
+    @GetMapping("/dishes/{id}/{restName}")
+    public String dishes(@PathVariable("id") int id, @PathVariable("restName") String restName, ModelMap model) {
         model.addAttribute("restId",id);
         model.addAttribute("restName",restName);
-        return "meals";
+        return "dishes";
     }
 
     @GetMapping("/profile")
@@ -99,12 +99,12 @@ public class RootController extends AbstractUserController {
 
     @GetMapping(value = "/menu={id}")
     public String getMenuById(@PathVariable("id") int id, ModelMap model) {
-        List<Meal> menu = mealService.getMenu(id);
+        List<Dish> menu = dishService.getMenu(id);
         String rName = null;
         if (menu.size()>0) {
             rName = menu.get(0).getRestaurant().getName();
         }
-        model.addAttribute("meals", menu);
+        model.addAttribute("dishes", menu);
         model.addAttribute("restaurant",rName);
         return "fragments/menu";
     }

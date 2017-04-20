@@ -1,6 +1,6 @@
 package by.simonow.VotingSystem.web.restaurant;
 
-import by.simonow.VotingSystem.model.Meal;
+import by.simonow.VotingSystem.model.Dish;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.to.RestaurantTo;
 import org.springframework.http.MediaType;
@@ -25,7 +25,7 @@ public class RestaurantRestController extends AbstractRestaurantController {
 
     @Override
     @GetMapping(value = "/menu={id}")
-    public List<Meal> getMenu(@PathVariable("id") int id) {
+    public List<Dish> getMenu(@PathVariable("id") int id) {
         return super.getMenu(id);
     }
 

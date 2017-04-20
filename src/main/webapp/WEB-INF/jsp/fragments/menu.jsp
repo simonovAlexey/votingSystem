@@ -16,15 +16,15 @@
             <table class="table table-striped display" id="menutable">
                 <thead>
                 <tr>
-                    <th><spring:message code="meals.description"/></th>
-                    <th><spring:message code="meals.price"/></th>
+                    <th><spring:message code="dishes.description"/></th>
+                    <th><spring:message code="dishes.price"/></th>
                 </tr>
                 </thead>
-                <c:forEach items="${meals}" var="meal">
-                    <%--<jsp:useBean id="meal" scope="page" type="by.simonow.VotingSystem.model.Meal"/>--%>
+                <c:forEach items="${dishes}" var="dish">
+                    <%--<jsp:useBean id="dish" scope="page" type="by.simonow.VotingSystem.model.Dish"/>--%>
                     <tr>
-                        <td><c:out value="${meal.description}"/></td>
-                        <td>${fn:formatPrice(meal.price)}</td>
+                        <td><c:out value="${dish.description}"/></td>
+                        <td>${fn:formatPrice(dish.price)}</td>
                     </tr>
                 </c:forEach>
             </table>

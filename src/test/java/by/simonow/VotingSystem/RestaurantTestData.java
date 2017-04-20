@@ -19,9 +19,9 @@ public class RestaurantTestData {
     public static final int RESTAURANT2_ID = START_SEQ + 1;
     public static final int RESTAURANT3_ID = START_SEQ + 2;
 
-    public static final Restaurant RESTAURANT1 = new Restaurant(RESTAURANT1_ID, "Mak",  MEALS_R1);
-    public static final Restaurant RESTAURANT2 = new Restaurant(RESTAURANT1_ID+1, "Плакучая ива",  MEALS_R2);
-    public static final Restaurant RESTAURANT3 = new Restaurant(RESTAURANT1_ID+2, "Столовая",  MEALS_R3);
+    public static final Restaurant RESTAURANT1 = new Restaurant(RESTAURANT1_ID, "Mak", DISHES_R_1);
+    public static final Restaurant RESTAURANT2 = new Restaurant(RESTAURANT1_ID+1, "Плакучая ива", DISHES_R_2);
+    public static final Restaurant RESTAURANT3 = new Restaurant(RESTAURANT1_ID+2, "Столовая", DISHES_R_3);
     public static final RestaurantTo REST_WITH_VOTES1 = new RestaurantTo(RESTAURANT1_ID, "Mak",  2);
     public static final RestaurantTo REST_WITH_VOTES2 = new RestaurantTo(RESTAURANT1_ID+1, "Плакучая ива",  7);
     public static final RestaurantTo REST_WITH_VOTES3 = new RestaurantTo(RESTAURANT1_ID+2, "Столовая",  4);

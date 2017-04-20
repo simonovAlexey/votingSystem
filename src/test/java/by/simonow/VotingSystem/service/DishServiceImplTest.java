@@ -1,7 +1,7 @@
 package by.simonow.VotingSystem.service;
 
 import by.simonow.VotingSystem.RestaurantTestData;
-import by.simonow.VotingSystem.model.Meal;
+import by.simonow.VotingSystem.model.Dish;
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.util.JpaUtil;
 import by.simonow.VotingSystem.util.exception.NotFoundException;
@@ -19,10 +19,10 @@ import static by.simonow.VotingSystem.RestaurantTestData.RESTAURANT1_ID;
 import static by.simonow.VotingSystem.RestaurantTestData.RESTAURANT2_ID;
 
 
-public class MealServiceImplTest extends AbstractServiceTest {
+public class DishServiceImplTest extends AbstractServiceTest {
 
     @Autowired
-    private MealService service;
+    private DishService service;
 
     @SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
@@ -36,72 +36,72 @@ public class MealServiceImplTest extends AbstractServiceTest {
 
     @Test
     public void testGet() throws Exception {
-        Meal actual = service.get(MEAL1_ID,RESTAURANT1_ID);
-        MATCHER.assertEquals(MEAL1, actual);
+        Dish actual = service.get(DISH1_ID,RESTAURANT1_ID);
+        MATCHER.assertEquals(DISH_1, actual);
     }
 
     @Test
     public void testDelete() throws Exception {
-        service.delete(MEAL1_ID,RESTAURANT1_ID);
-        MATCHER.assertCollectionEquals(Arrays.asList(MEAL2,MEAL3),service.getAll(RESTAURANT1_ID));
+        service.delete(DISH1_ID,RESTAURANT1_ID);
+        MATCHER.assertCollectionEquals(Arrays.asList(DISH_2, DISH_3),service.getAll(RESTAURANT1_ID));
     }
 
     @Test
     public void testGetAll() throws Exception {
-        Collection<Meal> meals = service.getAll(RESTAURANT1_ID);
-        MATCHER.assertCollectionEquals(MEALS_R1, meals);
+        Collection<Dish> dishes = service.getAll(RESTAURANT1_ID);
+        MATCHER.assertCollectionEquals(DISHES_R_1, dishes);
     }
 
     @Test
     public void testGetMenu() throws Exception {
-        Collection<Meal> meals = service.getMenu(RESTAURANT1_ID);
-        MATCHER.assertCollectionEquals(MENU1, meals);
+        Collection<Dish> dishes = service.getMenu(RESTAURANT1_ID);
+        MATCHER.assertCollectionEquals(MENU1, dishes);
     }
 
     @Test
     public void testUpdate() throws Exception {
-        Meal updated = getUpdated();
+        Dish updated = getUpdated();
         service.update(updated, RESTAURANT1_ID);
-        MATCHER.assertEquals(updated, service.get(MEAL1_ID, RESTAURANT1_ID));
+        MATCHER.assertEquals(updated, service.get(DISH1_ID, RESTAURANT1_ID));
     }
 
     @Test
     public void testSave() throws Exception {
-        Meal created = getCreated();
+        Dish created = getCreated();
         service.save(created,RESTAURANT1_ID);
-        MATCHER.assertCollectionEquals(Arrays.asList(MEAL1,MEAL2,MEAL3,created),service.getAll(RESTAURANT1_ID));
+        MATCHER.assertCollectionEquals(Arrays.asList(DISH_1, DISH_2, DISH_3,created),service.getAll(RESTAURANT1_ID));
     }
 
     @Test
     public void testGetWithRestaurant() throws Exception {
-        Meal withRestaurant = service.getWithRestaurant(MEAL1_ID, RESTAURANT1_ID);
+        Dish withRestaurant = service.getWithRestaurant(DISH1_ID, RESTAURANT1_ID);
         Restaurant restaurant = withRestaurant.getRestaurant();
         RestaurantTestData.MATCHER.assertEquals(RESTAURANT1,restaurant);
-        MATCHER.assertEquals(MEAL1,withRestaurant);
+        MATCHER.assertEquals(DISH_1,withRestaurant);
     }
 
     @Test
     public void testNotFoundDelete() throws Exception {
         thrown.expect(NotFoundException.class);
-        service.delete(MEAL1_ID, 1);
+        service.delete(DISH1_ID, 1);
     }
 
     @Test
     public void testGetNotFound() throws Exception {
         thrown.expect(NotFoundException.class);
-        service.get(MEAL1_ID, RESTAURANT2_ID);
+        service.get(DISH1_ID, RESTAURANT2_ID);
     }
 
     @Test
     public void testUpdateNotFound() throws Exception {
         thrown.expect(NotFoundException.class);
-        thrown.expectMessage("Not found entity with id=" + MEAL1_ID);
-        service.update(MEAL1, RESTAURANT2_ID);
+        thrown.expectMessage("Not found entity with id=" + DISH1_ID);
+        service.update(DISH_1, RESTAURANT2_ID);
     }
     @Test
     public void testValidation() throws Exception {
-        validateRootCause(() -> service.save(new Meal(null, true,"Созданная еда", 0),RESTAURANT1_ID), ConstraintViolationException.class);
-        validateRootCause(() -> service.save(new Meal(null, true," ", 0),RESTAURANT1_ID), ConstraintViolationException.class);
-        validateRootCause(() -> service.save(new Meal(null, true, null, 300), RESTAURANT1_ID), ConstraintViolationException.class);
+        validateRootCause(() -> service.save(new Dish(null, true,"Созданная еда", 0),RESTAURANT1_ID), ConstraintViolationException.class);
+        validateRootCause(() -> service.save(new Dish(null, true," ", 0),RESTAURANT1_ID), ConstraintViolationException.class);
+        validateRootCause(() -> service.save(new Dish(null, true, null, 300), RESTAURANT1_ID), ConstraintViolationException.class);
     }
 }

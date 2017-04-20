@@ -15,20 +15,20 @@
 <br>
 <div class="container">
     <div class="page-header">
-        <h3><spring:message code="meals.title"/></h3>
+        <h3><spring:message code="dishes.title"/></h3>
         <h4><c:out value="${restName}"/></h4>
     </div>
 
     <div class="view-box">
-        <a class="btn btn-info" onclick="add('<spring:message code="meals.add"/>')">
+        <a class="btn btn-info" onclick="add('<spring:message code="dishes.add"/>')">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </a>
         <table class="table table-striped display" id="datatable">
             <thead>
             <tr>
-                <th><spring:message code="meals.description"/></th>
-                <th><spring:message code="meals.price"/></th>
-                <th><spring:message code="meals.inMenu"/></th>
+                <th><spring:message code="dishes.description"/></th>
+                <th><spring:message code="dishes.price"/></th>
+                <th><spring:message code="dishes.inMenu"/></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -51,16 +51,16 @@
 
                     <div class="form-group">
                         <label for="description" class="control-label col-xs-3"><spring:message
-                                code="meals.description"/></label>
+                                code="dishes.description"/></label>
 
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="description" name="description"
-                                   placeholder="<spring:message code="meals.description"/>">
+                                   placeholder="<spring:message code="dishes.description"/>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="price" class="control-label col-xs-3"><spring:message
-                                code="meals.price"/></label>
+                                code="dishes.price"/></label>
 
                         <div class="col-xs-9">
                             <input type="number" class="form-control" id="price" name="price" placeholder="100">

@@ -1,6 +1,6 @@
 package by.simonow.VotingSystem.web.meal;
 
-import by.simonow.VotingSystem.model.Meal;
+import by.simonow.VotingSystem.model.Dish;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,18 +9,18 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(value = "/ajax/meals")
+@RequestMapping(value = "/ajax/dishes")
 public class MealAjaxController extends AbstractMealController {
 
     @Override
     @GetMapping(value = "/{restId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Meal> getAll(@PathVariable("restId") int restId) {
+    public List<Dish> getAll(@PathVariable("restId") int restId) {
         return super.getAll(restId);
     }
 
     @Override
     @GetMapping(value = "/{restId}/{id}")
-    public Meal get(@PathVariable("id") int id, @PathVariable("restId") int restId) {
+    public Dish get(@PathVariable("id") int id, @PathVariable("restId") int restId) {
         return super.get(id, restId);
     }
 
@@ -31,11 +31,11 @@ public class MealAjaxController extends AbstractMealController {
     }
 
     @PostMapping(value = "/{restId}")
-    public void updateOrCreate(@Valid Meal meal, @PathVariable("restId") int restId) {
-        if (meal.isNew()) {
-            super.create(meal, restId);
+    public void updateOrCreate(@Valid Dish dish, @PathVariable("restId") int restId) {
+        if (dish.isNew()) {
+            super.create(dish, restId);
         } else {
-            super.update(meal, meal.getId(), restId);
+            super.update(dish, dish.getId(), restId);
         }
     }
 

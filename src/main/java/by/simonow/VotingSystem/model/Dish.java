@@ -11,13 +11,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "meals")
-public class Meal extends BaseEntity {
+@Table(name = "dishes")
+public class Dish extends BaseEntity {
 
-    public static final String M_DELETE = "Meal.delete";
-    public static final String M_GET_MENU = "Meal.getMenuList";
-    public static final String M_GET = "Meal.getWithVotes";
-    public static final String M_ALL = "Meal.getAllMeals";
+    public static final String M_DELETE = "Dish.delete";
+    public static final String M_GET_MENU = "Dish.getMenuList";
+    public static final String M_GET = "Dish.getWithVotes";
+    public static final String M_ALL = "Dish.getAllMeals";
 
     @Column(name = "inmenu", columnDefinition = "boolean default false")
     private boolean inMenu;
@@ -38,14 +38,14 @@ public class Meal extends BaseEntity {
     @JsonBackReference
     private Restaurant restaurant;
 
-    public Meal() {
+    public Dish() {
     }
 
-    public Meal(boolean inMenu, String description, int price) {
+    public Dish(boolean inMenu, String description, int price) {
         this(null, inMenu, description, price);
     }
 
-    public Meal(Integer id, boolean inMenu, String description, int price) {
+    public Dish(Integer id, boolean inMenu, String description, int price) {
         super(id);
         this.inMenu = inMenu;
         this.description = description;
@@ -86,7 +86,7 @@ public class Meal extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Meal{" +
+        return "Dish{" +
                 "id=" + getId() +
                 ", inMenu=" + inMenu +
                 ", description='" + description + '\'' +

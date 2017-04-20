@@ -1,6 +1,6 @@
-var ajaxUrl = "ajax/meals/" + mealRestId +'/';
+var ajaxUrl = "ajax/dishes/" + mealRestId +'/';
 var datatableApi;
-var editTitleKey = "meals.edit";
+var editTitleKey = "dishes.edit";
 
 
 function updateTable() {

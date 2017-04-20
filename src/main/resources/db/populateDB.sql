@@ -1,6 +1,6 @@
 DELETE FROM user_roles;
 DELETE FROM votes;
-DELETE FROM meals;
+DELETE FROM dishes;
 DELETE FROM users;
 DELETE FROM restaurant;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
@@ -22,7 +22,7 @@ INSERT INTO user_roles (role, user_id) VALUES
   ('ROLE_ADMIN', 100004);
 
 
-INSERT INTO meals (description, price, restaurant_id, inmenu) VALUES
+INSERT INTO dishes (description, price, restaurant_id, inmenu) VALUES
   ('Гамбургер', 200, 100000, TRUE),
   ('Чизбургер', 1050, 100000, FALSE),
   ('Картошка', 945, 100000, TRUE),

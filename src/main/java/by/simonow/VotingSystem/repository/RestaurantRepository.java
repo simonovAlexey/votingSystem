@@ -20,7 +20,7 @@ public interface RestaurantRepository {
 
     List<Restaurant> getAll();
 
-    Restaurant getWithMeals(int id);
+    Restaurant getWithDishes(int id);
 
     List<Restaurant> getAllWithVotes();
 }
