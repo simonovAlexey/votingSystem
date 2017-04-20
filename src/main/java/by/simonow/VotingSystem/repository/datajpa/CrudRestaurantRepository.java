@@ -23,13 +23,8 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
     @Transactional
     Restaurant save(Restaurant restaurant);
 
-    @Override
-    Restaurant findOne(Integer id);
-
     @Query("SELECT r FROM Restaurant r JOIN FETCH r.votes WHERE r.id=?1")
     Restaurant getWithVotes(Integer id);
-
-    List<Restaurant> findAll();
 
     @EntityGraph(value = Restaurant.GRAPH_WITH_MEALS)
     @Query("SELECT r FROM Restaurant r WHERE r.id=?1")

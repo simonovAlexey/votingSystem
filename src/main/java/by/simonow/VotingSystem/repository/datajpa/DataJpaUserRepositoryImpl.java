@@ -3,8 +3,6 @@ package by.simonow.VotingSystem.repository.datajpa;
 import by.simonow.VotingSystem.model.User;
 import by.simonow.VotingSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
@@ -41,10 +39,4 @@ public class DataJpaUserRepositoryImpl implements UserRepository {
     public List<User> getAll() {
         return crudRepository.findAll(SORT_NAME_EMAIL);
     }
-
-    @Override
-    public Page<User> findAllByPage(Pageable pageable) {
-        return crudRepository.findAll(pageable);
-    }
-
 }

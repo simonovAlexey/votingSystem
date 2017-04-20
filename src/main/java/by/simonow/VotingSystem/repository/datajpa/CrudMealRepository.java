@@ -2,8 +2,6 @@ package by.simonow.VotingSystem.repository.datajpa;
 
 
 import by.simonow.VotingSystem.model.Meal;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -23,17 +21,12 @@ public interface CrudMealRepository extends JpaRepository<Meal, Integer> {
     @Transactional
     Meal save(Meal meal);
 
-    @Override
-    Meal findOne(Integer id);
-
     @Query("SELECT m FROM Meal m JOIN FETCH m.restaurant WHERE m.restaurant.id=:restId and m.inMenu=true")
     List<Meal> getMenu(@Param("restId") int restId);
 
     @Query("SELECT m FROM Meal m JOIN FETCH m.restaurant WHERE m.restaurant.id=:restId")
     List<Meal> getAllMeals(@Param("restId") int restId);
 
-    @Override
-    Page<Meal> findAll(Pageable pageable);
 
     @Query("SELECT m FROM Meal m JOIN FETCH m.restaurant WHERE m.id = ?1 and m.restaurant.id = ?2")
     Meal getWithRestaurant(int id, int userId);

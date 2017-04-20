@@ -59,11 +59,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public Page<User> getAllByPage(Pageable pageable) {
-        return userRepository.findAllByPage(pageable);
-    }
-
-    @Override
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
         userRepository.save(prepareToSave(user));

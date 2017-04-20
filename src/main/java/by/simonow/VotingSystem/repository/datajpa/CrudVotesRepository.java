@@ -22,9 +22,6 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
     @Transactional
     Votes save(Votes vote);
 
-    @Override
-    Votes findOne(Integer id);
-
     @SuppressWarnings("JpaQlInspection")
     @Query("SELECT v from Votes v JOIN FETCH v.restaurant WHERE v.user.id=:userId AND v.votedDate BETWEEN :startDate AND :endDate ")
     Votes getVoteByDate(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate, @Param("userId") int userId);
@@ -32,9 +29,5 @@ public interface CrudVotesRepository extends JpaRepository<Votes, Integer> {
 
     @Query("SELECT v FROM Votes v WHERE v.user.id=:userId ORDER BY v.votedDate desc ")
     List<Votes> getAllByUser(@Param("userId") int userId);
-
-
-    @Override
-    List<Votes> findAll();
 
 }
