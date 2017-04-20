@@ -48,7 +48,7 @@ public class RootController extends AbstractUserController {
         return "restaurants";
     }
 
-    @GetMapping("/meals/r={id}/{restName}")
+    @GetMapping("/meals/{id}/{restName}")
     public String meals(@PathVariable("id") int id, @PathVariable("restName") String restName, ModelMap model) {
         model.addAttribute("restId",id);
         model.addAttribute("restName",restName);

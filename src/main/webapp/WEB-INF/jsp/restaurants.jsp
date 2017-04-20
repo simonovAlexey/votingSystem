@@ -39,7 +39,7 @@
                 {
                     "render": function (data, type, row) {
                             if (type == 'display') {
-                                return '<a class="btn btn-sm btn-primary" href="meals/r=' + row.id +'/' + row.name + '">' +
+                                return '<a class="btn btn-sm btn-primary" href="meals/' + row.id +'/' + row.name + '">' +
                                     '<span aria-hidden="true"> <spring:message code="rest.dishes"/></span></a>';
                             }
                     },
