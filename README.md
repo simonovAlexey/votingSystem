@@ -20,13 +20,15 @@ Build a voting system for deciding where to have lunch.
 
 Each restaurant provides new menu each day.
 
-#### The application works with HSQLDB. To run it, you do not need to install any database.
-Database schema will be updated automatically when application started.
-Init and populate DB from files: votingSystem/src/main/resources/db
-
-<a href="https://github.com/simonovAlexey/votingSystem/blob/master/config/curl.md">couple curl </a> commands to test REST.
-
 -----------------------------
+### Live demo: <a href="https://voting-sys.herokuapp.com/">here</a>
+## Install and launching application
+`hr.bat`
+#### The application works with HSQLDB. To run it, you do not need to install any database.
+
+Database schema will be updated automatically when application started.
+
+<a href="https://github.com/simonovAlexey/votingSystem/blob/master/config/curl.md">Couple curl </a> commands to test REST.
 
  Used tools, libraries and frameworks:
   <a href="http://maven.apache.org/">Maven</a>,
