@@ -22,7 +22,7 @@ Each restaurant provides new menu each day.
 
 <a href="https://github.com/simonovAlexey/votingSystem/blob/master/config/curl.md">couple curl </a> commands to test REST.
 
-##### The application works with HSQLDB. To run it, you do not need to install any database, see resources/db
+##### The application works with HSQLDB. To run it, you do not need to install any database, see: votingSystem/src/main/resources/
 
 -----------------------------
 
