@@ -19,7 +19,6 @@
 
     <tx:annotation-driven/>
 
-    <beans profile="hsqldb">
         <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
 
         <!--no pooling-->
@@ -29,10 +28,7 @@
               p:url="${database.url}"
               p:username="${database.username}"
               p:password="${database.password}"/>
-    </beans>
 
-
-    <beans profile="datajpa">
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource"
               p:packagesToScan="by.simonow.**.model">
@@ -68,7 +64,5 @@
 
         <context:component-scan base-package="by.simonow.**.repository.datajpa"/>
         <jpa:repositories base-package="by.simonow.**.repository.datajpa"/>
-
-    </beans>
 
 </beans>
