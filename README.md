@@ -43,4 +43,6 @@ Database schema will be updated automatically when application started.
   <a href="http://ehcache.org">Ehcache</a>,
   <a href="http://hsqldb.org//">HSQLDB</a>,
   <a href="http://junit.org/">JUnit</a>,
-  <a href="http://tomcat.apache.org/">Apache Tomcat</a>.
+  <a href="http://tomcat.apache.org/">Apache Tomcat</a>,
+  <a href="https://projectlombok.org/">Lombok</a>.
+

@@ -1,5 +1,8 @@
 package by.simonow.VotingSystem.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -10,6 +13,9 @@ import org.springframework.util.CollectionUtils;
 import javax.persistence.*;
 import java.util.*;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "users_unique_email_idx")})
 public class User extends NamedEntity {
@@ -46,10 +52,6 @@ public class User extends NamedEntity {
     private Set<Role> roles;
 
 
-
-    public User() {
-    }
-
     public User(User u) {
         this(u.getId(), u.getName(), u.getEmail(), u.getPassword(), u.isEnabled(), u.getRoles());
     }
@@ -64,38 +66,6 @@ public class User extends NamedEntity {
         this.password = password;
         this.enabled = enabled;
         setRoles(roles);
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Date getRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(Date registered) {
-        this.registered = registered;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
     }
 
     public void setRoles(Collection<Role> roles) {

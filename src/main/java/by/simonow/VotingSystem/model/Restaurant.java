@@ -1,11 +1,17 @@
 package by.simonow.VotingSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "restaurant", uniqueConstraints = {@UniqueConstraint(columnNames = "name")})
 @NamedEntityGraphs({@NamedEntityGraph(name = Restaurant.GRAPH_WITH_DISHES, attributeNodes = {@NamedAttributeNode("dishes")}),
@@ -26,9 +32,6 @@ public class Restaurant extends NamedEntity {
 //    @JsonIgnore
     protected Set<Votes> votes;
 
-    public Restaurant() {
-    }
-
     public Restaurant(int id, String name) {
         super(id, name);
     }
@@ -40,22 +43,6 @@ public class Restaurant extends NamedEntity {
 
     public Restaurant(String name) {
         super(null, name);
-    }
-
-    public List<Dish> getDishes() {
-        return dishes;
-    }
-
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
-    }
-
-    public Set<Votes> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(Set<Votes> votes) {
-        this.votes = votes;
     }
 
     @Override

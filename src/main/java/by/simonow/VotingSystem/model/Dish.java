@@ -1,6 +1,9 @@
 package by.simonow.VotingSystem.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.NotBlank;
@@ -10,6 +13,9 @@ import org.hibernate.validator.constraints.SafeHtml;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "dishes")
 public class Dish extends BaseEntity {
@@ -38,9 +44,6 @@ public class Dish extends BaseEntity {
     @JsonBackReference
     private Restaurant restaurant;
 
-    public Dish() {
-    }
-
     public Dish(boolean inMenu, String description, int price) {
         this(null, inMenu, description, price);
     }
@@ -50,38 +53,6 @@ public class Dish extends BaseEntity {
         this.inMenu = inMenu;
         this.description = description;
         this.price = price;
-    }
-
-    public boolean isInMenu() {
-        return inMenu;
-    }
-
-    public void setInMenu(boolean inMenu) {
-        this.inMenu = inMenu;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 
     @Override

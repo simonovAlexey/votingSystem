@@ -1,15 +1,20 @@
 package by.simonow.VotingSystem.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "votes")
 public class Votes extends BaseEntity {
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
@@ -25,9 +30,6 @@ public class Votes extends BaseEntity {
     @Column(name = "voted_date", columnDefinition = "timestamp default null")
     private LocalDateTime votedDate;
 
-    public Votes() {
-    }
-
     public Votes(Integer id, LocalDateTime votedDate) {
         this(id, null, null, votedDate);
     }
@@ -40,30 +42,6 @@ public class Votes extends BaseEntity {
         super(id);
         this.restaurant = restaurant;
         this.user = user;
-        this.votedDate = votedDate;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public LocalDateTime getVotedDate() {
-        return votedDate;
-    }
-
-    public void setVotedDate(LocalDateTime votedDate) {
         this.votedDate = votedDate;
     }
 
