@@ -37,7 +37,14 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
 
 //     select RESTAURANT.ID,RESTAURANT.NAME,count(VOTES.RESTAURANT_ID)  from RESTAURANT,VOTES
 //         where VOTES.RESTAURANT_ID=RESTAURANT.ID group by  VOTES.RESTAURANT_ID, RESTAURANT.ID
-    @Query("SELECT new by.simonow.VotingSystem.to.RestaurantTo(r.id, r.name, count(v)) FROM Votes v LEFT JOIN Restaurant r ON v.restaurant.id=r.id GROUP BY r.id")
+
+    //тоже работает:
+    //SELECT RESTAURANT.ID,RESTAURANT.NAME,count(VOTES.RESTAURANT_ID)
+    // FROM RESTAURANT LEFT JOIN VOTES On RESTAURANT.ID=VOTES.RESTAURANT_ID GROUP BY RESTAURANT.ID
+
+
+    @Query("SELECT new by.simonow.VotingSystem.to.RestaurantTo(r.id, r.name, count(v)) " +
+            "FROM Restaurant r  LEFT JOIN  Votes v ON r.id=v.restaurant.id GROUP BY r.id")
     List<RestaurantTo> getAllRestaurantTo();
 
 }
