@@ -31,7 +31,7 @@
 
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
               p:dataSource-ref="dataSource"
-              p:packagesToScan="by.simonow.**.model">
+              p:packagesToScan="com.simonow.**.model">
 
             <property name="jpaPropertyMap">
                 <map>
@@ -60,9 +60,9 @@
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
               p:entityManagerFactory-ref="entityManagerFactory"/>
 
-        <bean class="by.simonow.VotingSystem.util.JpaUtil"/>
+        <bean class="com.simonow.VotingSystem.util.JpaUtil"/>
 
-        <context:component-scan base-package="by.simonow.**.repository.datajpa"/>
-        <jpa:repositories base-package="by.simonow.**.repository.datajpa"/>
+        <context:component-scan base-package="com.simonow.**.repository.datajpa"/>
+        <jpa:repositories base-package="com.simonow.**.repository.datajpa"/>
 
 </beans>

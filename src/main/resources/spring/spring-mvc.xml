@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <bean class="by.simonow.VotingSystem.web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>
+    <bean class="com.simonow.VotingSystem.web.json.JacksonObjectMapper" id="objectMapper" factory-method="getMapper"/>
 
     <!-- serve static resources (*.html, ...) from src/main/webapp/ -->
     <mvc:default-servlet-handler/>
@@ -32,7 +32,7 @@
     </mvc:annotation-driven>
 
 
-    <context:component-scan base-package="by.simonow.**.web"/>
+    <context:component-scan base-package="com.simonow.**.web"/>
 
     <!--  all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
@@ -56,7 +56,7 @@
     </bean>
 
     <mvc:interceptors>
-        <bean class="by.simonow.VotingSystem.web.interceptor.ModelInterceptor"/>
+        <bean class="com.simonow.VotingSystem.web.interceptor.ModelInterceptor"/>
 
         <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>

@@ -21,7 +21,7 @@
                 </tr>
                 </thead>
                 <c:forEach items="${dishes}" var="dish">
-                    <%--<jsp:useBean id="dish" scope="page" type="by.simonow.VotingSystem.model.Dish"/>--%>
+                    <%--<jsp:useBean id="dish" scope="page" type="Dish"/>--%>
                     <tr>
                         <td><c:out value="${dish.description}"/></td>
                         <td>${fn:formatPrice(dish.price)}</td>

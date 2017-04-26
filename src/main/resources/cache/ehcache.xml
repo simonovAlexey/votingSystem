@@ -25,7 +25,7 @@
            diskExpiryThreadIntervalSeconds="1"
            memoryStoreEvictionPolicy="LRU"/>
 
-    <cache name="by.simonow.VotingSystem.model.Dish"
+    <cache name="com.simonow.VotingSystem.model.Dish"
            maxElementsInMemory="25000"/>
 
 </ehcache>

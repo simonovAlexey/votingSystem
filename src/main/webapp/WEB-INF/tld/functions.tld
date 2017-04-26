@@ -10,7 +10,7 @@
 
     <function>
         <name>formatPrice</name>
-        <function-class>by.simonow.VotingSystem.util.PriceUtil</function-class>
+        <function-class>com.simonow.VotingSystem.util.PriceUtil</function-class>
         <function-signature>java.lang.String format(java.lang.Integer)</function-signature>
     </function>
 </taglib>
