@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static by.simonow.VotingSystem.util.ValidationUtil.checkNotFoundWithId;
 
@@ -40,7 +39,7 @@ public class RestaurantServiceImp implements RestaurantService {
     @Override
     public RestaurantTo getTo(int id) throws NotFoundException {
         Restaurant rest = checkNotFoundWithId(repository.get(id), id);
-        return new RestaurantTo(rest.getId(),rest.getName(),null);
+        return new RestaurantTo(rest.getId(),rest.getName(),0);
     }
 
     @Override
@@ -55,9 +54,10 @@ public class RestaurantServiceImp implements RestaurantService {
 
     @Override
     public List<RestaurantTo> getAllWithVotes() {
-        return repository.getAllWithVotes().stream().
+        return repository.getAllRestaurantTo();
+        /*return repository.getAllWithVotes().stream().
                 map((s) -> new RestaurantTo(s.getId(), s.getName(), s.getVotes().size())).
-                collect(Collectors.toList());
+                collect(Collectors.toList());*/
     }
 
     @Override

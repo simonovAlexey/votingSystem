@@ -3,8 +3,10 @@ package by.simonow.VotingSystem.to;
 
 import by.simonow.VotingSystem.HasId;
 
+import javax.persistence.Id;
 
 abstract public class BaseTo implements HasId {
+    @Id
     protected Integer id;
 
     public BaseTo() {

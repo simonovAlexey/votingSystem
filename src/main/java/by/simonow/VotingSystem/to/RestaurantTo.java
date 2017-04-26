@@ -1,13 +1,18 @@
 package by.simonow.VotingSystem.to;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
 public class RestaurantTo extends BaseTo {
 
-    private final String name;
+    private String name;
 
-    private final Integer votes;
+    private Integer votes;
 
 
     public RestaurantTo(@JsonProperty("id") Integer id,
@@ -18,12 +23,10 @@ public class RestaurantTo extends BaseTo {
         this.votes = votes;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public int getVotes() {
-        return votes;
+    public RestaurantTo(Integer id, String name, Long votes) {
+        super(id);
+        this.name = name;
+        this.votes = votes.intValue();
     }
 
     @Override

@@ -2,6 +2,7 @@ package by.simonow.VotingSystem.repository;
 
 
 import by.simonow.VotingSystem.model.Restaurant;
+import by.simonow.VotingSystem.to.RestaurantTo;
 
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface RestaurantRepository {
     Restaurant getWithDishes(int id);
 
     List<Restaurant> getAllWithVotes();
+
+    List<RestaurantTo> getAllRestaurantTo();
 }

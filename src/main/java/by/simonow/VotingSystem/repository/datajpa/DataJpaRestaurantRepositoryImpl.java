@@ -3,6 +3,7 @@ package by.simonow.VotingSystem.repository.datajpa;
 
 import by.simonow.VotingSystem.model.Restaurant;
 import by.simonow.VotingSystem.repository.RestaurantRepository;
+import by.simonow.VotingSystem.to.RestaurantTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -47,5 +48,10 @@ public class DataJpaRestaurantRepositoryImpl implements RestaurantRepository {
     @Override
     public List<Restaurant> getAllWithVotes() {
         return  crudRepository.getAllWithVotes();
+    }
+
+    @Override
+    public List<RestaurantTo> getAllRestaurantTo() {
+        return crudRepository.getAllRestaurantTo();
     }
 }
