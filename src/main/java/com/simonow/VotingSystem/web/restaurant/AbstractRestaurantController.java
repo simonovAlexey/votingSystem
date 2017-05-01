@@ -51,11 +51,6 @@ public abstract class AbstractRestaurantController {
         service.delete(id);
     }
 
-    public List<Restaurant> getAll() {
-        LOG.info("getAll ");
-        return service.getAll();
-    }
-
     public void update(Restaurant rest, int id) {
         checkIdConsistent(rest, id);
         LOG.info("update {}", rest);
