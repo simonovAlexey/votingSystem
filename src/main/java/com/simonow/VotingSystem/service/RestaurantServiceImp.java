@@ -48,16 +48,8 @@ public class RestaurantServiceImp implements RestaurantService {
     }
 
     @Override
-    public List<Restaurant> getAll() {
-        return repository.getAll();
-    }
-
-    @Override
     public List<RestaurantTo> getAllWithVotes() {
         return repository.getAllRestaurantTo();
-        /*return repository.getAllWithVotes().stream().
-                map((s) -> new RestaurantTo(s.getId(), s.getName(), s.getVotes().size())).
-                collect(Collectors.toList());*/
     }
 
     @Override
