@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import static com.simonow.VotingSystem.MealTestData.DISH_2;
@@ -26,15 +25,17 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
         Restaurant newRest = getCreated();
         Restaurant created = service.save(newRest);
         newRest.setId(created.getId());
-        MATCHER.assertCollectionEquals(Arrays.asList(RESTAURANT1,RESTAURANT2,RESTAURANT3,newRest), service.getAll());
+        RestaurantTo newRestTO = new RestaurantTo(newRest.getId(),newRest.getName(),0);
 
+        MATCHER_WITH_VOTES.assertCollectionEquals(service.getAllWithVotes(),
+                Arrays.asList(REST_WITH_VOTES1,REST_WITH_VOTES2,REST_WITH_VOTES3,newRestTO));
     }
 
     @Test
     public void testDelete() throws Exception {
         service.delete(RESTAURANT1_ID);
-        Collection<Restaurant> restaurants = service.getAll();
-        MATCHER.assertCollectionEquals(Arrays.asList(RESTAURANT2,RESTAURANT3), restaurants);
+        List<RestaurantTo> restaurantWithVotes = service.getAllWithVotes();
+        MATCHER_WITH_VOTES.assertCollectionEquals(restaurantWithVotes,Arrays.asList(REST_WITH_VOTES2,REST_WITH_VOTES3));
     }
 
     @Test
@@ -75,10 +76,6 @@ public class RestaurantServiceImpTest extends AbstractServiceTest {
         MATCHER_WITH_VOTES.assertEquals(new RestaurantTo(upd.getId(),upd.getName(),2), service.getWithVotes(RESTAURANT1_ID));
     }
 
-    @Test
-    public void testGetAll() throws Exception {
-        MATCHER.assertCollectionEquals(RESTAURANTS, service.getAll());
-    }
 
     public void testValidation() throws Exception {
     //TODO Restaurant validation test
