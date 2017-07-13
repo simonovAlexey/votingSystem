@@ -11,13 +11,13 @@
 `curl -s http://localhost:8080/votingSystem/rest/restaurants --user admin@gmail.com:admin`
 
 #### get Menu for Restaurant 100000
-`curl -s http://localhost:8080/votingSystem/rest/admin/restaurants/menu=100000 --user admin@gmail.com:admin`
+`curl -s http://localhost:8080/votingSystem/rest/restaurants/menu=100000 --user admin@gmail.com:admin`
 
 #### get All Meals for Rest 100001
 `curl -s http://localhost:8080/votingSystem/rest/dishes/100001 --user admin@gmail.com:admin`
 
 #### get Meals 100008 for Rest 100001
-`curl -s http://localhost:8080/votingSystem/rest/profile/dishes/100001/100008  --user admin@gmail.com:admin`
+`curl -s http://localhost:8080/votingSystem/rest/dishes/100001/100008  --user admin@gmail.com:admin`
 
 #### get Meals not found
 `curl -s -v http://localhost:8080/rest/dishes/100001/100011 --user admin@gmail.com:admin`
